@@ -1,0 +1,1 @@
+java -classpath .\.;.\target\analyze_eap_model-1.0-SNAPSHOT-jar-with-dependencies.jar com.ag01.analyze_eap_model.standalone_application_main.ApplicationMain
