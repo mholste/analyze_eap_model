@@ -1,0 +1,10 @@
+analyze_eap_db                    analyze
+database_access                   DA
+data_access_object                DAO
+domain_object                     DO
+arc42_modell                      arc42
+business_logic                    BL
+software_model                    model
+eap_to_ebs42                      convert
+standalone_application_config     application
+standalone_application_main       application
