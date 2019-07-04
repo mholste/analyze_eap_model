@@ -21,6 +21,7 @@ public class ApplicationMain {
 
 	public static void main(String[] args) {
 		AbstractApplicationContext applicationContext = null;
+        
 		try {
 			LOGGER.debug("begin ApplicationMain -> static void main(String args[]");
 
