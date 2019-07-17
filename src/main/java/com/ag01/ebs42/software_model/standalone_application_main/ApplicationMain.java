@@ -15,6 +15,7 @@ import com.ag01.ebs42.alternative.FillEbsModel;
 import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.*;
 import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.*;
 import com.ag01.ebs42.software_model.standalone_application_config.ApplicationMainConfiguration;
+import com.ag01.ebs42.transform.TransferManager;
 
 public class ApplicationMain {
 
@@ -36,9 +37,8 @@ public class ApplicationMain {
 			
 			TransactionStatus transactionStatus0001 = platformTransactionManager.getTransaction(defaultTransactionDefinition);
 
-			FillEbsModel filler = new FillEbsModel();
-			filler.readDatabase(applicationContext, platformTransactionManager);
-			filler.showSystems();
+			TransferManager transferManager= new TransferManager(platformTransactionManager);
+			transferManager.importTables();
 			
 			try {
 	             TefforttypesDao tefforttypesDao = (TefforttypesDao) applicationContext.getBean("tefforttypesDao");
