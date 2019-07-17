@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.core.NestedRuntimeException;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
@@ -18,24 +19,56 @@ public class FillEbsModel
 {
 	private static Logger LOGGER = LogManager.getLogger(FillEbsModel.class);
 	
-	private PlatformTransactionManager platformTransactionManager;
 	private TpackageDao tpackageDao;
 	private List <TpackageDo> resultTpackageDoList;
-	
+	private AbstractApplicationContext applicationContext;
+	/*
 	public void setPlatformTransactionManager(PlatformTransactionManager platformTransactionManager) {
 		this.platformTransactionManager = platformTransactionManager;
 	}
+	*/
 	
-	public void setTpackageDao(TpackageDao tpackageDao) {
-		this.tpackageDao = tpackageDao;
+	public void setTpackageDao() 
+	{		
+		TpackageDao tpackageDao = (TpackageDao) this.applicationContext.getBean("tpackageDao");
+        List<TpackageDo> resultTpackageDoList = null;
+		try 
+		{
+			resultTpackageDoList = tpackageDao.readListTpackage();
+		}
+		catch (Exception e) 
+		{
+			LOGGER.error("Exception while reading t_package\n" + e.getMessage());
+		}
+		
+        if(resultTpackageDoList != null) 
+        {
+            for(int i = 0; i < resultTpackageDoList.size(); i++) 
+            {
+                TpackageDo tpackageDo = resultTpackageDoList.get(i);
+                if(tpackageDo != null) 
+                {
+                    LOGGER.info("object[" + i + "] = " + tpackageDo.toString());
+                } 
+                else 
+                {
+                    LOGGER.info("object[" + i + "] = null");
+                }
+            }
+        }
+        this.tpackageDao = tpackageDao;
 	}
 
-	public void readDatabase() throws Exception
+	public void readDatabase(AbstractApplicationContext context, PlatformTransactionManager platformTransactionManager) throws Exception
 	{
 		TransactionStatus transactionStatus0001 = null;
 		this.resultTpackageDoList = null;
+		this.applicationContext = context;
+		this.setTpackageDao();
+		
 		try
 		{
+			
 			DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition();
 			
 			defaultTransactionDefinition.setName("READ_EAP_DATABASE_0001");
