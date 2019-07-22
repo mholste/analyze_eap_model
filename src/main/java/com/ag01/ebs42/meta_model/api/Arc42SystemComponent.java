@@ -7,6 +7,6 @@ public interface Arc42SystemComponent
 	public String getSystemName();
 	public void setSystemName(String systemName);
 	public String getCorporateID();
-	public void setCorporateIDe(String corporateID);
+	public void setCorporateID(String corporateID);
 	
 }
