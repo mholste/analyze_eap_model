@@ -26,16 +26,17 @@ import com.ag01.ebs42.software_model.eap_to_ebs42.impl.ConvertEapToEbs42WithCach
 public class ApplicationMainConfiguration {
 	
 	@Autowired
-	private static Environment env;
+	private Environment env;
 	
-	private static String dbLocation = env.getProperty("db.location");
+	//private String dbLocation = env.getProperty("db.location");
 	
 	private static Driver getJdbcDriver() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		return (Driver) Class.forName("net.ucanaccess.jdbc.UcanaccessDriver").newInstance();		
 	}
 	
-	private static String getJdbcUrl() {
-		return dbLocation;
+	private String getJdbcUrl() {		
+		return new String("jdbc:ucanaccess:///opt/analyze_eap/model/ebs42_model.eap");
+		//return dbLocation;
 		//return new String("jdbc:ucanaccess://C:/home/axl/projects/ebs42/ebs42_model.eap");
 	}
 
