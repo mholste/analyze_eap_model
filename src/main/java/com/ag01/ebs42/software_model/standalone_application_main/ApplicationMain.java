@@ -37,9 +37,6 @@ public class ApplicationMain {
 			
 			TransactionStatus transactionStatus0001 = platformTransactionManager.getTransaction(defaultTransactionDefinition);
 
-			TransferManager transferManager= new TransferManager(platformTransactionManager);
-			transferManager.importTables();
-			
 			try {
 	             TefforttypesDao tefforttypesDao = (TefforttypesDao) applicationContext.getBean("tefforttypesDao");
 	             List <TefforttypesDo> resultTefforttypesDoList = tefforttypesDao.readListTefforttypes();
