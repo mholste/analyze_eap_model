@@ -42,9 +42,9 @@ public abstract class Arc42SystemComponentWrapper implements Arc42SystemComponen
 	}
 
 	@Override
-	public void setCorporateIDe(String corporateID) 
+	public void setCorporateID(String corporateID) 
 	{
-		wrappedSystemComponent.setCorporateIDe(corporateID);
+		wrappedSystemComponent.setCorporateID(corporateID);
 	}
 	
 	
