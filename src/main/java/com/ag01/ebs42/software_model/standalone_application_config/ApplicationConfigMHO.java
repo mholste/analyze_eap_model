@@ -18,6 +18,7 @@ import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.jdbc_tem
 import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.jdbc_template_impl.TobjectDaoSpringJdbcTemplatesImpl;
 import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.jdbc_template_impl.TobjectpropertiesDaoSpringJdbcTemplatesImpl;
 import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.jdbc_template_impl.TpackageDaoSpringJdbcTemplatesImpl;
+import com.ag01.ebs42.transform.TransferManager;
 
 @Configuration
 @PropertySource("classpath:ebs42.properties")
@@ -73,4 +74,10 @@ public class ApplicationConfigMHO
 		 tmpTconnectorDaoSpringJdbcTemplatesImpl.setDataSource(dataSource());
 		 return tmpTconnectorDaoSpringJdbcTemplatesImpl;
 	 }	 	
+	 
+	 @Bean
+	 TransferManager transferManager()
+	 {
+		 return new TransferManager();
+	 }
 }
