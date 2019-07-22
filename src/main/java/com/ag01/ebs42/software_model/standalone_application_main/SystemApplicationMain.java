@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
+import com.ag01.ebs42.alternative.FillEbsModel;
 import com.ag01.ebs42.software_model.arc42_modell.domain_object.Arc42SystemComponent;
 import com.ag01.ebs42.software_model.arc42_modell.domain_object.Arc42SystemDo;
 import com.ag01.ebs42.software_model.arc42_modell.domain_object.Arc42SystemInterface;
