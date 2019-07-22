@@ -18,24 +18,32 @@ import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.Tobjectproper
 import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TpackageDo;
 import com.ag01.ebs42.software_model.standalone_application_config.ApplicationConfigMHO;
 import com.ag01.ebs42.software_model.standalone_application_config.ApplicationMainConfiguration;
+import com.ag01.ebs42.transform.TransferManager;
 
 public class ApplicationMainMHO 
 {
 	private static Logger LOGGER = LogManager.getLogger(ApplicationMainMHO.class);
 	
+	private static ApplicationContext ctx;
+	
+	private static List<TpackageDo> resultTpackageDoList = null;
+    private static List<TobjectDo> resultTobjectList = null;
+    private static List<TobjectpropertiesDo> resultTobjectpropertiesDoList = null;
+    private static List <TconnectorDo> resultTconnectorDoList1 = null;
+	
 	public static void main(String[] args) 
 	{
-		ApplicationContext ctx = new AnnotationConfigApplicationContext(ApplicationConfigMHO.class);
-		
+		ctx = new AnnotationConfigApplicationContext(ApplicationConfigMHO.class);
+		readTables();
+		TransferManager transferManager = (TransferManager) ctx.getBean("transferManager");
+	}
+	
+	private static void readTables()
+	{
 		TpackageDao tpackageDao = (TpackageDao) ctx.getBean("tpackageDao");
 		TobjectDao tobjectDao = (TobjectDao) ctx.getBean("tobjectDao");
 		TobjectpropertiesDao tobjectpropertiesDao = (TobjectpropertiesDao)ctx.getBean("tobjectpropertiesDao");
-		TconnectorDao tconnectorDao = (TconnectorDao)ctx.getBean("tconnectorDao");        
-        
-		List<TpackageDo> resultTpackageDoList = null;
-        List<TobjectDo> resultTobjectList = null;
-        List<TobjectpropertiesDo> resultTobjectpropertiesDoList = null;
-        List <TconnectorDo> resultTconnectorDoList1 = null;
+		TconnectorDao tconnectorDao = (TconnectorDao)ctx.getBean("tconnectorDao");                		
         
         try 
         {
