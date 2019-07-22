@@ -3,67 +3,68 @@ package com.ag01.ebs42.transform;
 import com.ag01.ebs42.meta_model.api.Arc42SystemComponent;
 import com.ag01.ebs42.transform.wrapper.Arc42SystemComponentWrapper;
 
-public class TransferArc42SystemComponent implements Arc42SystemComponent, Arc42SystemComponentWrapper
+public class TransferArc42SystemComponent extends Arc42SystemComponentWrapper
 {
-
+	private String eaId;
+	private String eaPackageId;
+	
+	public TransferArc42SystemComponent(Arc42SystemComponent wrappedSystemComponent) {
+		super(wrappedSystemComponent);
+	}
+	
 	@Override
-	public String getPackageName() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getPackageName()
+	{
+		return wrappedSystemComponent.getPackageName();
+	}
+	
+	@Override
+	public void setPackageName(String packageName) 
+	{
+		wrappedSystemComponent.setPackageName(packageName);
 	}
 
 	@Override
-	public void setPackageName(String packageName) {
-		// TODO Auto-generated method stub
-		
+	public String getSystemName() 
+	{
+		return wrappedSystemComponent.getSystemName();
 	}
 
 	@Override
-	public String getSystemName() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setSystemName(String systemName) 
+	{
+		wrappedSystemComponent.setSystemName(systemName);
 	}
 
 	@Override
-	public void setSystemName(String systemName) {
-		// TODO Auto-generated method stub
-		
+	public String getCorporateID() 
+	{
+		return wrappedSystemComponent.getCorporateID();
 	}
 
 	@Override
-	public String geteaId() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setCorporateID(String corporateID) 
+	{
+		wrappedSystemComponent.setCorporateID(corporateID);
 	}
 
-	@Override
-	public void seteaId(String eaId) {
-		// TODO Auto-generated method stub
-		
+	public String getEaId() 
+	{
+		return eaId;
 	}
 
-	@Override
-	public String geteaPackageId() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setEaId(String eaId) 
+	{
+		this.eaId = eaId;
 	}
 
-	@Override
-	public void seteaPackageId(String eaPackageId) {
-		// TODO Auto-generated method stub
-		
+	public String getEaPackageId() 
+	{
+		return eaPackageId;
 	}
 
-	@Override
-	public String getCorporateID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setCorporateIDe(String corporateID) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void setEaPackageId(String eaPackageId) 
+	{
+		this.eaPackageId = eaPackageId;
+	}	
 }
