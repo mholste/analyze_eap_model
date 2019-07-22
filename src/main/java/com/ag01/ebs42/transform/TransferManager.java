@@ -1,226 +1,141 @@
 package com.ag01.ebs42.transform;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.core.NestedRuntimeException;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionException;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.TconnectorDao;
-import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.TobjectDao;
-import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.TobjectpropertiesDao;
-import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.TpackageDao;
 import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TconnectorDo;
 import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TobjectDo;
 import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TobjectpropertiesDo;
 import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TpackageDo;
+import com.ag01.ebs42.meta_model.api.Arc42SystemComponent;
+import com.ag01.ebs42.meta_model.impl.Arc42SystemComponentImpl;
 
 public class TransferManager 
 {
-	@Autowired
-	private ApplicationContext appContext;
+	// Final values from EA model
+	private static final int MODEL_ID = 2; 
+	private static final String ARC_NAME = "20_ARC42";
+	private static final String SYSTEM_Name = "50_systems";
+	private static final String ELEMENT_NAME = "80_elements";
+	private static final String COMPONENT = "Component";
 	
-	private PlatformTransactionManager platformTransactionManager;
+	// Names for keys in HashMap
+	private static final String NAME = "Name";
+	private static final String PACKAGE_ID = "Package_ID";
+	
+	private List<HashMap<String, String>> systemFolderList = null;
+	private List<TransferArc42SystemComponent> componentList = null;
+	
+	private List<TpackageDo> resultTpackageDoList = null;
+    private List<TobjectDo> resultTobjectList = null;
+    private List<TobjectpropertiesDo> resultTobjectpropertiesDoList = null;
+    private List <TconnectorDo> resultTconnectorDoList = null;
+
 	private static Logger LOGGER = LogManager.getLogger(TransferManager.class);
 	
-	private TpackageDao tpackageDao;
-	private TobjectDao tobjectDao;
-	private TobjectpropertiesDao tobjectpropertiesDao;
-	private TconnectorDao tconnectorDao;
-	private List <TpackageDo> resultTpackageDoList;
-	private List <TobjectDo> resultTobjectDoList;
-	private List <TobjectpropertiesDo> resultTobjectpropertiesDoList;
-	private List <TconnectorDo> resultTconnectorDoList1;
-	
-	public TransferManager() { }
-	
-	public TransferManager(PlatformTransactionManager platformTransactionManager)
-	{
-		this.platformTransactionManager = platformTransactionManager;
-	}
-	
-	public void importTables() throws Exception
-	{
-		TransactionStatus transactionStatus = null;
-		this.resultTpackageDoList = null;
-		this.setTpackageDao();
-		
-		try
-		{			
-			DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition();
+	public TransferManager() 
+	{ 		
+		componentList = new ArrayList<TransferArc42SystemComponent>();
+		this.getSystemfolders(
+				this.extractPackageID(extractPackageID(MODEL_ID, ARC_NAME), SYSTEM_Name));
+		for (HashMap<String, String> system : systemFolderList)
+		{
+			int elementId = this.extractPackageID(Integer.parseInt(system.get(PACKAGE_ID)), ELEMENT_NAME);
+			int baseFolder = this.extractPackageID(elementId, system.get(NAME));
 			
-			defaultTransactionDefinition.setName("IMPORT_TABLES");
-			defaultTransactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
-			
-			transactionStatus = platformTransactionManager.getTransaction(defaultTransactionDefinition);
-			
-			this.resultTpackageDoList = tpackageDao.readListTpackage();
+			for (TobjectDo objDo : resultTobjectList)
+			{
+				if (objDo.getObjecttype().equalsIgnoreCase(COMPONENT) && objDo.getPackageid() == baseFolder)
+				{
+					TransferArc42SystemComponent transObj = new TransferArc42SystemComponent(new Arc42SystemComponentImpl());
+					transObj.setPackageName(system.get(NAME));
+					transObj.setSystemName(objDo.getName());
+					transObj.setEaId(String.valueOf(objDo.getObjectid()));
+					transObj.setEaPackageId(String.valueOf(objDo.getPackageid()));
+					LOGGER.info("##### PackageName: " + transObj.getPackageName());
+					LOGGER.info("##### SystemName: " + transObj.getSystemName());
+					LOGGER.info("##### EA ID: " + transObj.getEaId());
+					LOGGER.info("##### EA Package ID: " + transObj.getEaPackageId());
+				}
+			}
 		}
-		catch (TransactionException te)
-		{
-			LOGGER.error("TransactionException\n" + te.getMessage());
-			platformTransactionManager.rollback(transactionStatus);
-			throw te;
-		}
-		catch (NestedRuntimeException nre)
-		{
-			LOGGER.error("NestedRuntimeException\n" + nre.getMessage());
-			platformTransactionManager.rollback(transactionStatus);
-			throw nre;
-		}
-		catch (RuntimeException re)
-		{
-			LOGGER.error("RuntimeException\n" + re.getMessage());
-			platformTransactionManager.rollback(transactionStatus);
-			throw re;
-		}
-		catch (Exception e)
-		{
-			LOGGER.error("Exception\n" + e.getMessage());
-			platformTransactionManager.rollback(transactionStatus);
-			throw e;
-		}
-	}
+	}		
 	
-	public List<TpackageDo> setTpackageDao() 
-	{		
-		TpackageDao tpackageDao = (TpackageDao) this.appContext.getBean("tpackageDao");
-        List<TpackageDo> resultTpackageDoList = null;
-		try 
-		{
-			resultTpackageDoList = tpackageDao.readListTpackage();
-		}
-		catch (Exception e) 
-		{
-			LOGGER.error("Exception while reading t_package\n" + e.getMessage());
-		}
-		
-        if(resultTpackageDoList != null) 
-        {
-            for(int i = 0; i < resultTpackageDoList.size(); i++) 
-            {
-                TpackageDo tpackageDo = resultTpackageDoList.get(i);
-                if(tpackageDo != null) 
-                {
-                    LOGGER.info("object[" + i + "] = " + tpackageDo.toString());
-                } 
-                else 
-                {
-                    LOGGER.info("object[" + i + "] = null");
-                }
-            }
-        }
-        this.tpackageDao = tpackageDao;
-        return resultTpackageDoList;
-	}
-	
-	public List<TobjectDo> setTobjectDao()
+	public int extractPackageID(int parent, String name)
 	{
-        TobjectDao tobjectDao = (TobjectDao) this.appContext.getBean("tobjectDao");
-        List<TobjectDo> resultTobjectList = null;
-        
-        try 
+		int retId = 0;
+		for (TpackageDo tmpDo : resultTpackageDoList)
 		{
-			resultTobjectList = tobjectDao.readListTobject();
+			if (tmpDo.getParentid() == parent && tmpDo.getName().equalsIgnoreCase(name))
+			{
+				retId = tmpDo.getPackageid();
+				break;
+			}
 		}
-		catch (Exception e) 
-		{
-			LOGGER.error("Exception while reading t_object\n" + e.getMessage());
-		}
-		
-        if(resultTobjectList != null) 
-        {
-            for(int i = 0; i < resultTobjectList.size(); i++) 
-            {
-                TobjectDo tobjectDo = resultTobjectList.get(i);
-                if(tobjectDo != null) 
-                {
-                    LOGGER.info("object[" + i + "] = " + tobjectDo.toString());
-                } 
-                else 
-                {
-                    LOGGER.info("object[" + i + "] = null");
-                }
-            }
-        }
-        this.tobjectDao = tobjectDao;
-        
-        return resultTobjectList;
+		return retId;
 	}
 	
-	
-	public List<TobjectpropertiesDo> setTobjectpropertiesDao()
+	public void getSystemfolders(int parent)
 	{
-		TobjectpropertiesDao tobjectpropertiesDao = (TobjectpropertiesDao)this.appContext.getBean("tobjectpropertiesDao");
-		List<TobjectpropertiesDo> resultTobjectpropertiesDoList = null;
-		
-		try 
+		this.systemFolderList = new ArrayList<HashMap<String, String>>();
+		for (TpackageDo tmpDo : resultTpackageDoList)
 		{
-			resultTobjectpropertiesDoList = tobjectpropertiesDao.readListTobjectproperties();
+			if (tmpDo.getParentid() == parent)
+			{
+				HashMap<String, String> system = new HashMap<String, String>(); 
+				system.put(NAME, tmpDo.getName());
+				system.put(PACKAGE_ID, String.valueOf(tmpDo.getPackageid()));
+				systemFolderList.add(system);
+			}
 		}
-		catch (Exception e) 
-		{
-			LOGGER.error("Exception while reading t_object\n" + e.getMessage());
-		}
+	}
+	
+	public void getSystemDetails(HashMap<String, String> system)
+	{
 		
-        if(resultTobjectpropertiesDoList != null) 
-        {
-            for(int i = 0; i < resultTobjectpropertiesDoList.size(); i++) 
-            {
-            	TobjectpropertiesDo tobjectpropertiesDo = resultTobjectpropertiesDoList.get(i);
-                if(tobjectpropertiesDo != null) 
-                {
-                    LOGGER.info("object[" + i + "] = " + tobjectpropertiesDo.toString());
-                } 
-                else 
-                {
-                    LOGGER.info("object[" + i + "] = null");
-                }
-            }
-        }
-        this.tobjectpropertiesDao = tobjectpropertiesDao;
-		
+	}
+	
+	public List<TpackageDo> getResultTpackageDoList() 
+	{
+		return resultTpackageDoList;
+	}
+
+	public void setResultTpackageDoList(List<TpackageDo> resultTpackageDoList) 
+	{
+		this.resultTpackageDoList = resultTpackageDoList;
+	}
+
+	public List<TobjectDo> getResultTobjectList() 
+	{
+		return resultTobjectList;
+	}
+
+	public void setResultTobjectList(List<TobjectDo> resultTobjectList) 
+	{
+		this.resultTobjectList = resultTobjectList;
+	}
+
+	public List<TobjectpropertiesDo> getResultTobjectpropertiesDoList() 
+	{
 		return resultTobjectpropertiesDoList;
-	} 
-	
-	public List <TconnectorDo> setTconnectorDao()
+	}
+
+	public void setResultTobjectpropertiesDoList(List<TobjectpropertiesDo> resultTobjectpropertiesDoList) 
 	{
-        TconnectorDao tconnectorDao = (TconnectorDao)this.appContext.getBean("tconnectorDao");
-        List <TconnectorDo> resultTconnectorDoList1 = null;
-        
-        try 
-		{
-        	resultTconnectorDoList1 = tconnectorDao.readListTconnector();
-		}
-		catch (Exception e) 
-		{
-			LOGGER.error("Exception while reading t_object\n" + e.getMessage());
-		}
-		
-        if(resultTconnectorDoList1 != null) 
-        {
-            for(int i = 0; i < resultTconnectorDoList1.size(); i++) 
-            {
-            	TconnectorDo tconnectorDo = resultTconnectorDoList1.get(i);
-                if(tconnectorDo != null) 
-                {
-                    LOGGER.info("object[" + i + "] = " + tconnectorDo.toString());
-                } 
-                else 
-                {
-                    LOGGER.info("object[" + i + "] = null");
-                }
-            }
-        }
-        this.tconnectorDao = tconnectorDao;
-        
-        return resultTconnectorDoList1;
+		this.resultTobjectpropertiesDoList = resultTobjectpropertiesDoList;
+	}
+
+	public List<TconnectorDo> getResultTconnectorDoList() 
+	{
+		return resultTconnectorDoList;
+	}
+
+	public void setResultTconnectorDoList(List<TconnectorDo> resultTconnectorDoList) 
+	{
+		this.resultTconnectorDoList = resultTconnectorDoList;
 	}
 }
