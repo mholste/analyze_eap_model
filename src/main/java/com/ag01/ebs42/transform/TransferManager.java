@@ -12,7 +12,10 @@ import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TobjectDo;
 import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TobjectpropertiesDo;
 import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TpackageDo;
 import com.ag01.ebs42.meta_model.api.Arc42SystemComponent;
+import com.ag01.ebs42.meta_model.api.Arc42SystemInterface;
+import com.ag01.ebs42.meta_model.api.InterfaceType;
 import com.ag01.ebs42.meta_model.impl.Arc42SystemComponentImpl;
+import com.ag01.ebs42.meta_model.impl.Arc42SystemInterfaceImpl;
 
 public class TransferManager 
 {
@@ -36,6 +39,8 @@ public class TransferManager
 	private List<HashMap<String, String>> systemFolderList = null;
 	// List for all systems in transfer format
 	private List<TransferArc42SystemComponent> componentList = null;
+	//List for all interfaces in transfer format
+	private List<TransferArc42SystemInterface> interfaceList = null;
 	
 	// DAOs for relevant tables
 	private List<TpackageDo> resultTpackageDoList = null;
@@ -48,6 +53,7 @@ public class TransferManager
 	public TransferManager() 
 	{ 		
 		componentList = new ArrayList<TransferArc42SystemComponent>();
+		interfaceList = new ArrayList<TransferArc42SystemInterface>();
 	}
 	
 	public void fillTransferLayer()
@@ -146,7 +152,15 @@ public class TransferManager
 			if (objDo.getObjecttype().equalsIgnoreCase(PROVIDED) || 
 					objDo.getObjecttype().equalsIgnoreCase(REQUIRED))
 			{
-				
+				TransferArc42SystemInterface transInt = 
+						new TransferArc42SystemInterface(new Arc42SystemInterfaceImpl());
+				transInt.setEaId(String.valueOf(objDo.getObjectid()));
+				transInt.setEaPackageId(String.valueOf(objDo.getPackageid()));
+				transInt.setEaParentID(String.valueOf(objDo.getParentid()));
+				transInt.setInterfaceName(objDo.getName());
+				transInt.setInterfaceType(objDo.getObjecttype().equalsIgnoreCase(REQUIRED) 
+						? InterfaceType.REQUIRED : InterfaceType.PROVIDED);
+				interfaceList.add(transInt);
 			}
 		}
 	}
