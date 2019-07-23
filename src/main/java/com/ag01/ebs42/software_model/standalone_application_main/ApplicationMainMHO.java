@@ -29,13 +29,18 @@ public class ApplicationMainMHO
 	private static List<TpackageDo> resultTpackageDoList = null;
     private static List<TobjectDo> resultTobjectList = null;
     private static List<TobjectpropertiesDo> resultTobjectpropertiesDoList = null;
-    private static List <TconnectorDo> resultTconnectorDoList1 = null;
+    private static List <TconnectorDo> resultconnectorDoList = null;
 	
 	public static void main(String[] args) 
 	{
 		ctx = new AnnotationConfigApplicationContext(ApplicationConfigMHO.class);
 		readTables();
 		TransferManager transferManager = (TransferManager) ctx.getBean("transferManager");
+		transferManager.setResultTpackageDoList(resultTpackageDoList);
+		transferManager.setResultTobjectList(resultTobjectList);
+		transferManager.setResultTobjectpropertiesDoList(resultTobjectpropertiesDoList);
+		transferManager.setResultTconnectorDoList(resultconnectorDoList);
+		transferManager.fillTransferLayer();
 	}
 	
 	private static void readTables()
@@ -65,7 +70,7 @@ public class ApplicationMainMHO
         
         try 
 		{
-			resultTobjectpropertiesDoList = tobjectpropertiesDao.readListTobjectproperties();
+			resultTobjectpropertiesDoList = tobjectpropertiesDao.readListTobjectproperties();			
 		}
 		catch (Exception e) 
 		{
@@ -74,7 +79,7 @@ public class ApplicationMainMHO
         
         try 
 		{
-        	resultTconnectorDoList1 = tconnectorDao.readListTconnector();
+        	resultconnectorDoList = tconnectorDao.readListTconnector();
 		}
 		catch (Exception e) 
 		{

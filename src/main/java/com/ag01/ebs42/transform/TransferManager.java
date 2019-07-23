@@ -22,14 +22,22 @@ public class TransferManager
 	private static final String SYSTEM_Name = "50_systems";
 	private static final String ELEMENT_NAME = "80_elements";
 	private static final String COMPONENT = "Component";
+	private static final String ICTO = "ICTO";
+	private static final String APP = "APP";
+	private static final String SPL = "SPL";
+	private static final String REQUIRED = "RequiredInterface";
+	private static final String PROVIDED = "ProvidedInterface";
 	
 	// Names for keys in HashMap
 	private static final String NAME = "Name";
 	private static final String PACKAGE_ID = "Package_ID";
 	
+	// List of all folders containing systems in EA
 	private List<HashMap<String, String>> systemFolderList = null;
+	// List for all systems in transfer format
 	private List<TransferArc42SystemComponent> componentList = null;
 	
+	// DAOs for relevant tables
 	private List<TpackageDo> resultTpackageDoList = null;
     private List<TobjectDo> resultTobjectList = null;
     private List<TobjectpropertiesDo> resultTobjectpropertiesDoList = null;
@@ -40,6 +48,10 @@ public class TransferManager
 	public TransferManager() 
 	{ 		
 		componentList = new ArrayList<TransferArc42SystemComponent>();
+	}
+	
+	public void fillTransferLayer()
+	{
 		this.getSystemfolders(
 				this.extractPackageID(extractPackageID(MODEL_ID, ARC_NAME), SYSTEM_Name));
 		for (HashMap<String, String> system : systemFolderList)
@@ -56,15 +68,43 @@ public class TransferManager
 					transObj.setSystemName(objDo.getName());
 					transObj.setEaId(String.valueOf(objDo.getObjectid()));
 					transObj.setEaPackageId(String.valueOf(objDo.getPackageid()));
-					LOGGER.info("##### PackageName: " + transObj.getPackageName());
-					LOGGER.info("##### SystemName: " + transObj.getSystemName());
-					LOGGER.info("##### EA ID: " + transObj.getEaId());
-					LOGGER.info("##### EA Package ID: " + transObj.getEaPackageId());
+					
+					for (TobjectpropertiesDo prop : resultTobjectpropertiesDoList)
+					{
+						if (transObj.getEaId().equalsIgnoreCase(String.valueOf(prop.getObjectid())) &&
+								(prop.getProperty().equalsIgnoreCase(APP) || 
+								prop.getProperty().equalsIgnoreCase(ICTO) || 
+								prop.getProperty().equalsIgnoreCase(SPL)))
+						{
+							transObj.setCorporateID(prop.getProperty() + " " + prop.getValue());
+						}						
+					}
+					componentList.add(transObj);
 				}
-			}
+			}			
+		}		
+		
+		LOGGER.info("##### Logging all collected systems: ");
+		
+		for (TransferArc42SystemComponent tObj : componentList)
+		{
+			LOGGER.info("##### PackageName: " + tObj.getPackageName());
+			LOGGER.info("##### SystemName: " + tObj.getSystemName());
+			LOGGER.info("##### Corporate ID: " + tObj.getCorporateID());
+			LOGGER.info("##### EA ID: " + tObj.getEaId());
+			LOGGER.info("##### EA Package ID: " + tObj.getEaPackageId());
+			
 		}
+		
 	}		
 	
+	/**
+	 * Gets the id of a package in EA with a given name and ID
+	 * 
+	 * @param parent the id of the parent folder 
+	 * @param name   the name of the folder
+	 * @return the id of the package as int
+	 */
 	public int extractPackageID(int parent, String name)
 	{
 		int retId = 0;
@@ -79,6 +119,11 @@ public class TransferManager
 		return retId;
 	}
 	
+	/**
+	 * Gets all folders beyond a given Package ID in the original EA model
+	 * 
+	 * @param parent id of the parent folder
+	 */
 	public void getSystemfolders(int parent)
 	{
 		this.systemFolderList = new ArrayList<HashMap<String, String>>();
@@ -94,9 +139,16 @@ public class TransferManager
 		}
 	}
 	
-	public void getSystemDetails(HashMap<String, String> system)
+	public void collectInterfaces()
 	{
-		
+		for (TobjectDo objDo : resultTobjectList)
+		{
+			if (objDo.getObjecttype().equalsIgnoreCase(PROVIDED) || 
+					objDo.getObjecttype().equalsIgnoreCase(REQUIRED))
+			{
+				
+			}
+		}
 	}
 	
 	public List<TpackageDo> getResultTpackageDoList() 
