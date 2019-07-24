@@ -1,4 +1,4 @@
-package com.ag01.ebs42.software_model.common_utils.api;
+package com.ag01.ebs42.model.utils.api;
 
 public interface ConverterUtils {
 	

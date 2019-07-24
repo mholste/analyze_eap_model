@@ -1,6 +1,6 @@
 package com.ag01.ebs42.software_model.common_utils.java_impl;
 
-import com.ag01.ebs42.software_model.common_utils.api.ConverterUtils;
+import com.ag01.ebs42.model.utils.api.ConverterUtils;
 
 public class ConverterUtilsImpl implements ConverterUtils {
 
