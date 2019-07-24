@@ -11,10 +11,10 @@ import com.ag01.ebs42.analyze.dbaccess.domobj.TconnectorDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectpropertiesDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
-import com.ag01.ebs42.meta_model.api.Arc42SystemComponent;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 import com.ag01.ebs42.meta_model.api.Arc42SystemInterface;
 import com.ag01.ebs42.meta_model.api.InterfaceType;
-import com.ag01.ebs42.meta_model.impl.Arc42SystemComponentImpl;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
 import com.ag01.ebs42.meta_model.impl.Arc42SystemInterfaceImpl;
 
 public class TransferManager 
@@ -71,7 +71,7 @@ public class TransferManager
 				{
 					TransferArc42SystemComponent transObj = new TransferArc42SystemComponent(new Arc42SystemComponentImpl());
 					transObj.setPackageName(system.get(NAME));
-					transObj.setSystemName(objDo.getName());
+					transObj.setSystemComponentName(objDo.getName());
 					transObj.setEaId(String.valueOf(objDo.getObjectid()));
 					transObj.setEaPackageId(String.valueOf(objDo.getPackageid()));
 					
@@ -82,7 +82,7 @@ public class TransferManager
 								prop.getProperty().equalsIgnoreCase(ICTO) || 
 								prop.getProperty().equalsIgnoreCase(SPL)))
 						{
-							transObj.setCorporateID(prop.getProperty() + " " + prop.getValue());
+							transObj.setCorporateId(prop.getProperty() + " " + prop.getValue());
 						}						
 					}
 					componentList.add(transObj);
@@ -95,8 +95,8 @@ public class TransferManager
 		for (TransferArc42SystemComponent tObj : componentList)
 		{
 			LOGGER.info("##### PackageName: " + tObj.getPackageName());
-			LOGGER.info("##### SystemName: " + tObj.getSystemName());
-			LOGGER.info("##### Corporate ID: " + tObj.getCorporateID());
+			LOGGER.info("##### SystemName: " + tObj.getSystemComponentName());
+			LOGGER.info("##### Corporate ID: " + tObj.getCorporateId());
 			LOGGER.info("##### EA ID: " + tObj.getEaId());
 			LOGGER.info("##### EA Package ID: " + tObj.getEaPackageId());
 			
