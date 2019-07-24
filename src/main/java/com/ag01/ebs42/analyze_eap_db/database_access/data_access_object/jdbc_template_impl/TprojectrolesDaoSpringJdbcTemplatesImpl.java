@@ -11,8 +11,8 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
+import com.ag01.ebs42.analyze.database_access.domain_object.TprojectrolesDo;
 import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.TprojectrolesDao;
-import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TprojectrolesDo;
 
 public class TprojectrolesDaoSpringJdbcTemplatesImpl implements TprojectrolesDao {
 

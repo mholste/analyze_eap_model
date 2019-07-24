@@ -8,14 +8,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.ag01.ebs42.analyze.database_access.domain_object.TconnectorDo;
+import com.ag01.ebs42.analyze.database_access.domain_object.TobjectDo;
+import com.ag01.ebs42.analyze.database_access.domain_object.TobjectpropertiesDo;
+import com.ag01.ebs42.analyze.database_access.domain_object.TpackageDo;
 import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.TconnectorDao;
 import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.TobjectDao;
 import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.TobjectpropertiesDao;
 import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.TpackageDao;
-import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TconnectorDo;
-import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TobjectDo;
-import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TobjectpropertiesDo;
-import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TpackageDo;
 import com.ag01.ebs42.software_model.standalone_application_config.ApplicationConfigMHO;
 import com.ag01.ebs42.software_model.standalone_application_config.ApplicationMainConfiguration;
 import com.ag01.ebs42.transform.TransferManager;

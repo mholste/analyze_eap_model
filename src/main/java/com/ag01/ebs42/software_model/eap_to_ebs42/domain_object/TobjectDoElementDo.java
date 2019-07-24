@@ -2,7 +2,7 @@ package com.ag01.ebs42.software_model.eap_to_ebs42.domain_object;
 
 import java.io.Serializable;
 
-import com.ag01.ebs42.analyze_eap_db.database_access.domain_object.TobjectDo;
+import com.ag01.ebs42.analyze.database_access.domain_object.TobjectDo;
 
 public class TobjectDoElementDo implements Serializable {
 
