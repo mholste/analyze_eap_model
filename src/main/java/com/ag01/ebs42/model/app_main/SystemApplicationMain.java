@@ -10,7 +10,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import com.ag01.ebs42.alternative.FillEbsModel;
 import com.ag01.ebs42.model.app_config.ApplicationMainConfiguration;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
-import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
 import com.ag01.ebs42.model.arc42.domobj.Ebs42ModelRootDo;
 import com.ag01.ebs42.model.eap_to_ebs42.api.ConvertEapToEbs42;
@@ -36,9 +36,9 @@ public class SystemApplicationMain {
 				StringBuffer tmpArcLog = new StringBuffer();
 				tmpArcLog.append("system_name, system_package, system_component01, system_component02, system_component03, system_component04, system_component05, system_component06, system_component07, system_component08, system_component09, system_component10, systeminterface01, systeminterface02, systeminterface03, systeminterface04, systeminterface05, systeminterface06, systeminterface07, systeminterface08, systeminterface09, systeminterface10, systeminterface11, systeminterface12, systeminterface13, systeminterface14, systeminterface15, systeminterface16, systeminterface17, systeminterface18, systeminterface19, systeminterface20, providedinterface01, providedinterface02, providedinterface03, providedinterface04, providedinterface05, providedinterface06, providedinterface07, providedinterface08, providedinterface09, providedinterface10, providedinterface11, providedinterface12, providedinterface13, providedinterface14, providedinterface15, providedinterface16, providedinterface17, providedinterface18, providedinterface19, providedinterface20, usedinterface01, usedinterface02, usedinterface03, usedinterface04, usedinterface05, usedinterface06, usedinterface07, usedinterface08, usedinterface09, usedinterface10, usedinterface11, usedinterface12, usedinterface13, usedinterface14, usedinterface15, usedinterface16, usedinterface17, usedinterface18, usedinterface19, usedinterface20\n");
 				
-				List <Arc42SystemDo> arc42Systems = ebs42ModelRootDo.getArc42ModelRootDo().getArc42SystemsList();
+				List <Arc42SystemDoImpl> arc42Systems = ebs42ModelRootDo.getArc42ModelRootDo().getArc42SystemsList();
 				for(int i = 0; i < arc42Systems.size(); i++) {
-					Arc42SystemDo arc42System = arc42Systems.get(i);
+					Arc42SystemDoImpl arc42System = arc42Systems.get(i);
 					tmpArcLog.append(arc42System.getSystemName() + "," + arc42System.getSystemPackageName());
 					for(int j = 0; j < 10; j++ ) {
 						int sizeComponentList = arc42System.getSystemComponentList().size();

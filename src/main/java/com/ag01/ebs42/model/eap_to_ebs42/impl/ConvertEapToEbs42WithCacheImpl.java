@@ -14,7 +14,7 @@ import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
 import com.ag01.ebs42.model.arc42.domobj.Arc42ModelRootDo;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
-import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
 import com.ag01.ebs42.model.arc42.domobj.Bpa42ModelRootDo;
 import com.ag01.ebs42.model.arc42.domobj.Ebs42ModelRootDo;
@@ -223,7 +223,7 @@ public class ConvertEapToEbs42WithCacheImpl implements ConvertEapToEbs42 {
 		}
 		
 		if(arc42ModelRootDo != null) {
-			List <Arc42SystemDo> listOfArc42SystemDo = createArc42SystemList();
+			List <Arc42SystemDoImpl> listOfArc42SystemDo = createArc42SystemList();
 			arc42ModelRootDo.setArc42SystemsList(listOfArc42SystemDo);
 		}
 
@@ -308,8 +308,8 @@ public class ConvertEapToEbs42WithCacheImpl implements ConvertEapToEbs42 {
 		return ted42ModelRootDo;
 	}
 	
-	private List <Arc42SystemDo> createArc42SystemList() throws Exception {
-		List <Arc42SystemDo> arc42SystemDoList = new ArrayList <Arc42SystemDo>();
+	private List <Arc42SystemDoImpl> createArc42SystemList() throws Exception {
+		List <Arc42SystemDoImpl> arc42SystemDoList = new ArrayList <Arc42SystemDoImpl>();
 		
 		// list of all arc42 system packages
 		List <TpackageDoElementDo> arc42SystemRootListTpackageDoElementDo = getArc42SystemRootListTpackageDoElementDo();
@@ -327,7 +327,7 @@ public class ConvertEapToEbs42WithCacheImpl implements ConvertEapToEbs42 {
 			TpackageDoElementDo tmpArc42System80ElementTpackageDoElementDo = elements80PackagesArc42SystemRootListTpackageDoElementDo.get(i);
 			TobjectDo tmpArc42System80Element = tmpArc42System80ElementTpackageDoElementDo.getElementObject();
 			String tobjectType = tmpArc42System80Element.getObjecttype();
-			Arc42SystemDo arc42SystemDo = new Arc42SystemDo();
+			Arc42SystemDoImpl arc42SystemDo = new Arc42SystemDoImpl();
 
 			// all packages in 80_elements are base packages for the arc42 systems
 			if ("Package".equals(tobjectType)) {

@@ -9,14 +9,14 @@ public class Arc42SystemInterface implements Serializable {
 	private long uId;
 	private String systemInterfaceName;
 	private String packageName;
-	private Arc42SystemDo defindedInSystem;
+	private Arc42SystemDoImpl defindedInSystem;
 
 	public Arc42SystemInterface() {
 		super();
 	}
 
 	public Arc42SystemInterface(long uId, String systemInterfaceName, String packageName,
-			Arc42SystemDo defindedInSystem) {
+			Arc42SystemDoImpl defindedInSystem) {
 		super();
 		this.uId = uId;
 		this.systemInterfaceName = systemInterfaceName;
@@ -48,11 +48,11 @@ public class Arc42SystemInterface implements Serializable {
 		this.packageName = packageName;
 	}
 
-	public Arc42SystemDo getDefindedInSystem() {
+	public Arc42SystemDoImpl getDefindedInSystem() {
 		return defindedInSystem;
 	}
 
-	public void setDefindedInSystem(Arc42SystemDo defindedInSystem) {
+	public void setDefindedInSystem(Arc42SystemDoImpl defindedInSystem) {
 		this.defindedInSystem = defindedInSystem;
 	}
 

@@ -9,13 +9,13 @@ public class Arc42ModelRootDo implements Serializable {
 	
 	private long uId;
 	private List <Arc42FeatureDo> arc42FeatureList;
-	private List <Arc42SystemDo> arc42SystemsList;
+	private List <Arc42SystemDoImpl> arc42SystemsList;
 
 	public Arc42ModelRootDo() {
 		super();
 	}
 
-	public Arc42ModelRootDo(long uId, List<Arc42FeatureDo> arc42FeatureList, List<Arc42SystemDo> arc42SystemsList) {
+	public Arc42ModelRootDo(long uId, List<Arc42FeatureDo> arc42FeatureList, List<Arc42SystemDoImpl> arc42SystemsList) {
 		super();
 		this.uId = uId;
 		this.arc42FeatureList = arc42FeatureList;
@@ -38,11 +38,11 @@ public class Arc42ModelRootDo implements Serializable {
 		this.arc42FeatureList = arc42FeatureList;
 	}
 
-	public List<Arc42SystemDo> getArc42SystemsList() {
+	public List<Arc42SystemDoImpl> getArc42SystemsList() {
 		return arc42SystemsList;
 	}
 
-	public void setArc42SystemsList(List<Arc42SystemDo> arc42SystemsList) {
+	public void setArc42SystemsList(List<Arc42SystemDoImpl> arc42SystemsList) {
 		this.arc42SystemsList = arc42SystemsList;
 	}
 

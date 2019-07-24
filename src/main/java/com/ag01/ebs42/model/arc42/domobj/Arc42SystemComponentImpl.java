@@ -13,7 +13,7 @@ public class Arc42SystemComponentImpl implements Serializable, Arc42SystemCompon
 	private long uId;
 	private String systemComponentName;
 	private String packageName;
-	private Arc42SystemDo baseSystem;
+	private Arc42SystemDoImpl baseSystem;
 	private List <Arc42SystemInterface> serverInterfaces;
 	private List <Arc42SystemInterface> clientInterfaces;
 
@@ -21,7 +21,7 @@ public class Arc42SystemComponentImpl implements Serializable, Arc42SystemCompon
 		super();
 	}
 
-	public Arc42SystemComponentImpl(long uId, String systemComponentName, String packageName, Arc42SystemDo baseSystem,
+	public Arc42SystemComponentImpl(long uId, String systemComponentName, String packageName, Arc42SystemDoImpl baseSystem,
 			List<Arc42SystemInterface> serverInterfaces, List<Arc42SystemInterface> clientInterfaces) {
 		super();
 		this.uId = uId;
@@ -69,13 +69,13 @@ public class Arc42SystemComponentImpl implements Serializable, Arc42SystemCompon
 	}
 	
 	@Override
-	public Arc42SystemDo getBaseSystem() 
+	public Arc42SystemDoImpl getBaseSystem() 
 	{
 		return baseSystem;
 	}
 
 	@Override
-	public void setBaseSystem(Arc42SystemDo baseSystem) 
+	public void setBaseSystem(Arc42SystemDoImpl baseSystem) 
 	{
 		this.baseSystem = baseSystem;
 	}
