@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ag01.ebs42.analyze.database_access.domain_object.TobjectDo;
-import com.ag01.ebs42.analyze.database_access.domain_object.TpackageDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
 
 public class TpackageDoElementDo implements Serializable {
 

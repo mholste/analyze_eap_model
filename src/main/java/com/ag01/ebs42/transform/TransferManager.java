@@ -7,10 +7,10 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.ag01.ebs42.analyze.database_access.domain_object.TconnectorDo;
-import com.ag01.ebs42.analyze.database_access.domain_object.TobjectDo;
-import com.ag01.ebs42.analyze.database_access.domain_object.TobjectpropertiesDo;
-import com.ag01.ebs42.analyze.database_access.domain_object.TpackageDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TconnectorDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectpropertiesDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
 import com.ag01.ebs42.meta_model.api.Arc42SystemComponent;
 import com.ag01.ebs42.meta_model.api.Arc42SystemInterface;
 import com.ag01.ebs42.meta_model.api.InterfaceType;

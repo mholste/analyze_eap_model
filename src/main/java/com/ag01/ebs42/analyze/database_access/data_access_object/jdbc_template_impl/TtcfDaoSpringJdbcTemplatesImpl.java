@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import com.ag01.ebs42.analyze.database_access.data_access_object.api.TtcfDao;
-import com.ag01.ebs42.analyze.database_access.domain_object.TtcfDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TtcfDo;
 
 public class TtcfDaoSpringJdbcTemplatesImpl implements TtcfDao {
 

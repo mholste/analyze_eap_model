@@ -13,7 +13,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.ag01.ebs42.analyze.database_access.data_access_object.api.TpackageDao;
-import com.ag01.ebs42.analyze.database_access.domain_object.TpackageDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
 
 public class FillEbsModel 
 {

@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import com.ag01.ebs42.analyze.database_access.data_access_object.api.TtesttypesDao;
-import com.ag01.ebs42.analyze.database_access.domain_object.TtesttypesDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TtesttypesDo;
 
 public class TtesttypesDaoSpringJdbcTemplatesImpl implements TtesttypesDao {
 

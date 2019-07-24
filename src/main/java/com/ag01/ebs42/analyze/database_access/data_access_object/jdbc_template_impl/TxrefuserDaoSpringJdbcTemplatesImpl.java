@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import com.ag01.ebs42.analyze.database_access.data_access_object.api.TxrefuserDao;
-import com.ag01.ebs42.analyze.database_access.domain_object.TxrefuserDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TxrefuserDo;
 
 public class TxrefuserDaoSpringJdbcTemplatesImpl implements TxrefuserDao {
 

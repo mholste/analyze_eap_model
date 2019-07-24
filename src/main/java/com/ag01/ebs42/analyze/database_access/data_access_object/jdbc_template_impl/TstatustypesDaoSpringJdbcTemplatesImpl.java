@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import com.ag01.ebs42.analyze.database_access.data_access_object.api.TstatustypesDao;
-import com.ag01.ebs42.analyze.database_access.domain_object.TstatustypesDo;
+import com.ag01.ebs42.analyze.dbaccess.domobj.TstatustypesDo;
 
 public class TstatustypesDaoSpringJdbcTemplatesImpl implements TstatustypesDao {
 
