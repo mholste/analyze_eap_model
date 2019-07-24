@@ -6,8 +6,6 @@ import java.util.List;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
 
-import net.bytebuddy.utility.privilege.GetSystemPropertyAction;
-
 public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 
 	private static final long serialVersionUID = -847835343185268648L;
