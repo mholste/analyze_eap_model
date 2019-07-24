@@ -1,4 +1,4 @@
-package com.ag01.ebs42.software_model.common_utils.java_impl;
+package com.ag01.ebs42.model.utils.impl;
 
 import com.ag01.ebs42.model.utils.api.ConverterUtils;
 
