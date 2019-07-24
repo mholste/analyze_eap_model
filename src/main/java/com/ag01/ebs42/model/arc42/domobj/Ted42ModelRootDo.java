@@ -1,18 +1,18 @@
-package com.ag01.ebs42.software_model.arc42_modell.domain_object;
+package com.ag01.ebs42.model.arc42.domobj;
 
 import java.io.Serializable;
 
-public class Bpa42ModelRootDo implements Serializable {
+public class Ted42ModelRootDo implements Serializable {
 
-	private static final long serialVersionUID = 2690983293818654617L;
+	private static final long serialVersionUID = -5149036222680954736L;
 
 	private long uId;
 
-	public Bpa42ModelRootDo() {
+	public Ted42ModelRootDo() {
 		super();
 	}
 
-	public Bpa42ModelRootDo(long uId) {
+	public Ted42ModelRootDo(long uId) {
 		super();
 		this.uId = uId;
 	}
@@ -41,7 +41,7 @@ public class Bpa42ModelRootDo implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Bpa42ModelRootDo other = (Bpa42ModelRootDo) obj;
+		Ted42ModelRootDo other = (Ted42ModelRootDo) obj;
 		if (uId != other.uId)
 			return false;
 		return true;
@@ -49,7 +49,7 @@ public class Bpa42ModelRootDo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Bpa42ModelRootDo [uId=" + uId + "]";
+		return "Ted42ModelRootDo [uId=" + uId + "]";
 	}
 
 }

@@ -8,10 +8,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.AbstractApplicationContext;
 
 import com.ag01.ebs42.alternative.FillEbsModel;
-import com.ag01.ebs42.software_model.arc42_modell.domain_object.Arc42SystemComponent;
-import com.ag01.ebs42.software_model.arc42_modell.domain_object.Arc42SystemDo;
-import com.ag01.ebs42.software_model.arc42_modell.domain_object.Arc42SystemInterface;
-import com.ag01.ebs42.software_model.arc42_modell.domain_object.Ebs42ModelRootDo;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponent;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
+import com.ag01.ebs42.model.arc42.domobj.Ebs42ModelRootDo;
 import com.ag01.ebs42.software_model.eap_to_ebs42.api.ConvertEapToEbs42;
 import com.ag01.ebs42.software_model.standalone_application_config.ApplicationMainConfiguration;
 

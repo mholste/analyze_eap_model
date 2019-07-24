@@ -1,4 +1,4 @@
-package com.ag01.ebs42.software_model.arc42_modell.domain_object;
+package com.ag01.ebs42.model.arc42.domobj;
 
 import java.io.Serializable;
 import java.util.List;
