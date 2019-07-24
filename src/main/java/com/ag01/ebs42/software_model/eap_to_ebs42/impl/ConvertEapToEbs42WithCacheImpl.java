@@ -8,10 +8,10 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.ag01.ebs42.analyze.database_access.data_access_object.api.CompleteEapDatabase;
 import com.ag01.ebs42.analyze.database_access.domain_object.CompleteEabDatabaseDo;
 import com.ag01.ebs42.analyze.database_access.domain_object.TobjectDo;
 import com.ag01.ebs42.analyze.database_access.domain_object.TpackageDo;
-import com.ag01.ebs42.analyze_eap_db.database_access.data_access_object.api.CompleteEapDatabase;
 import com.ag01.ebs42.software_model.arc42_modell.domain_object.Arc42ModelRootDo;
 import com.ag01.ebs42.software_model.arc42_modell.domain_object.Arc42SystemComponent;
 import com.ag01.ebs42.software_model.arc42_modell.domain_object.Arc42SystemDo;
