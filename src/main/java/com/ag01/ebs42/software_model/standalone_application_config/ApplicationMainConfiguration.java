@@ -15,9 +15,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import com.ag01.ebs42.analyze.dbaccess.dao.api.*;
 import com.ag01.ebs42.analyze.dbaccess.dao.jdbc_impl.*;
+import com.ag01.ebs42.model.eap_to_ebs42.api.ConvertEapToEbs42;
 import com.ag01.ebs42.model.utils.api.ConverterUtils;
 import com.ag01.ebs42.model.utils.impl.ConverterUtilsImpl;
-import com.ag01.ebs42.software_model.eap_to_ebs42.api.ConvertEapToEbs42;
 //import com.ag01.ebs42.software_model.eap_to_ebs42.impl.ConvertEapToEbs42Impl;
 import com.ag01.ebs42.software_model.eap_to_ebs42.impl.ConvertEapToEbs42WithCacheImpl;
 
