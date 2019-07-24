@@ -3,7 +3,9 @@ package com.ag01.ebs42.model.arc42.domobj;
 import java.io.Serializable;
 import java.util.List;
 
-public class Arc42SystemDoImpl implements Serializable {
+import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
+
+public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 
 	private static final long serialVersionUID = -847835343185268648L;
 	
@@ -26,42 +28,52 @@ public class Arc42SystemDoImpl implements Serializable {
 		this.systemInterfaceList = systemInterfaceList;
 	}
 
+	@Override
 	public long getuId() {
 		return uId;
 	}
 
+	@Override
 	public void setuId(long uId) {
 		this.uId = uId;
 	}
 
+	@Override
 	public String getSystemName() {
 		return systemName;
 	}
 
+	@Override
 	public void setSystemName(String systemName) {
 		this.systemName = systemName;
 	}
 
+	@Override
 	public String getSystemPackageName() {
 		return systemPackageName;
 	}
 
+	@Override
 	public void setSystemPackageName(String systemPackageName) {
 		this.systemPackageName = systemPackageName;
 	}
 
+	@Override
 	public List<Arc42SystemComponentImpl> getSystemComponentList() {
 		return systemComponentList;
 	}
 
+	@Override
 	public void setSystemComponentList(List<Arc42SystemComponentImpl> systemComponentList) {
 		this.systemComponentList = systemComponentList;
 	}
 
+	@Override
 	public List<Arc42SystemInterface> getSystemInterfaceList() {
 		return systemInterfaceList;
 	}
 
+	@Override
 	public void setSystemInterfaceList(List<Arc42SystemInterface> systemInterfaceList) {
 		this.systemInterfaceList = systemInterfaceList;
 	}
