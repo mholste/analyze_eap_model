@@ -1,4 +1,4 @@
-package com.ag01.ebs42.software_model.standalone_application_config;
+package com.ag01.ebs42.model.config;
 
 import java.sql.Driver;
 
