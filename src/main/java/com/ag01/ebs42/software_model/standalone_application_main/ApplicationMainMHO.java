@@ -8,10 +8,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TconnectorDao;
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TobjectDao;
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TobjectpropertiesDao;
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TpackageDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TconnectorDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TobjectDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TobjectpropertiesDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TpackageDao;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TconnectorDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectpropertiesDo;

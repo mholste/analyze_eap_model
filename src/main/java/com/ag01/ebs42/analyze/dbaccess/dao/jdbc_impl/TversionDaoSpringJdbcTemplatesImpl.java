@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TversionDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TversionDao;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TversionDo;
 
 public class TversionDaoSpringJdbcTemplatesImpl implements TversionDao {

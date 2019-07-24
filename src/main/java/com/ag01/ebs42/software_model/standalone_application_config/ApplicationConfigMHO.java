@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TconnectorDao;
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TobjectDao;
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TobjectpropertiesDao;
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TpackageDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TconnectorDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TobjectDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TobjectpropertiesDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TpackageDao;
 import com.ag01.ebs42.analyze.dbaccess.dao.jdbc_impl.TconnectorDaoSpringJdbcTemplatesImpl;
 import com.ag01.ebs42.analyze.dbaccess.dao.jdbc_impl.TobjectDaoSpringJdbcTemplatesImpl;
 import com.ag01.ebs42.analyze.dbaccess.dao.jdbc_impl.TobjectpropertiesDaoSpringJdbcTemplatesImpl;

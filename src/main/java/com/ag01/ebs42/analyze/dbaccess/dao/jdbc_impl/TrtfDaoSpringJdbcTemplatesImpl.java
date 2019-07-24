@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TrtfDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TrtfDao;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TrtfDo;
 
 public class TrtfDaoSpringJdbcTemplatesImpl implements TrtfDao {

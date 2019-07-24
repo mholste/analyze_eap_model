@@ -8,7 +8,7 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.CompleteEapDatabase;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.CompleteEapDatabase;
 import com.ag01.ebs42.analyze.dbaccess.domobj.CompleteEabDatabaseDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;

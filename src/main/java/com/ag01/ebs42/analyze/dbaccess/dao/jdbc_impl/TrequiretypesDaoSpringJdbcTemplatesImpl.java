@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
-import com.ag01.ebs42.analyze.database_access.data_access_object.api.TrequiretypesDao;
+import com.ag01.ebs42.analyze.dbaccess.dao.api.TrequiretypesDao;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TrequiretypesDo;
 
 public class TrequiretypesDaoSpringJdbcTemplatesImpl implements TrequiretypesDao {
