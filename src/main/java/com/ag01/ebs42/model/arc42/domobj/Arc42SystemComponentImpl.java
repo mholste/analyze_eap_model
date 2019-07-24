@@ -5,7 +5,8 @@ import java.util.List;
 
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 
-public class Arc42SystemComponentImpl implements Serializable, Arc42SystemComponent {
+public class Arc42SystemComponentImpl implements Serializable, Arc42SystemComponent 
+{
 
 	private static final long serialVersionUID = 2933493620446266608L;
 	
