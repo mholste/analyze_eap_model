@@ -3,7 +3,10 @@ package com.ag01.ebs42.model.arc42.domobj;
 import java.io.Serializable;
 import java.util.List;
 
+import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
+
+import net.bytebuddy.utility.privilege.GetSystemPropertyAction;
 
 public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 
@@ -12,14 +15,14 @@ public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 	private long uId;
 	private String systemName;
 	private String systemPackageName;
-	private List <Arc42SystemComponentImpl> systemComponentList;
+	private List <Arc42SystemComponent> systemComponentList;
 	private List <Arc42SystemInterface> systemInterfaceList;
 
 	public Arc42SystemDoImpl() {
 		super();
 	}
 
-	public Arc42SystemDoImpl(long uId, String systemName, String systemPackageName, List<Arc42SystemComponentImpl> systemComponentList, List<Arc42SystemInterface> systemInterfaceList) {
+	public Arc42SystemDoImpl(long uId, String systemName, String systemPackageName, List<Arc42SystemComponent> systemComponentList, List<Arc42SystemInterface> systemInterfaceList) {
 		super();
 		this.uId = uId;
 		this.systemName = systemName;
@@ -29,53 +32,63 @@ public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 	}
 
 	@Override
-	public long getuId() {
+	public long getuId() 
+	{
 		return uId;
 	}
 
 	@Override
-	public void setuId(long uId) {
+	public void setuId(long uId) 
+	{
 		this.uId = uId;
 	}
 
 	@Override
-	public String getSystemName() {
+	public String getSystemName() 
+	{
 		return systemName;
 	}
 
 	@Override
-	public void setSystemName(String systemName) {
+	public void setSystemName(String systemName) 
+	{
 		this.systemName = systemName;
 	}
 
 	@Override
-	public String getSystemPackageName() {
+	public String getSystemPackageName() 
+	{
 		return systemPackageName;
 	}
 
 	@Override
-	public void setSystemPackageName(String systemPackageName) {
+	public void setSystemPackageName(String systemPackageName) 
+	{
 		this.systemPackageName = systemPackageName;
 	}
 
 	@Override
-	public List<Arc42SystemComponentImpl> getSystemComponentList() {
-		return systemComponentList;
-	}
-
-	@Override
-	public void setSystemComponentList(List<Arc42SystemComponentImpl> systemComponentList) {
-		this.systemComponentList = systemComponentList;
-	}
-
-	@Override
-	public List<Arc42SystemInterface> getSystemInterfaceList() {
+	public List<Arc42SystemInterface> getSystemInterfaceList() 
+	{
 		return systemInterfaceList;
 	}
 
 	@Override
-	public void setSystemInterfaceList(List<Arc42SystemInterface> systemInterfaceList) {
+	public void setSystemInterfaceList(List<Arc42SystemInterface> systemInterfaceList) 
+	{
 		this.systemInterfaceList = systemInterfaceList;
+	}
+	
+	@Override
+	public List<Arc42SystemComponent> getSystemComponentList()
+	{
+		return systemComponentList;
+	}
+	
+	@Override
+	public void setSystemComponentList(List<Arc42SystemComponent> systemComponentList) 
+	{
+		this.systemComponentList = systemComponentList;
 	}
 
 	@Override
@@ -129,5 +142,4 @@ public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 		return "Arc42SystemDoImpl [uId=" + uId + ", systemName=" + systemName + ", systemPackageName=" + systemPackageName
 				+ ", systemComponentList=" + systemComponentList + ", systemInterfaceList=" + systemInterfaceList + "]";
 	}
-
 }
