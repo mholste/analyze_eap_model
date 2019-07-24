@@ -1,6 +1,10 @@
 package com.ag01.ebs42.transform.wrapper;
 
-import com.ag01.ebs42.meta_model.api.Arc42SystemComponent;
+import java.util.List;
+
+import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
 
 public abstract class Arc42SystemComponentWrapper implements Arc42SystemComponent
 {
@@ -24,28 +28,62 @@ public abstract class Arc42SystemComponentWrapper implements Arc42SystemComponen
 	}
 
 	@Override
-	public String getSystemName() 
+	public long getuId() 
 	{
-		return wrappedSystemComponent.getSystemName();
+		return wrappedSystemComponent.getuId();
 	}
 
 	@Override
-	public void setSystemName(String systemName) 
+	public void setuId(long uId) 
 	{
-		wrappedSystemComponent.setSystemName(systemName);
+		wrappedSystemComponent.setuId(uId);
 	}
 
 	@Override
-	public String getCorporateID() 
+	public String getSystemComponentName() 
 	{
-		return wrappedSystemComponent.getCorporateID();
+		return wrappedSystemComponent.getSystemComponentName();
 	}
 
 	@Override
-	public void setCorporateID(String corporateID) 
+	public void setSystemComponentName(String systemComponentName) 
 	{
-		wrappedSystemComponent.setCorporateID(corporateID);
+		wrappedSystemComponent.setSystemComponentName(systemComponentName);
 	}
-	
-	
+
+	@Override
+	public Arc42SystemDo getBaseSystem() 
+	{
+		return wrappedSystemComponent.getBaseSystem();
+	}
+
+	@Override
+	public void setBaseSystem(Arc42SystemDo baseSystem) 
+	{
+		wrappedSystemComponent.setBaseSystem(baseSystem);
+	}
+
+	@Override
+	public List<Arc42SystemInterface> getServerInterfaces() 
+	{
+		return wrappedSystemComponent.getServerInterfaces();
+	}
+
+	@Override
+	public void setServerInterfaces(List<Arc42SystemInterface> serverInterfaces) 
+	{
+		wrappedSystemComponent.setServerInterfaces(serverInterfaces);
+	}
+
+	@Override
+	public List<Arc42SystemInterface> getClientInterfaces() 
+	{
+		return wrappedSystemComponent.getClientInterfaces();
+	}
+
+	@Override
+	public void setClientInterfaces(List<Arc42SystemInterface> clientInterfaces) 
+	{
+		wrappedSystemComponent.setClientInterfaces(clientInterfaces);
+	}	
 }
