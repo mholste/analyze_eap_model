@@ -1,4 +1,4 @@
-package com.ag01.ebs42.software_model.eap_to_ebs42.domain_object;
+package com.ag01.ebs42.model.eap_to_ebs42.domobj;
 
 import java.io.Serializable;
 import java.util.ArrayList;

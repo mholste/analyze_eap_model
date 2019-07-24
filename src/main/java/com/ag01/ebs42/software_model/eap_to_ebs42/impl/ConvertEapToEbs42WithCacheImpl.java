@@ -20,9 +20,9 @@ import com.ag01.ebs42.model.arc42.domobj.Bpa42ModelRootDo;
 import com.ag01.ebs42.model.arc42.domobj.Ebs42ModelRootDo;
 import com.ag01.ebs42.model.arc42.domobj.Ted42ModelRootDo;
 import com.ag01.ebs42.model.eap_to_ebs42.api.ConvertEapToEbs42;
+import com.ag01.ebs42.model.eap_to_ebs42.domobj.TobjectDoElementDo;
+import com.ag01.ebs42.model.eap_to_ebs42.domobj.TpackageDoElementDo;
 import com.ag01.ebs42.model.utils.api.ConverterUtils;
-import com.ag01.ebs42.software_model.eap_to_ebs42.domain_object.TobjectDoElementDo;
-import com.ag01.ebs42.software_model.eap_to_ebs42.domain_object.TpackageDoElementDo;
 
 public class ConvertEapToEbs42WithCacheImpl implements ConvertEapToEbs42 {
 	
