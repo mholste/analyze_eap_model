@@ -14,10 +14,10 @@ import com.ag01.ebs42.analyze.database_access.data_access_object.api.TconnectorD
 import com.ag01.ebs42.analyze.database_access.data_access_object.api.TobjectDao;
 import com.ag01.ebs42.analyze.database_access.data_access_object.api.TobjectpropertiesDao;
 import com.ag01.ebs42.analyze.database_access.data_access_object.api.TpackageDao;
-import com.ag01.ebs42.analyze.database_access.data_access_object.jdbc_template_impl.TconnectorDaoSpringJdbcTemplatesImpl;
-import com.ag01.ebs42.analyze.database_access.data_access_object.jdbc_template_impl.TobjectDaoSpringJdbcTemplatesImpl;
-import com.ag01.ebs42.analyze.database_access.data_access_object.jdbc_template_impl.TobjectpropertiesDaoSpringJdbcTemplatesImpl;
-import com.ag01.ebs42.analyze.database_access.data_access_object.jdbc_template_impl.TpackageDaoSpringJdbcTemplatesImpl;
+import com.ag01.ebs42.analyze.dbaccess.dao.jdbc_impl.TconnectorDaoSpringJdbcTemplatesImpl;
+import com.ag01.ebs42.analyze.dbaccess.dao.jdbc_impl.TobjectDaoSpringJdbcTemplatesImpl;
+import com.ag01.ebs42.analyze.dbaccess.dao.jdbc_impl.TobjectpropertiesDaoSpringJdbcTemplatesImpl;
+import com.ag01.ebs42.analyze.dbaccess.dao.jdbc_impl.TpackageDaoSpringJdbcTemplatesImpl;
 import com.ag01.ebs42.transform.TransferManager;
 
 @Configuration

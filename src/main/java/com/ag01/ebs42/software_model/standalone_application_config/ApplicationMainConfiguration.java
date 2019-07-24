@@ -14,7 +14,7 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import com.ag01.ebs42.analyze.database_access.data_access_object.api.*;
-import com.ag01.ebs42.analyze.database_access.data_access_object.jdbc_template_impl.*;
+import com.ag01.ebs42.analyze.dbaccess.dao.jdbc_impl.*;
 import com.ag01.ebs42.software_model.common_utils.api.ConverterUtils;
 import com.ag01.ebs42.software_model.common_utils.java_impl.ConverterUtilsImpl;
 import com.ag01.ebs42.software_model.eap_to_ebs42.api.ConvertEapToEbs42;
