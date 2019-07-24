@@ -3,7 +3,9 @@ package com.ag01.ebs42.model.arc42.domobj;
 import java.io.Serializable;
 import java.util.List;
 
-public class Arc42SystemComponentImpl implements Serializable {
+import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
+
+public class Arc42SystemComponentImpl implements Serializable, Arc42SystemComponent {
 
 	private static final long serialVersionUID = 2933493620446266608L;
 	
@@ -29,51 +31,75 @@ public class Arc42SystemComponentImpl implements Serializable {
 		this.clientInterfaces = clientInterfaces;
 	}
 
-	public long getuId() {
+	@Override
+	public long getuId() 
+	{
 		return uId;
 	}
-
-	public void setuId(long uId) {
+	
+	@Override
+	public void setuId(long uId) 
+	{
 		this.uId = uId;
 	}
 
-	public String getSystemComponentName() {
+	@Override
+	public String getSystemComponentName() 
+	{
 		return systemComponentName;
 	}
-
-	public void setSystemComponentName(String systemComponentName) {
+	
+	@Override
+	public void setSystemComponentName(String systemComponentName) 
+	{
 		this.systemComponentName = systemComponentName;
 	}
-
-	public String getPackageName() {
+	
+	@Override
+	public String getPackageName() 
+	{
 		return packageName;
 	}
-
-	public void setPackageName(String packageName) {
+	
+	@Override
+	public void setPackageName(String packageName) 
+	{
 		this.packageName = packageName;
 	}
-
-	public Arc42SystemDo getBaseSystem() {
+	
+	@Override
+	public Arc42SystemDo getBaseSystem() 
+	{
 		return baseSystem;
 	}
 
-	public void setBaseSystem(Arc42SystemDo baseSystem) {
+	@Override
+	public void setBaseSystem(Arc42SystemDo baseSystem) 
+	{
 		this.baseSystem = baseSystem;
 	}
 
-	public List<Arc42SystemInterface> getServerInterfaces() {
+	@Override
+	public List<Arc42SystemInterface> getServerInterfaces() 
+	{
 		return serverInterfaces;
 	}
 
-	public void setServerInterfaces(List<Arc42SystemInterface> serverInterfaces) {
+	@Override
+	public void setServerInterfaces(List<Arc42SystemInterface> serverInterfaces) 
+	{
 		this.serverInterfaces = serverInterfaces;
 	}
 
-	public List<Arc42SystemInterface> getClientInterfaces() {
+	@Override
+	public List<Arc42SystemInterface> getClientInterfaces() 
+	{
 		return clientInterfaces;
 	}
 
-	public void setClientInterfaces(List<Arc42SystemInterface> clientInterfaces) {
+	@Override
+	public void setClientInterfaces(List<Arc42SystemInterface> clientInterfaces) 
+	{
 		this.clientInterfaces = clientInterfaces;
 	}
 
