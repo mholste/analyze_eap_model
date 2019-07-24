@@ -1,4 +1,4 @@
-package com.ag01.ebs42.software_model.eap_to_ebs42.impl;
+package com.ag01.ebs42.model.eap_to_ebs42.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
