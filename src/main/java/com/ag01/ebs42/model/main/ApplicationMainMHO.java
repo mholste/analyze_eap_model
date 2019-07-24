@@ -1,4 +1,4 @@
-package com.ag01.ebs42.software_model.standalone_application_main;
+package com.ag01.ebs42.model.main;
 
 import java.util.List;
 
