@@ -13,8 +13,8 @@ public interface Arc42SystemDo
 	public void setSystemName(String systemName);
 	public String getSystemPackageName();
 	public void setSystemPackageName(String systemPackageName);
-	public List<Arc42SystemComponentImpl> getSystemComponentList();
-	public void setSystemComponentList(List<Arc42SystemComponentImpl> systemComponentList);
+	public List<Arc42SystemComponent> getSystemComponentList();
+	public void setSystemComponentList(List<Arc42SystemComponent> systemComponentList);
 	public List<Arc42SystemInterface> getSystemInterfaceList();
 	public void setSystemInterfaceList(List<Arc42SystemInterface> systemInterfaceList);
 }
