@@ -1,4 +1,4 @@
-package com.ag01.ebs42.model.config;
+package com.ag01.ebs42.model.app_config;
 
 import java.sql.Driver;
 
