@@ -9,7 +9,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 
 import com.ag01.ebs42.alternative.FillEbsModel;
 import com.ag01.ebs42.model.app_config.ApplicationMainConfiguration;
-import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponent;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDo;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
 import com.ag01.ebs42.model.arc42.domobj.Ebs42ModelRootDo;

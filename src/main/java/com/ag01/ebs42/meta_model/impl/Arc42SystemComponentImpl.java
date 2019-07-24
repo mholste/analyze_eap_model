@@ -3,7 +3,7 @@ package com.ag01.ebs42.meta_model.impl;
 import com.ag01.ebs42.meta_model.api.Arc42SystemComponent;
 
 /**
- * Simple implementaion of <code>Arc42SystemComponent</code> with only the methods 
+ * Simple implementaion of <code>Arc42SystemComponentImpl</code> with only the methods 
  * of the interface and no additional functionalities.
  * 
  * @author Miochael Holste

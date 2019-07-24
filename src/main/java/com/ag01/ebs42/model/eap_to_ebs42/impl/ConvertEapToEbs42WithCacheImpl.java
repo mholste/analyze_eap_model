@@ -13,7 +13,7 @@ import com.ag01.ebs42.analyze.dbaccess.domobj.CompleteEabDatabaseDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
 import com.ag01.ebs42.model.arc42.domobj.Arc42ModelRootDo;
-import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponent;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDo;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
 import com.ag01.ebs42.model.arc42.domobj.Bpa42ModelRootDo;
@@ -341,12 +341,12 @@ public class ConvertEapToEbs42WithCacheImpl implements ConvertEapToEbs42 {
 				arc42SystemDoList.add(arc42SystemDo);
 
 				// find all object in the packages
-				List<Arc42SystemComponent> systemComponentList = new ArrayList<Arc42SystemComponent>();
+				List<Arc42SystemComponentImpl> systemComponentList = new ArrayList<Arc42SystemComponentImpl>();
 				List<Arc42SystemInterface> systemInterfaceList = new ArrayList<Arc42SystemInterface>();
 				// search all wanted objects
 				for (int l = 0; l < tmpArc42System80ElementTpackageDoElementDo.getDependentComponentObjects().size(); l++) {
 					TobjectDo tmpArc42System80ElementSystemTobjectDo = tmpArc42System80ElementTpackageDoElementDo.getDependentComponentObjects().get(l);
-					Arc42SystemComponent arc42SystemComponent = new Arc42SystemComponent();
+					Arc42SystemComponentImpl arc42SystemComponent = new Arc42SystemComponentImpl();
 					long componentUId = converterUtils.convertEaGuidToUId(tmpArc42System80ElementSystemTobjectDo.getEaguid());
 					arc42SystemComponent.setuId(componentUId);
 					String systemComponentName = tmpArc42System80ElementSystemTobjectDo.getName();
