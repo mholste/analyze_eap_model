@@ -2,7 +2,6 @@ package com.ag01.ebs42.model.arc42.api;
 
 import java.util.List;
 
-import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
 
 public interface Arc42SystemComponent 
