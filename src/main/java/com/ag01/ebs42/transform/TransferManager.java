@@ -56,7 +56,7 @@ public class TransferManager
 		interfaceList = new ArrayList<TransferArc42SystemInterface>();
 	}
 	
-	public void collectSystems()
+	public List<TransferArc42SystemComponent> collectSystems()
 	{
 		this.getSystemfolders(
 				this.extractPackageID(extractPackageID(MODEL_ID, ARC_NAME), SYSTEM_Name));
@@ -87,7 +87,7 @@ public class TransferManager
 					}
 					componentList.add(transObj);
 				}
-			}			
+			}		
 		}		
 		
 		LOGGER.info("##### Logging all collected systems: ");
@@ -101,7 +101,7 @@ public class TransferManager
 			LOGGER.info("##### EA Package ID: " + tObj.getEaPackageId());
 			
 		}
-		
+		return componentList;		
 	}		
 	
 	/**
@@ -145,7 +145,7 @@ public class TransferManager
 		}
 	}
 	
-	public void collectInterfaces()
+	public List<TransferArc42SystemInterface> collectInterfaces()
 	{
 		for (TobjectDo objDo : resultTobjectList)
 		{
@@ -163,6 +163,7 @@ public class TransferManager
 				interfaceList.add(transInt);
 			}
 		}
+		return interfaceList;
 	}
 	
 	public List<TpackageDo> getResultTpackageDoList() 
