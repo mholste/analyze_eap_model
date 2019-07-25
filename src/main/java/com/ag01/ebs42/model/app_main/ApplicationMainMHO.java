@@ -16,8 +16,11 @@ import com.ag01.ebs42.analyze.dbaccess.domobj.TconnectorDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectpropertiesDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
+import com.ag01.ebs42.export.ExcelExporter;
 import com.ag01.ebs42.model.app_config.ApplicationConfigMHO;
 import com.ag01.ebs42.model.app_config.ApplicationMainConfiguration;
+import com.ag01.ebs42.transform.TransferArc42SystemComponent;
+import com.ag01.ebs42.transform.TransferArc42SystemInterface;
 import com.ag01.ebs42.transform.TransferManager;
 
 public class ApplicationMainMHO 
@@ -30,6 +33,9 @@ public class ApplicationMainMHO
     private static List<TobjectDo> resultTobjectList = null;
     private static List<TobjectpropertiesDo> resultTobjectpropertiesDoList = null;
     private static List <TconnectorDo> resultconnectorDoList = null;
+    
+    private static List<TransferArc42SystemComponent> componentList = null;
+	private static List<TransferArc42SystemInterface> interfaceList = null;
 	
 	public static void main(String[] args) 
 	{
@@ -40,7 +46,11 @@ public class ApplicationMainMHO
 		transferManager.setResultTobjectList(resultTobjectList);
 		transferManager.setResultTobjectpropertiesDoList(resultTobjectpropertiesDoList);
 		transferManager.setResultTconnectorDoList(resultconnectorDoList);
-		transferManager.collectSystems();
+		componentList = transferManager.collectSystems();
+		interfaceList = transferManager.collectInterfaces();
+		
+		ExcelExporter exporter = new ExcelExporter();
+		exporter.exportSystems(componentList);
 	}
 	
 	private static void readTables()
