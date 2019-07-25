@@ -9,7 +9,7 @@ public class Arc42SystemInterface implements Serializable {
 	private long uId;
 	private String systemInterfaceName;
 	private String packageName;
-	private Arc42SystemDoImpl defindedInSystem;
+	private Arc42SystemDoImpl definedInSystem;
 
 	public Arc42SystemInterface() {
 		super();
@@ -21,7 +21,7 @@ public class Arc42SystemInterface implements Serializable {
 		this.uId = uId;
 		this.systemInterfaceName = systemInterfaceName;
 		this.packageName = packageName;
-		this.defindedInSystem = defindedInSystem;
+		this.definedInSystem = defindedInSystem;
 	}
 
 	public long getuId() {
@@ -49,18 +49,18 @@ public class Arc42SystemInterface implements Serializable {
 	}
 
 	public Arc42SystemDoImpl getDefinedInSystem() {
-		return defindedInSystem;
+		return definedInSystem;
 	}
 
-	public void setDefindedInSystem(Arc42SystemDoImpl defindedInSystem) {
-		this.defindedInSystem = defindedInSystem;
+	public void setDefinedInSystem(Arc42SystemDoImpl definedInSystem) {
+		this.definedInSystem = definedInSystem;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((defindedInSystem == null) ? 0 : defindedInSystem.hashCode());
+		result = prime * result + ((definedInSystem == null) ? 0 : definedInSystem.hashCode());
 		result = prime * result + ((packageName == null) ? 0 : packageName.hashCode());
 		result = prime * result + ((systemInterfaceName == null) ? 0 : systemInterfaceName.hashCode());
 		result = prime * result + (int) (uId ^ (uId >>> 32));
@@ -76,10 +76,10 @@ public class Arc42SystemInterface implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Arc42SystemInterface other = (Arc42SystemInterface) obj;
-		if (defindedInSystem == null) {
-			if (other.defindedInSystem != null)
+		if (definedInSystem == null) {
+			if (other.definedInSystem != null)
 				return false;
-		} else if (!defindedInSystem.equals(other.defindedInSystem))
+		} else if (!definedInSystem.equals(other.definedInSystem))
 			return false;
 		if (packageName == null) {
 			if (other.packageName != null)
