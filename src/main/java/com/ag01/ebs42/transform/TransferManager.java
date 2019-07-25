@@ -56,7 +56,7 @@ public class TransferManager
 		interfaceList = new ArrayList<TransferArc42SystemInterface>();
 	}
 	
-	public void fillTransferLayer()
+	public void collectSystems()
 	{
 		this.getSystemfolders(
 				this.extractPackageID(extractPackageID(MODEL_ID, ARC_NAME), SYSTEM_Name));

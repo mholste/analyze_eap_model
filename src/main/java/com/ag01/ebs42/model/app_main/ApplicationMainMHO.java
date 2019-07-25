@@ -40,7 +40,7 @@ public class ApplicationMainMHO
 		transferManager.setResultTobjectList(resultTobjectList);
 		transferManager.setResultTobjectpropertiesDoList(resultTobjectpropertiesDoList);
 		transferManager.setResultTconnectorDoList(resultconnectorDoList);
-		transferManager.fillTransferLayer();
+		transferManager.collectSystems();
 	}
 	
 	private static void readTables()
