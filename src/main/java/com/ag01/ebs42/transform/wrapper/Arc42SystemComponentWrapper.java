@@ -3,7 +3,7 @@ package com.ag01.ebs42.transform.wrapper;
 import java.util.List;
 
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
-import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
 
 public abstract class Arc42SystemComponentWrapper implements Arc42SystemComponent
@@ -52,13 +52,13 @@ public abstract class Arc42SystemComponentWrapper implements Arc42SystemComponen
 	}
 
 	@Override
-	public Arc42SystemDoImpl getBaseSystem() 
+	public Arc42SystemDo getBaseSystem() 
 	{
 		return wrappedSystemComponent.getBaseSystem();
 	}
 
 	@Override
-	public void setBaseSystem(Arc42SystemDoImpl baseSystem) 
+	public void setBaseSystem(Arc42SystemDo baseSystem) 
 	{
 		wrappedSystemComponent.setBaseSystem(baseSystem);
 	}

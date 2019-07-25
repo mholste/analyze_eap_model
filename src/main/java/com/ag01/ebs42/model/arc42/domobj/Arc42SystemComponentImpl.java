@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
 
 public class Arc42SystemComponentImpl implements Serializable, Arc42SystemComponent 
 {
@@ -13,7 +14,7 @@ public class Arc42SystemComponentImpl implements Serializable, Arc42SystemCompon
 	private long uId;
 	private String systemComponentName;
 	private String packageName;
-	private Arc42SystemDoImpl baseSystem;
+	private Arc42SystemDo baseSystem;
 	private List <Arc42SystemInterface> serverInterfaces;
 	private List <Arc42SystemInterface> clientInterfaces;
 
@@ -69,13 +70,13 @@ public class Arc42SystemComponentImpl implements Serializable, Arc42SystemCompon
 	}
 	
 	@Override
-	public Arc42SystemDoImpl getBaseSystem() 
+	public Arc42SystemDo getBaseSystem() 
 	{
 		return baseSystem;
 	}
 
 	@Override
-	public void setBaseSystem(Arc42SystemDoImpl baseSystem) 
+	public void setBaseSystem(Arc42SystemDo baseSystem) 
 	{
 		this.baseSystem = baseSystem;
 	}

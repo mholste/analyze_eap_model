@@ -3,6 +3,7 @@ package com.ag01.ebs42.transform;
 import java.util.List;
 
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
 import com.ag01.ebs42.transform.wrapper.Arc42SystemComponentWrapper;
@@ -84,13 +85,13 @@ public class TransferArc42SystemComponent extends Arc42SystemComponentWrapper
 	}
 
 	@Override
-	public Arc42SystemDoImpl getBaseSystem() 
+	public Arc42SystemDo getBaseSystem() 
 	{
 		return super.getBaseSystem();
 	}
 
 	@Override
-	public void setBaseSystem(Arc42SystemDoImpl baseSystem)
+	public void setBaseSystem(Arc42SystemDo baseSystem)
 	{
 		super.setBaseSystem(baseSystem);
 	}
