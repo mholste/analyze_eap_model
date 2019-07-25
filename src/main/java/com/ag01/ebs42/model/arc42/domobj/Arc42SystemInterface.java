@@ -48,7 +48,7 @@ public class Arc42SystemInterface implements Serializable {
 		this.packageName = packageName;
 	}
 
-	public Arc42SystemDoImpl getDefindedInSystem() {
+	public Arc42SystemDoImpl getDefinedInSystem() {
 		return defindedInSystem;
 	}
 
