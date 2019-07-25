@@ -12,6 +12,7 @@ import com.ag01.ebs42.analyze.dbaccess.dao.api.CompleteEapDatabase;
 import com.ag01.ebs42.analyze.dbaccess.domobj.CompleteEabDatabaseDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 import com.ag01.ebs42.model.arc42.domobj.Arc42ModelRootDo;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
@@ -341,7 +342,7 @@ public class ConvertEapToEbs42WithCacheImpl implements ConvertEapToEbs42 {
 				arc42SystemDoList.add(arc42SystemDo);
 
 				// find all object in the packages
-				List<Arc42SystemComponent> systemComponentList = new ArrayList<Arc42SystemComponentImpl>();
+				List<Arc42SystemComponent> systemComponentList = new ArrayList<Arc42SystemComponent>();
 				List<Arc42SystemInterface> systemInterfaceList = new ArrayList<Arc42SystemInterface>();
 				// search all wanted objects
 				for (int l = 0; l < tmpArc42System80ElementTpackageDoElementDo.getDependentComponentObjects().size(); l++) {
