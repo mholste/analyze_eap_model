@@ -341,7 +341,7 @@ public class ConvertEapToEbs42WithCacheImpl implements ConvertEapToEbs42 {
 				arc42SystemDoList.add(arc42SystemDo);
 
 				// find all object in the packages
-				List<Arc42SystemComponentImpl> systemComponentList = new ArrayList<Arc42SystemComponentImpl>();
+				List<Arc42SystemComponent> systemComponentList = new ArrayList<Arc42SystemComponentImpl>();
 				List<Arc42SystemInterface> systemInterfaceList = new ArrayList<Arc42SystemInterface>();
 				// search all wanted objects
 				for (int l = 0; l < tmpArc42System80ElementTpackageDoElementDo.getDependentComponentObjects().size(); l++) {
