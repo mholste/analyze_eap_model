@@ -49,7 +49,7 @@ public class ApplicationMainMHO
 		componentList = transferManager.collectSystems();
 		interfaceList = transferManager.collectInterfaces();
 		
-		ExcelExporter exporter = new ExcelExporter();
+		ExcelExporter exporter = ExcelExporter.getInstance();
 		exporter.exportSystems(componentList);
 	}
 	
