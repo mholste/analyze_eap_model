@@ -14,13 +14,13 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 {
 	private String eaId;
 	private String eaPackageId;
-	private String eaParentID;
-	
+	private String eaParentId;
+	private String corporateId;
 	public TransferArc42SystemInterface(Arc42SystemInterface wrappedSystemInterface) 
 	{
 		super(wrappedSystemInterface);
 	}
-
+	
 	@Override
 	public String getInterfaceName() 
 	{
@@ -33,15 +33,11 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 		super.setInterfaceName(interfaceName);
 	}
 
-
-
 	@Override
 	public InterfaceType getInterfaceType() 
 	{
 		return super.getInterfaceType();
 	}
-
-
 
 	@Override
 	public void setInterfaceType(InterfaceType type) 
@@ -49,15 +45,11 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 		super.setInterfaceType(type);
 	}
 
-
-
 	@Override
 	public String getSystemName() 
 	{
 		return super.getSystemName();
 	}
-
-
 
 	@Override
 	public void setSystemName(String systemName) 
@@ -65,15 +57,11 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 		super.setSystemName(systemName);
 	}
 
-
-
 	@Override
 	public String getTechnology() 
 	{
 		return super.getTechnology();
 	}
-
-
 
 	@Override
 	public void setTechnology(String technology) 
@@ -101,14 +89,23 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 		this.eaPackageId = eaPackageId;
 	}
 
-	public String getEaParentID() 
+	public String getEaParentId() 
 	{
-		return eaParentID;
+		return eaParentId;
 	}
 
-	public void setEaParentID(String eaParentID) 
+	public void setEaParentId(String eaParentId) 
 	{
-		this.eaParentID = eaParentID;
+		this.eaParentId = eaParentId;
 	}
 	
+	public void setCorporateId(String corporateId)
+	{
+		this.corporateId = corporateId;
+	}
+	
+	public String getCorporateId()
+	{
+		return corporateId;
+	}
 }
