@@ -367,7 +367,7 @@ public class ConvertEapToEbs42WithCacheImpl implements ConvertEapToEbs42 {
 					arc42SystemInterface.setSystemInterfaceName(systemInterfaceName);
 					String systemPackageName = this.tpackageDoHashMapCache.get(tmpArc42System80ElementSystemTobjectDo.getPackageid()).getElement().getName();
 					arc42SystemInterface.setPackageName(systemPackageName);
-					arc42SystemInterface.setDefindedInSystem(arc42SystemDo);
+					arc42SystemInterface.setDefinedInSystem(arc42SystemDo);
 					systemInterfaceList.add(arc42SystemInterface);
 
 				}
