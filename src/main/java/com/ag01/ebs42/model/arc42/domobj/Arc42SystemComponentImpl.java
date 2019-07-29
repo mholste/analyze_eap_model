@@ -15,15 +15,15 @@ public class Arc42SystemComponentImpl implements Serializable, Arc42SystemCompon
 	private String systemComponentName;
 	private String packageName;
 	private Arc42SystemDo baseSystem;
-	private List <Arc42SystemInterface> serverInterfaces;
-	private List <Arc42SystemInterface> clientInterfaces;
+	private List <Arc42SystemInterfaceImpl> serverInterfaces;
+	private List <Arc42SystemInterfaceImpl> clientInterfaces;
 
 	public Arc42SystemComponentImpl() {
 		super();
 	}
 
 	public Arc42SystemComponentImpl(long uId, String systemComponentName, String packageName, Arc42SystemDoImpl baseSystem,
-			List<Arc42SystemInterface> serverInterfaces, List<Arc42SystemInterface> clientInterfaces) {
+			List<Arc42SystemInterfaceImpl> serverInterfaces, List<Arc42SystemInterfaceImpl> clientInterfaces) {
 		super();
 		this.uId = uId;
 		this.systemComponentName = systemComponentName;
@@ -82,25 +82,25 @@ public class Arc42SystemComponentImpl implements Serializable, Arc42SystemCompon
 	}
 
 	@Override
-	public List<Arc42SystemInterface> getServerInterfaces() 
+	public List<Arc42SystemInterfaceImpl> getServerInterfaces() 
 	{
 		return serverInterfaces;
 	}
 
 	@Override
-	public void setServerInterfaces(List<Arc42SystemInterface> serverInterfaces) 
+	public void setServerInterfaces(List<Arc42SystemInterfaceImpl> serverInterfaces) 
 	{
 		this.serverInterfaces = serverInterfaces;
 	}
 
 	@Override
-	public List<Arc42SystemInterface> getClientInterfaces() 
+	public List<Arc42SystemInterfaceImpl> getClientInterfaces() 
 	{
 		return clientInterfaces;
 	}
 
 	@Override
-	public void setClientInterfaces(List<Arc42SystemInterface> clientInterfaces) 
+	public void setClientInterfaces(List<Arc42SystemInterfaceImpl> clientInterfaces) 
 	{
 		this.clientInterfaces = clientInterfaces;
 	}

@@ -2,7 +2,7 @@ package com.ag01.ebs42.model.arc42.domobj;
 
 import java.io.Serializable;
 
-public class Arc42SystemInterface implements Serializable {
+public class Arc42SystemInterfaceImpl implements Serializable {
 
 	private static final long serialVersionUID = -8987450253873466844L;
 	
@@ -11,11 +11,11 @@ public class Arc42SystemInterface implements Serializable {
 	private String packageName;
 	private Arc42SystemDoImpl definedInSystem;
 
-	public Arc42SystemInterface() {
+	public Arc42SystemInterfaceImpl() {
 		super();
 	}
 
-	public Arc42SystemInterface(long uId, String systemInterfaceName, String packageName,
+	public Arc42SystemInterfaceImpl(long uId, String systemInterfaceName, String packageName,
 			Arc42SystemDoImpl defindedInSystem) {
 		super();
 		this.uId = uId;
@@ -75,7 +75,7 @@ public class Arc42SystemInterface implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Arc42SystemInterface other = (Arc42SystemInterface) obj;
+		Arc42SystemInterfaceImpl other = (Arc42SystemInterfaceImpl) obj;
 		if (definedInSystem == null) {
 			if (other.definedInSystem != null)
 				return false;
@@ -98,7 +98,7 @@ public class Arc42SystemInterface implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Arc42SystemInterface [uId=" + uId + ", systemInterfaceName=" + systemInterfaceName + ", packageName="
+		return "Arc42SystemInterfaceImpl [uId=" + uId + ", systemInterfaceName=" + systemInterfaceName + ", packageName="
 				+ packageName + "]";
 	}
 

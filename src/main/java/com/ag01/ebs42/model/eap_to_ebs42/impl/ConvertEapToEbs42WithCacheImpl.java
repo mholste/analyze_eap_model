@@ -16,7 +16,7 @@ import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 import com.ag01.ebs42.model.arc42.domobj.Arc42ModelRootDo;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
-import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterfaceImpl;
 import com.ag01.ebs42.model.arc42.domobj.Bpa42ModelRootDo;
 import com.ag01.ebs42.model.arc42.domobj.Ebs42ModelRootDo;
 import com.ag01.ebs42.model.arc42.domobj.Ted42ModelRootDo;
@@ -343,7 +343,7 @@ public class ConvertEapToEbs42WithCacheImpl implements ConvertEapToEbs42 {
 
 				// find all object in the packages
 				List<Arc42SystemComponent> systemComponentList = new ArrayList<Arc42SystemComponent>();
-				List<Arc42SystemInterface> systemInterfaceList = new ArrayList<Arc42SystemInterface>();
+				List<Arc42SystemInterfaceImpl> systemInterfaceList = new ArrayList<Arc42SystemInterfaceImpl>();
 				// search all wanted objects
 				for (int l = 0; l < tmpArc42System80ElementTpackageDoElementDo.getDependentComponentObjects().size(); l++) {
 					TobjectDo tmpArc42System80ElementSystemTobjectDo = tmpArc42System80ElementTpackageDoElementDo.getDependentComponentObjects().get(l);
@@ -360,7 +360,7 @@ public class ConvertEapToEbs42WithCacheImpl implements ConvertEapToEbs42 {
 				// search all wanted packages
 				for (int l = 0; l < tmpArc42System80ElementTpackageDoElementDo.getDependentInterfaceObjects().size(); l++) {
 					TobjectDo tmpArc42System80ElementSystemTobjectDo = tmpArc42System80ElementTpackageDoElementDo.getDependentInterfaceObjects().get(l);
-					Arc42SystemInterface arc42SystemInterface = new Arc42SystemInterface();
+					Arc42SystemInterfaceImpl arc42SystemInterface = new Arc42SystemInterfaceImpl();
 					long uId = converterUtils.convertEaGuidToUId(tmpArc42System80ElementSystemTobjectDo.getEaguid());
 					arc42SystemInterface.setuId(uId);
 					String systemInterfaceName = tmpArc42System80ElementSystemTobjectDo.getName();

@@ -14,13 +14,13 @@ public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 	private String systemName;
 	private String systemPackageName;
 	private List <Arc42SystemComponent> systemComponentList;
-	private List <Arc42SystemInterface> systemInterfaceList;
+	private List <Arc42SystemInterfaceImpl> systemInterfaceList;
 
 	public Arc42SystemDoImpl() {
 		super();
 	}
 
-	public Arc42SystemDoImpl(long uId, String systemName, String systemPackageName, List<Arc42SystemComponent> systemComponentList, List<Arc42SystemInterface> systemInterfaceList) {
+	public Arc42SystemDoImpl(long uId, String systemName, String systemPackageName, List<Arc42SystemComponent> systemComponentList, List<Arc42SystemInterfaceImpl> systemInterfaceList) {
 		super();
 		this.uId = uId;
 		this.systemName = systemName;
@@ -66,13 +66,13 @@ public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 	}
 
 	@Override
-	public List<Arc42SystemInterface> getSystemInterfaceList() 
+	public List<Arc42SystemInterfaceImpl> getSystemInterfaceList() 
 	{
 		return systemInterfaceList;
 	}
 
 	@Override
-	public void setSystemInterfaceList(List<Arc42SystemInterface> systemInterfaceList) 
+	public void setSystemInterfaceList(List<Arc42SystemInterfaceImpl> systemInterfaceList) 
 	{
 		this.systemInterfaceList = systemInterfaceList;
 	}

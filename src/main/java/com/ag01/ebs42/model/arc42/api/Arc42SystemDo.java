@@ -3,7 +3,7 @@ package com.ag01.ebs42.model.arc42.api;
 import java.util.List;
 
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
-import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterface;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterfaceImpl;
 
 public interface Arc42SystemDo 
 {
@@ -15,6 +15,6 @@ public interface Arc42SystemDo
 	public void setSystemPackageName(String systemPackageName);
 	public List<Arc42SystemComponent> getSystemComponentList();
 	public void setSystemComponentList(List<Arc42SystemComponent> systemComponentList);
-	public List<Arc42SystemInterface> getSystemInterfaceList();
-	public void setSystemInterfaceList(List<Arc42SystemInterface> systemInterfaceList);
+	public List<Arc42SystemInterfaceImpl> getSystemInterfaceList();
+	public void setSystemInterfaceList(List<Arc42SystemInterfaceImpl> systemInterfaceList);
 }

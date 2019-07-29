@@ -4,7 +4,7 @@ import com.ag01.ebs42.meta_model.api.Arc42SystemInterface;
 import com.ag01.ebs42.meta_model.api.InterfaceType;
 import com.ag01.ebs42.transform.wrapper.Arc42SystemInterfaceWrapper;
 
-/** Transfer class for <code>Arc42SystemInterface</code> that shifts additional 
+/** Transfer class for <code>Arc42SystemInterfaceImpl</code> that shifts additional 
  * functionality from EA to a temporary layer for the model.
  * 
  * @author Michael Holste
