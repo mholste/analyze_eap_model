@@ -75,7 +75,7 @@ public class TransferManager
 					transObj.setEaId(String.valueOf(objDo.getObjectid()));
 					transObj.setEaPackageId(String.valueOf(objDo.getPackageid()));
 					
-					transObj.setCorporateId(mapCorporateId(transObj.getEaId()));
+					transObj.setCorporateId(this.mapCorporateId(transObj.getEaId()));
 
 					componentList.add(transObj);
 				}
@@ -169,10 +169,11 @@ public class TransferManager
 						new TransferArc42SystemInterface(new Arc42SystemInterfaceImpl());
 				transInt.setEaId(String.valueOf(objDo.getObjectid()));
 				transInt.setEaPackageId(String.valueOf(objDo.getPackageid()));
-				transInt.setEaParentID(String.valueOf(objDo.getParentid()));
+				transInt.setEaParentId(String.valueOf(objDo.getParentid()));
 				transInt.setInterfaceName(objDo.getName());
 				transInt.setInterfaceType(objDo.getObjecttype().equalsIgnoreCase(REQUIRED) 
 						? InterfaceType.REQUIRED : InterfaceType.PROVIDED);
+				transInt.setCorporateId(this.mapCorporateId(String.valueOf(objDo.getParentid())));
 				interfaceList.add(transInt);
 			}
 		}
