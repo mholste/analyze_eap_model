@@ -93,7 +93,7 @@ public class ExcelExporter
 	private void createHeaders (ArrayList<String> headers, XSSFSheet sheet)
 	{
 		this.font.setBold(true);
-		byte[] rgb = { 120, 100, (byte) 200};		
+		byte[] rgb = { (byte) 255, (byte) 192, (byte) 0};		
 		this.style.setFillBackgroundColor(new XSSFColor(rgb, new DefaultIndexedColorMap()));
 		this.style.setFont(font);
 		
