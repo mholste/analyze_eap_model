@@ -44,6 +44,12 @@ public class ExcelExporter
 		this.style = workbook.createCellStyle();
 	}
 	
+	/**
+	 * Static mathod that delivers a singleton instance of the ExcelExporter to
+	 *  ensure that a report is only generated once.
+	 *  
+	 * @return 
+	 */
 	public static ExcelExporter getInstance()
 	{
 		if (ExcelExporter.instance == null)
@@ -53,6 +59,11 @@ public class ExcelExporter
 		return ExcelExporter.instance;
 	}
 	
+	/**	
+	 * Exports values of systems to an excel workbook
+	 * 
+	 * @param componentList Values for systems in temporary transfer format as List
+	 */
 	public void exportSystems(List<TransferArc42SystemComponent> componentList)
 	{
 		XSSFSheet sheet = workbook.createSheet("Systeme");		
@@ -83,6 +94,11 @@ public class ExcelExporter
 		}
 	}
 	
+	/**
+	 * Writes the generated report to disk
+	 * 
+	 * @throws IOException 
+	 */
 	private void generateReport() throws IOException
 	{
 		FileOutputStream out = new FileOutputStream(new File("report.xlsx"));
@@ -90,6 +106,12 @@ public class ExcelExporter
 		out.close();
 	}
 	
+	/**
+	 * Creates a formatted header line with given values for the header
+	 *  
+	 * @param headers the names of the columns
+	 * @param sheet the sheet that needs a header
+	 */
 	private void createHeaders (ArrayList<String> headers, XSSFSheet sheet)
 	{
 		this.font.setBold(true);
