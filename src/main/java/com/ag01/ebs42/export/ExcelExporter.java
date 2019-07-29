@@ -19,6 +19,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.ag01.ebs42.transform.TransferArc42SystemComponent;
+import com.ag01.ebs42.transform.TransferArc42SystemInterface;
 
 /**
  * Class to export analysis results to an excel workbook
@@ -83,14 +84,31 @@ public class ExcelExporter
 			Cell idCell = row.createCell(1);
 			idCell.setCellValue(comp.getCorporateId());
 		}
+	}
+	
+	public void exportInterfaces(List<TransferArc42SystemInterface> interfaceList)
+	{
+		XSSFSheet sheet = workbook.createSheet("Interfaces");		
+		ArrayList<String> headers = new ArrayList<String>(Arrays.asList("Name", 
+				"Art", "Systemname", "System ID"));
+		this.createHeaders(headers, sheet);
+		this.font.setBold(false);
+		this.style.setFont(font);
+		byte[] rgb = { (byte) 255, (byte) 255, (byte) 255};		
+		this.style.setFillBackgroundColor(new XSSFColor(rgb, new DefaultIndexedColorMap()));
 		
-		try 
+		int rownum = 1;
+		for (TransferArc42SystemInterface iface : interfaceList)
 		{
-			this.generateReport();
-		} 
-		catch (IOException e) 
-		{
-			LOGGER.error("Exception  generating report\n" + e.getMessage(), e);
+			Row row = sheet.createRow(rownum++);
+			Cell nameCell = row.createCell(0);
+			nameCell.setCellValue(iface.getInterfaceName());
+			Cell kindCell = row.createCell(1);
+			kindCell.setCellValue((iface.getInterfaceType()).name());
+			Cell sysCell = row.createCell(2);
+			sysCell.setCellValue(iface.getSystemName());
+			Cell idCell = row.createCell(3);
+			idCell.setCellValue(iface.getCorporateId());
 		}
 	}
 	
@@ -99,7 +117,7 @@ public class ExcelExporter
 	 * 
 	 * @throws IOException 
 	 */
-	private void generateReport() throws IOException
+	public void generateReport() throws IOException
 	{
 		FileOutputStream out = new FileOutputStream(new File("report.xlsx"));
 		workbook.write(out);
