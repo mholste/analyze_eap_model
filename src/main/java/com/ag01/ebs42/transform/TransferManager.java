@@ -75,16 +75,8 @@ public class TransferManager
 					transObj.setEaId(String.valueOf(objDo.getObjectid()));
 					transObj.setEaPackageId(String.valueOf(objDo.getPackageid()));
 					
-					for (TobjectpropertiesDo prop : resultTobjectpropertiesDoList)
-					{
-						if (transObj.getEaId().equalsIgnoreCase(String.valueOf(prop.getObjectid())) &&
-								(prop.getProperty().equalsIgnoreCase(APP) || 
-								prop.getProperty().equalsIgnoreCase(ICTO) || 
-								prop.getProperty().equalsIgnoreCase(SPL)))
-						{
-							transObj.setCorporateId(prop.getProperty() + " " + prop.getValue());
-						}						
-					}
+					transObj.setCorporateId(mapCorporateId(transObj.getEaId()));
+
 					componentList.add(transObj);
 				}
 			}		
@@ -102,7 +94,28 @@ public class TransferManager
 			
 		}
 		return componentList;		
-	}		
+	}	
+	
+	/**
+	 * Maps a given id of an t_object to a corporate ID
+	 * 
+	 * @param id	the id of t_object to map
+	 * @return		the corporate Id or "internal" if a corporate Id is not found 
+	 */
+	private String mapCorporateId(String id)
+	{
+		for (TobjectpropertiesDo prop : resultTobjectpropertiesDoList)
+		{
+			if (id.equalsIgnoreCase(String.valueOf(prop.getObjectid())) &&
+					(prop.getProperty().equalsIgnoreCase(APP) || 
+					prop.getProperty().equalsIgnoreCase(ICTO) || 
+					prop.getProperty().equalsIgnoreCase(SPL)))
+			{
+				return (prop.getProperty() + " " + prop.getValue());
+			}						
+		}
+		return "Internal";
+	}
 	
 	/**
 	 * Gets the id of a package in EA with a given name and ID
