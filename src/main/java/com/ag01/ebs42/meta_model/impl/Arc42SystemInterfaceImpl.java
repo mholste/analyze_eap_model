@@ -1,7 +1,7 @@
 package com.ag01.ebs42.meta_model.impl;
 
 import com.ag01.ebs42.meta_model.api.Arc42SystemInterface;
-import com.ag01.ebs42.meta_model.api.InterfaceType;
+import com.ag01.ebs42.model.arc42.InterfaceType;
 
 /**
  * Simple implementaion of <code>Arc42SystemInterfacet</code> with only the methods 

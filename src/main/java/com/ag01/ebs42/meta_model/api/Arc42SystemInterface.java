@@ -1,5 +1,7 @@
 package com.ag01.ebs42.meta_model.api;
 
+import com.ag01.ebs42.model.arc42.InterfaceType;
+
 /**
  * Definition of an interface in the system model.
  *  

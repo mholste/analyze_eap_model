@@ -1,8 +1,8 @@
 package com.ag01.ebs42.transform;
 
+import com.ag01.ebs42.model.arc42.InterfaceType;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
-import com.ag01.ebs42.meta_model.api.InterfaceType;
 import com.ag01.ebs42.transform.wrapper.Arc42SystemInterfaceWrapper;
 
 /** Transfer class for <code>Arc42SystemInterfaceImpl</code> that shifts additional 
