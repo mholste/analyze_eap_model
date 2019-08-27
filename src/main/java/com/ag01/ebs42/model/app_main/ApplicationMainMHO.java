@@ -1,5 +1,6 @@
 package com.ag01.ebs42.model.app_main;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -51,6 +52,16 @@ public class ApplicationMainMHO
 		
 		ExcelExporter exporter = ExcelExporter.getInstance();
 		exporter.exportSystems(componentList);
+		exporter.exportInterfaces(interfaceList);
+		
+		try
+		{
+			exporter.generateReport();
+		}
+		catch (IOException ioe)
+		{
+			LOGGER.error("error while generating report\n" + ioe.getMessage(), ioe);
+		}
 	}
 	
 	private static void readTables()
