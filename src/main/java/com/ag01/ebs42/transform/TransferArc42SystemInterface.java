@@ -17,6 +17,8 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 	private String eaPackageId;
 	private String eaParentId;
 	private String corporateId;
+	private String interfaceName;
+	private InterfaceType interfaceType;
 	public TransferArc42SystemInterface(Arc42SystemInterface wrappedSystemInterface) 
 	{
 		super(wrappedSystemInterface);
@@ -60,6 +62,25 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 	public String getCorporateId()
 	{
 		return corporateId;
+	}
+	
+	public void setInterfaceName(String interfaceName)
+	{
+		this.interfaceName = interfaceName;
+	}
+	
+	public String getIntgerfaceName()
+	{
+		return interfaceName;
+	}
+	
+	public void setInterfaceType(InterfaceType type)
+	{
+		this.interfaceType = type;
+	}
+	public InterfaceType getInterfaceType()
+	{
+		return interfaceType;
 	}
 
 	@Override
