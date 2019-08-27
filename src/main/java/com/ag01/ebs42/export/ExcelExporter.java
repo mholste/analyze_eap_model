@@ -102,7 +102,7 @@ public class ExcelExporter
 		{
 			Row row = sheet.createRow(rownum++);
 			Cell nameCell = row.createCell(0);
-			nameCell.setCellValue(iface.getInterfaceName());
+			nameCell.setCellValue(iface.getSystemInterfaceName());
 			Cell kindCell = row.createCell(1);
 			kindCell.setCellValue((iface.getInterfaceType()).name());
 			Cell idCell = row.createCell(2);
