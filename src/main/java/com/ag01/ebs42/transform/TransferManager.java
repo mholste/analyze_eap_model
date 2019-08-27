@@ -56,6 +56,12 @@ public class TransferManager
 		interfaceList = new ArrayList<TransferArc42SystemInterface>();
 	}
 	
+	/**
+	 * Collects all system that are defined in the model and adds the corresponding 
+	 * corporate Id if applicable
+	 * 
+	 * @return list of interfaces in temporary transfer format
+	 */
 	public List<TransferArc42SystemComponent> collectSystems()
 	{
 		this.getSystemfolders(
@@ -122,7 +128,7 @@ public class TransferManager
 	 * 
 	 * @param parent the id of the parent folder 
 	 * @param name   the name of the folder
-	 * @return the id of the package as int
+	 * @return       the id of the package as int
 	 */
 	public int extractPackageID(int parent, String name)
 	{
@@ -158,6 +164,12 @@ public class TransferManager
 		}
 	}
 	
+	/**
+	 * Collects all interfaces that are defined in the model and adds a 
+	 * corporate Id if applicable
+	 * 
+	 * @return list of interfaces in temporary transfer format
+	 */
 	public List<TransferArc42SystemInterface> collectInterfaces()
 	{
 		for (TobjectDo objDo : resultTobjectList)
