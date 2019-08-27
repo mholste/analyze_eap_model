@@ -70,12 +70,12 @@ public class TransferArc42SystemConnection extends Arc42SystemConnectionWrapper
 		this.eaStartId = eaStartId;
 	}
 	
-	public String getEsEndId() 
+	public String getEaEndId() 
 	{
 		return eaEndId;
 	}
 	
-	public void setEsEndId(String eaEndId) 
+	public void setEaEndId(String eaEndId) 
 	{
 		this.eaEndId = eaEndId;
 	}	
