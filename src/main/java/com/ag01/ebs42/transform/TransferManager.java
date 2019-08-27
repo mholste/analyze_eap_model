@@ -11,11 +11,9 @@ import com.ag01.ebs42.analyze.dbaccess.domobj.TconnectorDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectpropertiesDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
-import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
-import com.ag01.ebs42.meta_model.api.Arc42SystemInterface;
-import com.ag01.ebs42.meta_model.api.InterfaceType;
+import com.ag01.ebs42.model.arc42.InterfaceType;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
-import com.ag01.ebs42.meta_model.impl.Arc42SystemInterfaceImpl;
+import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterfaceImpl;
 
 public class TransferManager 
 {
@@ -177,8 +175,8 @@ public class TransferManager
 			if (objDo.getObjecttype().equalsIgnoreCase(PROVIDED) || 
 					objDo.getObjecttype().equalsIgnoreCase(REQUIRED))
 			{
-				TransferArc42SystemInterface transInt = 
-						new TransferArc42SystemInterface(new Arc42SystemInterfaceImpl());
+				TransferArc42SystemInterface transInt = new TransferArc42SystemInterface(new Arc42SystemInterfaceImpl());
+				
 				transInt.setEaId(String.valueOf(objDo.getObjectid()));
 				transInt.setEaPackageId(String.valueOf(objDo.getPackageid()));
 				transInt.setEaParentId(String.valueOf(objDo.getParentid()));
