@@ -64,16 +64,6 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 		return corporateId;
 	}
 	
-	public void setInterfaceName(String interfaceName)
-	{
-		this.interfaceName = interfaceName;
-	}
-	
-	public String getIntgerfaceName()
-	{
-		return interfaceName;
-	}
-	
 	public void setInterfaceType(InterfaceType type)
 	{
 		this.interfaceType = type;
