@@ -90,7 +90,7 @@ public class ExcelExporter
 	{
 		XSSFSheet sheet = workbook.createSheet("Interfaces");		
 		ArrayList<String> headers = new ArrayList<String>(Arrays.asList("Name", 
-				"Art", "Systemname", "System ID"));
+				"Art", "System ID"));
 		this.createHeaders(headers, sheet);
 		this.font.setBold(false);
 		this.style.setFont(font);
@@ -105,10 +105,10 @@ public class ExcelExporter
 			nameCell.setCellValue(iface.getInterfaceName());
 			Cell kindCell = row.createCell(1);
 			kindCell.setCellValue((iface.getInterfaceType()).name());
-			Cell sysCell = row.createCell(2);
-			sysCell.setCellValue(iface.getSystemName());
-			Cell idCell = row.createCell(3);
+			Cell idCell = row.createCell(2);
 			idCell.setCellValue(iface.getCorporateId());
+			Cell eaCell = row.createCell(3);
+			eaCell.setCellValue(iface.getEaId());
 		}
 	}
 	
