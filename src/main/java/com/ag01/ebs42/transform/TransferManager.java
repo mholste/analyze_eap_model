@@ -180,7 +180,7 @@ public class TransferManager
 				transInt.setEaId(String.valueOf(objDo.getObjectid()));
 				transInt.setEaPackageId(String.valueOf(objDo.getPackageid()));
 				transInt.setEaParentId(String.valueOf(objDo.getParentid()));
-				transInt.setInterfaceName(objDo.getName());
+				transInt.setSystemInterfaceName(objDo.getName());
 				transInt.setInterfaceType(objDo.getObjecttype().equalsIgnoreCase(REQUIRED) 
 						? InterfaceType.REQUIRED : InterfaceType.PROVIDED);
 				transInt.setCorporateId(this.mapCorporateId(String.valueOf(objDo.getParentid())));
