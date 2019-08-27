@@ -2,14 +2,17 @@ package com.ag01.ebs42.model.arc42.domobj;
 
 import java.io.Serializable;
 
-public class Arc42SystemInterfaceImpl implements Serializable {
+import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
+
+public class Arc42SystemInterfaceImpl implements Serializable, Arc42SystemInterface {
 
 	private static final long serialVersionUID = -8987450253873466844L;
 	
 	private long uId;
 	private String systemInterfaceName;
 	private String packageName;
-	private Arc42SystemDoImpl definedInSystem;
+	private Arc42SystemDo definedInSystem;
 
 	public Arc42SystemInterfaceImpl() {
 		super();
@@ -24,35 +27,43 @@ public class Arc42SystemInterfaceImpl implements Serializable {
 		this.definedInSystem = defindedInSystem;
 	}
 
+	@Override
 	public long getuId() {
 		return uId;
 	}
 
+	@Override
 	public void setuId(long uId) {
 		this.uId = uId;
 	}
 
+	@Override
 	public String getSystemInterfaceName() {
 		return systemInterfaceName;
 	}
 
+	@Override
 	public void setSystemInterfaceName(String systemInterfaceName) {
 		this.systemInterfaceName = systemInterfaceName;
 	}
 
+	@Override
 	public String getPackageName() {
 		return packageName;
 	}
 
+	@Override
 	public void setPackageName(String packageName) {
 		this.packageName = packageName;
 	}
 
-	public Arc42SystemDoImpl getDefinedInSystem() {
+	@Override
+	public Arc42SystemDo getDefinedInSystem() {
 		return definedInSystem;
 	}
 
-	public void setDefinedInSystem(Arc42SystemDoImpl definedInSystem) {
+	@Override
+	public void setDefinedInSystem(Arc42SystemDo definedInSystem) {
 		this.definedInSystem = definedInSystem;
 	}
 
@@ -101,5 +112,4 @@ public class Arc42SystemInterfaceImpl implements Serializable {
 		return "Arc42SystemInterfaceImpl [uId=" + uId + ", systemInterfaceName=" + systemInterfaceName + ", packageName="
 				+ packageName + "]";
 	}
-
 }
