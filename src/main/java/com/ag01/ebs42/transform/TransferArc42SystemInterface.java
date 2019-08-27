@@ -1,6 +1,7 @@
 package com.ag01.ebs42.transform;
 
-import com.ag01.ebs42.meta_model.api.Arc42SystemInterface;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
 import com.ag01.ebs42.meta_model.api.InterfaceType;
 import com.ag01.ebs42.transform.wrapper.Arc42SystemInterfaceWrapper;
 
@@ -21,54 +22,6 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 		super(wrappedSystemInterface);
 	}
 	
-	@Override
-	public String getInterfaceName() 
-	{
-		return super.getInterfaceName();
-	}
-
-	@Override
-	public void setInterfaceName(String interfaceName) 
-	{
-		super.setInterfaceName(interfaceName);
-	}
-
-	@Override
-	public InterfaceType getInterfaceType() 
-	{
-		return super.getInterfaceType();
-	}
-
-	@Override
-	public void setInterfaceType(InterfaceType type) 
-	{
-		super.setInterfaceType(type);
-	}
-
-	@Override
-	public String getSystemName() 
-	{
-		return super.getSystemName();
-	}
-
-	@Override
-	public void setSystemName(String systemName) 
-	{
-		super.setSystemName(systemName);
-	}
-
-	@Override
-	public String getTechnology() 
-	{
-		return super.getTechnology();
-	}
-
-	@Override
-	public void setTechnology(String technology) 
-	{
-		super.setTechnology(technology);
-	}
-
 	public String getEaId() 
 	{
 		return eaId;
@@ -108,4 +61,52 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 	{
 		return corporateId;
 	}
+
+	@Override
+	public long getuId() 
+	{
+		return super.getuId();
+	}
+
+	@Override
+	public void setuId(long uId) 
+	{
+		super.setuId(uId);
+	}
+
+	@Override
+	public String getSystemInterfaceName() 
+	{
+		return super.getSystemInterfaceName();
+	}
+
+	@Override
+	public void setSystemInterfaceName(String systemInterfaceName) 
+	{
+		super.setSystemInterfaceName(systemInterfaceName);
+	}
+
+	@Override
+	public String getPackageName() 
+	{
+		return super.getPackageName();
+	}
+
+	@Override
+	public void setPackageName(String packageName) 
+	{
+		super.setPackageName(packageName);
+	}
+
+	@Override
+	public Arc42SystemDo getDefinedInSystem() 
+	{
+		return super.getDefinedInSystem();
+	}
+
+	@Override
+	public void setDefinedInSystem(Arc42SystemDo definedInSystem) 
+	{
+		super.setDefinedInSystem(definedInSystem);
+	}	
 }
