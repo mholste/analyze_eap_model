@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
-import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterfaceImpl;
 import com.ag01.ebs42.transform.wrapper.Arc42SystemComponentWrapper;
 
