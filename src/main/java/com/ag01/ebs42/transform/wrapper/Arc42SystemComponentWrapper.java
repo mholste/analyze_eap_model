@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterfaceImpl;
 
 public abstract class Arc42SystemComponentWrapper implements Arc42SystemComponent
@@ -64,25 +65,25 @@ public abstract class Arc42SystemComponentWrapper implements Arc42SystemComponen
 	}
 
 	@Override
-	public List<Arc42SystemInterfaceImpl> getServerInterfaces() 
+	public List<Arc42SystemInterface> getServerInterfaces() 
 	{
 		return wrappedSystemComponent.getServerInterfaces();
 	}
 
 	@Override
-	public void setServerInterfaces(List<Arc42SystemInterfaceImpl> serverInterfaces) 
+	public void setServerInterfaces(List<Arc42SystemInterface> serverInterfaces) 
 	{
 		wrappedSystemComponent.setServerInterfaces(serverInterfaces);
 	}
 
 	@Override
-	public List<Arc42SystemInterfaceImpl> getClientInterfaces() 
+	public List<Arc42SystemInterface> getClientInterfaces() 
 	{
 		return wrappedSystemComponent.getClientInterfaces();
 	}
 
 	@Override
-	public void setClientInterfaces(List<Arc42SystemInterfaceImpl> clientInterfaces) 
+	public void setClientInterfaces(List<Arc42SystemInterface> clientInterfaces) 
 	{
 		wrappedSystemComponent.setClientInterfaces(clientInterfaces);
 	}	
