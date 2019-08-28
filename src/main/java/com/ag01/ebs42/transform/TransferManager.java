@@ -39,8 +39,10 @@ public class TransferManager
 	private List<HashMap<String, String>> systemFolderList = null;
 	// List for all systems in transfer format
 	private List<TransferArc42SystemComponent> componentList = null;
-	//List for all interfaces in transfer format
-	private List<TransferArc42SystemInterface> interfaceList = null;
+	//List for all provided interfaces in transfer format
+	private List<TransferArc42SystemInterface> providedInterfaceList = null;
+	//List for all required interfaces in transfer format
+	private List<TransferArc42SystemInterface> requiredInterfaceList = null;
 	
 	// DAOs for relevant tables
 	private List<TpackageDo> resultTpackageDoList = null;
@@ -53,7 +55,8 @@ public class TransferManager
 	public TransferManager() 
 	{ 		
 		componentList = new ArrayList<TransferArc42SystemComponent>();
-		interfaceList = new ArrayList<TransferArc42SystemInterface>();
+		providedInterfaceList = new ArrayList<TransferArc42SystemInterface>();
+		requiredInterfaceList = new ArrayList<TransferArc42SystemInterface>();
 	}
 	
 	/**
@@ -186,20 +189,24 @@ public class TransferManager
 				transInt.setInterfaceType(objDo.getObjecttype().equalsIgnoreCase(REQUIRED) 
 						? InterfaceType.REQUIRED : InterfaceType.PROVIDED);
 				transInt.setCorporateId(this.mapCorporateId(String.valueOf(objDo.getParentid())));
-				interfaceList.add(transInt);
+				providedInterfaceList.add(transInt);
 			}
 		}
-		return interfaceList;
+		return providedInterfaceList;
 	}
 	
 	public List<TransferArc42SystemInterface> collectProvidedInterfaces()
 	{
 		Arc42SystemDo baseSystem = null;
+		// Iterate all system components
 		for (TransferArc42SystemComponent component : componentList)
 		{
+			// For each system component, check all objects and iterate over them
 			for (TobjectDo objDo : resultTobjectList)
 			{
+				// Continue, if the object does not belong to the package of the component
 				if (objDo.getPackageid() != Integer.valueOf(component.getEaPackageId())) continue; 
+				// Get only the provided interfaces of this package
 				if (objDo.getObjecttype().equalsIgnoreCase(PROVIDED))
 				{
 					baseSystem = new Arc42SystemDoImpl();
@@ -214,12 +221,21 @@ public class TransferManager
 					transInt.setDefinedInSystem(baseSystem);
 					transInt.setCorporateId(component.getCorporateId());
 					
-					interfaceList.add(transInt);
+					providedInterfaceList.add(transInt);
 					baseSystem = null;
 				}
 			}
 		}		
-		return interfaceList;
+		return providedInterfaceList;
+	}
+	
+	public List<TransferArc42SystemInterface> collectRequiredInterfaces()
+	{
+		for (TransferArc42SystemInterface provided : providedInterfaceList)
+		{
+			
+		}
+		return null;
 	}
 	
 	public List<TpackageDo> getResultTpackageDoList() 
