@@ -1,5 +1,7 @@
 package com.ag01.ebs42.transform;
 
+import com.ag01.ebs42.model.arc42.ConnectionType;
+import com.ag01.ebs42.model.arc42.DirectionType;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemConnection;
 import com.ag01.ebs42.transform.wrapper.Arc42SystemConnectionWrapper;
 
@@ -50,6 +52,42 @@ public class TransferArc42SystemConnection extends Arc42SystemConnectionWrapper
 		wrappedSystemConnection.setRequiredSystem(requiredSystem);
 	}
 
+	@Override
+	public String getConnectionName() 
+	{
+		return super.getConnectionName();
+	}
+
+	@Override
+	public void setConnectionName(String connectionName) 
+	{
+		super.setConnectionName(connectionName);
+	}
+
+	@Override
+	public ConnectionType getConnectorType() 
+	{
+		return super.getConnectorType();
+	}
+
+	@Override
+	public void setConnectorType(ConnectionType type)
+	{
+		super.setConnectorType(type);
+	}
+
+	@Override
+	public DirectionType getDirection() 
+	{
+		return super.getDirection();
+	}
+
+	@Override
+	public void setDirection(DirectionType direction) 
+	{
+		super.setDirection(direction);
+	}
+	
 	public String getEaId() 
 	{
 		return eaId;
