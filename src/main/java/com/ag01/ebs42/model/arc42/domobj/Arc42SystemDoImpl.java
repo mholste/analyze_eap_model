@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
 
 public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 
@@ -14,13 +15,13 @@ public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 	private String systemName;
 	private String systemPackageName;
 	private List <Arc42SystemComponent> systemComponentList;
-	private List <Arc42SystemInterfaceImpl> systemInterfaceList;
+	private List <Arc42SystemInterface> systemInterfaceList;
 
 	public Arc42SystemDoImpl() {
 		super();
 	}
 
-	public Arc42SystemDoImpl(long uId, String systemName, String systemPackageName, List<Arc42SystemComponent> systemComponentList, List<Arc42SystemInterfaceImpl> systemInterfaceList) {
+	public Arc42SystemDoImpl(long uId, String systemName, String systemPackageName, List<Arc42SystemComponent> systemComponentList, List<Arc42SystemInterface> systemInterfaceList) {
 		super();
 		this.uId = uId;
 		this.systemName = systemName;
@@ -66,13 +67,13 @@ public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 	}
 
 	@Override
-	public List<Arc42SystemInterfaceImpl> getSystemInterfaceList() 
+	public List<Arc42SystemInterface> getSystemInterfaceList() 
 	{
 		return systemInterfaceList;
 	}
 
 	@Override
-	public void setSystemInterfaceList(List<Arc42SystemInterfaceImpl> systemInterfaceList) 
+	public void setSystemInterfaceList(List<Arc42SystemInterface> systemInterfaceList) 
 	{
 		this.systemInterfaceList = systemInterfaceList;
 	}
