@@ -1,0 +1,13 @@
+package com.ag01.ebs42.model.arc42;
+
+public enum ConnectionType 
+{
+	DEPENDENCY,
+	GENERALIZATIOM,
+	AGGREGATION,
+	ASSOCIATION,
+	REALISATION,
+	CONTROL_FLOW,
+	OBJECT_FLOW,
+	INFORMATION_FLOW
+}
