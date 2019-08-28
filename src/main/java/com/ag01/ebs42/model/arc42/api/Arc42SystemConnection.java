@@ -1,4 +1,4 @@
-package com.ag01.ebs42.meta_model.api;
+package com.ag01.ebs42.model.arc42.api;
 
 public interface Arc42SystemConnection 
 {

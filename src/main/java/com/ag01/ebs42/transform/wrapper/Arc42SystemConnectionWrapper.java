@@ -1,6 +1,6 @@
 package com.ag01.ebs42.transform.wrapper;
 
-import com.ag01.ebs42.meta_model.api.Arc42SystemConnection;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemConnection;
 
 public abstract class Arc42SystemConnectionWrapper implements Arc42SystemConnection 
 {
