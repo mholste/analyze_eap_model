@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
 
 public class Arc42SystemComponentImpl implements Serializable, Arc42SystemComponent 
 {
@@ -15,15 +16,15 @@ public class Arc42SystemComponentImpl implements Serializable, Arc42SystemCompon
 	private String systemComponentName;
 	private String packageName;
 	private Arc42SystemDo baseSystem;
-	private List <Arc42SystemInterfaceImpl> serverInterfaces;
-	private List <Arc42SystemInterfaceImpl> clientInterfaces;
+	private List <Arc42SystemInterface> serverInterfaces;
+	private List <Arc42SystemInterface> clientInterfaces;
 
 	public Arc42SystemComponentImpl() {
 		super();
 	}
 
-	public Arc42SystemComponentImpl(long uId, String systemComponentName, String packageName, Arc42SystemDoImpl baseSystem,
-			List<Arc42SystemInterfaceImpl> serverInterfaces, List<Arc42SystemInterfaceImpl> clientInterfaces) {
+	public Arc42SystemComponentImpl(long uId, String systemComponentName, String packageName, Arc42SystemDo baseSystem,
+			List<Arc42SystemInterface> serverInterfaces, List<Arc42SystemInterface> clientInterfaces) {
 		super();
 		this.uId = uId;
 		this.systemComponentName = systemComponentName;
@@ -82,25 +83,25 @@ public class Arc42SystemComponentImpl implements Serializable, Arc42SystemCompon
 	}
 
 	@Override
-	public List<Arc42SystemInterfaceImpl> getServerInterfaces() 
+	public List<Arc42SystemInterface> getServerInterfaces() 
 	{
 		return serverInterfaces;
 	}
 
 	@Override
-	public void setServerInterfaces(List<Arc42SystemInterfaceImpl> serverInterfaces) 
+	public void setServerInterfaces(List<Arc42SystemInterface> serverInterfaces) 
 	{
 		this.serverInterfaces = serverInterfaces;
 	}
 
 	@Override
-	public List<Arc42SystemInterfaceImpl> getClientInterfaces() 
+	public List<Arc42SystemInterface> getClientInterfaces() 
 	{
 		return clientInterfaces;
 	}
 
 	@Override
-	public void setClientInterfaces(List<Arc42SystemInterfaceImpl> clientInterfaces) 
+	public void setClientInterfaces(List<Arc42SystemInterface> clientInterfaces) 
 	{
 		this.clientInterfaces = clientInterfaces;
 	}
