@@ -21,6 +21,18 @@ public class TransferArc42InterfaceConnection extends Arc42InterfaceConnectionWr
 	}
 	
 	@Override
+	public long getuId() 
+	{
+		return super.getuId();
+	}
+
+	@Override
+	public void setuId(long uId) 
+	{
+		super.setuId(uId);
+	}
+
+	@Override
 	public String getInterfaceConnectionName() 
 	{
 		return super.getInterfaceConnectionName();
