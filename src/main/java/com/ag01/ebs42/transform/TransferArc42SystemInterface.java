@@ -24,6 +24,11 @@ public class TransferArc42SystemInterface extends Arc42SystemInterfaceWrapper
 		super(wrappedSystemInterface);
 	}
 	
+	public Arc42SystemInterface getInterface()
+	{
+		return super.wrappedSystemInterface;
+	}
+	
 	public String getEaId() 
 	{
 		return eaId;
