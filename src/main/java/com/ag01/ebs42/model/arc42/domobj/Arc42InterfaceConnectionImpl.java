@@ -2,88 +2,162 @@ package com.ag01.ebs42.model.arc42.domobj;
 
 import java.io.Serializable;
 
-import com.ag01.ebs42.model.arc42.ConnectionType;
-import com.ag01.ebs42.model.arc42.DirectionType;
-import com.ag01.ebs42.model.arc42.api.Arc42SystemConnection;
+import com.ag01.ebs42.model.arc42.api.Arc42InterfaceConnection;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
+import com.ag01.ebs42.model.utils.ConnectionType;
+import com.ag01.ebs42.model.utils.DirectionType;
 
-public class Arc42SystemConnectionImpl implements Serializable, Arc42SystemConnection 
+public class Arc42InterfaceConnectionImpl implements Serializable, Arc42InterfaceConnection
 {
 	private static final long serialVersionUID = 1305793179181261351L;
 	
 	private long uId;
-	private String interfaceName;
-	private String 
-
+	private String interfaceConnectionName;
+	private String packageName;
+	private Arc42SystemInterface interfaceDefinition;
+	private Arc42SystemComponent client;
+	private Arc42SystemComponent server;
+	
+	public Arc42InterfaceConnectionImpl()
+	{
+		super();
+	}
+	
+	public Arc42InterfaceConnectionImpl(long uId, String interfaceConnectionName, 
+			String packageName, Arc42SystemInterface interfaceDefinition, 
+			Arc42SystemComponent client, Arc42SystemComponent server)
+	{
+		super();
+		this.uId = uId;
+		this.interfaceConnectionName = interfaceConnectionName;
+		this.packageName = packageName;
+		this.interfaceDefinition = interfaceDefinition;
+		this.client = client;
+		this.server = server;
+	}
+	
 	@Override
-	public String getInterface() {
-		// TODO Auto-generated method stub
-		return null;
+	public long getuId()
+	{
+		return uId;
+	}
+	
+	@Override
+	public void setuId(long uId)
+	{
+		this.uId = uId;
+	}
+	
+	@Override
+	public String getInterfaceConnectionName() 
+	{
+		return interfaceConnectionName;
+	}
+	@Override
+	public void setInterfaceConnectionName(String interfaceConnectionName) 
+	{
+		this.interfaceConnectionName = interfaceConnectionName;
+	}
+	@Override
+	public Arc42SystemComponent getClient() 
+	{
+		return client;
+	}
+	@Override
+	public void setClient(Arc42SystemComponent client) 
+	{
+		this.client = client;
+	}
+	@Override
+	public Arc42SystemComponent getServer() 
+	{
+		return server;
+	}
+	@Override
+	public void setServer(Arc42SystemComponent server) 
+	{
+		this.server = server;
+	}
+	@Override
+	public String getPackageName() 
+	{
+		return packageName;
+	}
+	@Override
+	public void setPackageName(String packageName) 
+	{
+		this.packageName = packageName;
+	}
+	@Override
+	public Arc42SystemInterface getInterfaceDefinition() 
+	{
+		return interfaceDefinition;
+	}
+	@Override
+	public void setInterfaceDefinition(Arc42SystemInterface interfaceDef) 
+	{
+		this.interfaceDefinition = interfaceDef;
 	}
 
 	@Override
-	public void setInterface(String interfaceName) {
-		// TODO Auto-generated method stub
-		
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((interfaceConnectionName == null) ? 0 : interfaceConnectionName.hashCode());
+		result = prime * result + ((packageName == null) ? 0 : packageName.hashCode());
+		result = prime * result + ((interfaceDefinition == null) ? 0 : interfaceDefinition.hashCode());
+		result = prime * result + ((client == null) ? 0 : client.hashCode());
+		result = prime * result + ((server == null) ? 0 : server.hashCode());
+		result = prime * result + (int) (uId ^ (uId >>> 32));
+		return result;
 	}
 
 	@Override
-	public String getProvidedSystem() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Arc42InterfaceConnectionImpl other = (Arc42InterfaceConnectionImpl) obj;
+		if (interfaceConnectionName == null) {
+			if (other.interfaceConnectionName != null)
+				return false;
+		} else if (!interfaceConnectionName.equals(other.interfaceConnectionName))
+			return false;
+		if (packageName == null) {
+			if (other.packageName != null)
+				return false;
+		} else if (!packageName.equals(other.packageName))
+			return false;
+		if (interfaceDefinition == null) {
+			if (other.interfaceDefinition != null)
+				return false;
+		} else if (!interfaceDefinition.equals(other.interfaceDefinition))
+			return false;
+		if (client == null) {
+			if (other.client != null)
+				return false;
+		} else if (!client.equals(other.client))
+			return false;
+		if (server == null) {
+			if (other.server != null)
+				return false;
+		} else if (!server.equals(other.server))
+			return false;
+		if (uId != other.uId)
+			return false;
+		return true;
 	}
 
 	@Override
-	public void setProvidedSystem(String providedSystem) {
-		// TODO Auto-generated method stub
-		
+	public String toString() {
+		return "Arc42InterfaceConnectionImpl [uId=" + uId + ", interfaceConnectionName=" + interfaceConnectionName + ", packageName="
+				+ packageName + ", interfaceDefinition=" + interfaceDefinition
+				+ ", client=" + client + ", server=" + server + "]";
 	}
-
-	@Override
-	public String getRequiredSystem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setRequiredSystem(String requiredSystem) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String getConnectionName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setConnectionName(String connectionName) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ConnectionType getConnectorType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setConnectorType(ConnectionType type) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public DirectionType getDirection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setDirection(DirectionType direction) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
