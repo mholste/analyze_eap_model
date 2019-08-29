@@ -1,93 +1,105 @@
 package com.ag01.ebs42.transform;
 
-import com.ag01.ebs42.model.arc42.ConnectionType;
-import com.ag01.ebs42.model.arc42.DirectionType;
 import com.ag01.ebs42.model.arc42.api.Arc42InterfaceConnection;
-import com.ag01.ebs42.transform.wrapper.Arc42SystemConnectionWrapper;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
+import com.ag01.ebs42.model.utils.ConnectionType;
+import com.ag01.ebs42.model.utils.DirectionType;
+import com.ag01.ebs42.transform.wrapper.Arc42InterfaceConnectionWrapper;
 
-public class TransferArc42SystemConnection extends Arc42SystemConnectionWrapper
+public class TransferArc42InterfaceConnection extends Arc42InterfaceConnectionWrapper
 {
 	private String eaId;
 	private String eaStartId;
 	private String eaEndId;
+	private ConnectionType connection;
+	private DirectionType direction;
 	
-	public TransferArc42SystemConnection(Arc42InterfaceConnection wrappedSystemConnection)
+	public TransferArc42InterfaceConnection(Arc42InterfaceConnection wrappedSystemConnection)
 	{
 		super(wrappedSystemConnection);
 	}
-
+	
 	@Override
-	public String getInterface() 
+	public String getInterfaceConnectionName() 
 	{
-		return wrappedSystemConnection.getInterface();
+		return super.getInterfaceConnectionName();
 	}
 
 	@Override
-	public void setInterface(String interfaceName) 
+	public void setInterface(String interfaceConnectionName) 
 	{
-		wrappedSystemConnection.setInterface(interfaceName);
+		super.setInterface(interfaceConnectionName);
 	}
 
 	@Override
-	public String getProvidedSystem() 
+	public Arc42SystemComponent getClient() 
 	{
-		return wrappedSystemConnection.getProvidedSystem();
+		return super.getClient();
 	}
 
 	@Override
-	public void setProvidedSystem(String providedSystem) 
+	public void setClient(Arc42SystemComponent client) 
 	{
-		wrappedSystemConnection.setProvidedSystem(providedSystem);
+		super.setClient(client);
 	}
 
 	@Override
-	public String getRequiredSystem() 
+	public Arc42SystemComponent getServer() 
 	{
-		return wrappedSystemConnection.getRequiredSystem();
+		return super.getServer();
 	}
 
 	@Override
-	public void setRequiredSystem(String requiredSystem) 
+	public void setServer(Arc42SystemComponent server) 
 	{
-		wrappedSystemConnection.setRequiredSystem(requiredSystem);
+		super.setServer(server);
 	}
 
 	@Override
-	public String getConnectionName() 
+	public String getPackageName() 
 	{
-		return super.getConnectionName();
+		return super.getPackageName();
 	}
 
 	@Override
-	public void setConnectionName(String connectionName) 
+	public void setPackageName(String packageName) 
 	{
-		super.setConnectionName(connectionName);
+		super.setPackageName(packageName);
 	}
 
 	@Override
-	public ConnectionType getConnectorType() 
+	public Arc42SystemInterface getInterfaceDefinition() 
 	{
-		return super.getConnectorType();
+		return super.getInterfaceDefinition();
 	}
 
 	@Override
-	public void setConnectorType(ConnectionType type)
+	public void setInterfaceDefinition(Arc42SystemInterface interfaceDef) 
 	{
-		super.setConnectorType(type);
-	}
-
-	@Override
-	public DirectionType getDirection() 
-	{
-		return super.getDirection();
-	}
-
-	@Override
-	public void setDirection(DirectionType direction) 
-	{
-		super.setDirection(direction);
+		super.setInterfaceDefinition(interfaceDef);
 	}
 	
+	public ConnectionType getConnectorType() 
+	{
+		return this.connection;
+	}
+	
+	public void setConnectorType(ConnectionType type) 
+	{
+		this.connection = type;
+	}
+	
+	public DirectionType getDirection() 
+	{
+		return this.direction;
+	}
+	
+	public void setDirection(DirectionType direction) 
+	{
+		this.direction = direction;
+	}
+
 	public String getEaId() 
 	{
 		return eaId;
