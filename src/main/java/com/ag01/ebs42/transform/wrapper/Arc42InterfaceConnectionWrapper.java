@@ -12,6 +12,18 @@ protected Arc42InterfaceConnection wrappedSystemConnection;
 	{
 		this.wrappedSystemConnection = wrappedSystemConnection;
 	}
+	
+	@Override
+	public long getuId() 
+	{
+		return wrappedSystemConnection.getuId();
+	}
+
+	@Override
+	public void setuId(long uId) 
+	{
+		wrappedSystemConnection.setuId(uId);
+	}
 
 	@Override
 	public String getInterfaceConnectionName() 
