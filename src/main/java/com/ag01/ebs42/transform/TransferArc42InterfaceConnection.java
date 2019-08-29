@@ -92,6 +92,11 @@ public class TransferArc42InterfaceConnection extends Arc42InterfaceConnectionWr
 		super.setInterfaceDefinition(interfaceDef);
 	}
 	
+	public Arc42InterfaceConnection getConnection()
+	{
+		return wrappedSystemConnection;
+	}
+	
 	public ConnectionType getConnectorType() 
 	{
 		return this.connection;
