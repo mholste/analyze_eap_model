@@ -11,11 +11,14 @@ import com.ag01.ebs42.analyze.dbaccess.domobj.TconnectorDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectpropertiesDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
-import com.ag01.ebs42.model.arc42.InterfaceType;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.domobj.Arc42InterfaceConnectionImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterfaceImpl;
+import com.ag01.ebs42.model.utils.ConnectionType;
+import com.ag01.ebs42.model.utils.DirectionType;
+import com.ag01.ebs42.model.utils.InterfaceType;
 
 public class TransferManager 
 {
@@ -42,13 +45,16 @@ public class TransferManager
 	//List for all provided interfaces in transfer format
 	private List<TransferArc42SystemInterface> providedInterfaceList = null;
 	//List for all required interfaces in transfer format
-	private List<TransferArc42SystemInterface> requiredInterfaceList = null;
+	private List<TransferArc42SystemInterface> requiredInterfaceList = null;	
+	// Map of all interfaces and corresponding interfaces
+	private HashMap<TransferArc42SystemInterface, List<TransferArc42InterfaceConnection>> interfaceMap = null;
+	private List<TransferArc42InterfaceConnection> tempConnection = null;
 	
 	// DAOs for relevant tables
 	private List<TpackageDo> resultTpackageDoList = null;
     private List<TobjectDo> resultTobjectList = null;
     private List<TobjectpropertiesDo> resultTobjectpropertiesDoList = null;
-    private List <TconnectorDo> resultTconnectorDoList = null;
+    private List<TconnectorDo> resultTconnectorDoList = null;
 
 	private static Logger LOGGER = LogManager.getLogger(TransferManager.class);
 	
@@ -57,6 +63,7 @@ public class TransferManager
 		componentList = new ArrayList<TransferArc42SystemComponent>();
 		providedInterfaceList = new ArrayList<TransferArc42SystemInterface>();
 		requiredInterfaceList = new ArrayList<TransferArc42SystemInterface>();
+		interfaceMap = new HashMap<>();
 	}
 	
 	/**
@@ -168,31 +175,42 @@ public class TransferManager
 	}
 	
 	/**
-	 * Collects all interfaces that are defined in the model and adds a 
+	 * Collects all required interfaces that are defined in the model and adds a 
 	 * corporate Id if applicable
-	 * 
 	 * @return list of interfaces in temporary transfer format
 	 */
-	public List<TransferArc42SystemInterface> collectInterfaces()
+	public List<TransferArc42SystemInterface> collectRequiredInterfaces()
 	{
-		for (TobjectDo objDo : resultTobjectList)
+		Arc42SystemDo baseSystem = null;
+		// Iterate all system components
+		for (TransferArc42SystemComponent component : componentList)
 		{
-			if (objDo.getObjecttype().equalsIgnoreCase(PROVIDED) || 
-					objDo.getObjecttype().equalsIgnoreCase(REQUIRED))
+			// For each system component, check all objects and iterate over them
+			for (TobjectDo objDo : resultTobjectList)
 			{
-				TransferArc42SystemInterface transInt = new TransferArc42SystemInterface(new Arc42SystemInterfaceImpl());
-				
-				transInt.setEaId(String.valueOf(objDo.getObjectid()));
-				transInt.setEaPackageId(String.valueOf(objDo.getPackageid()));
-				transInt.setEaParentId(String.valueOf(objDo.getParentid()));
-				transInt.setSystemInterfaceName(objDo.getName());
-				transInt.setInterfaceType(objDo.getObjecttype().equalsIgnoreCase(REQUIRED) 
-						? InterfaceType.REQUIRED : InterfaceType.PROVIDED);
-				transInt.setCorporateId(this.mapCorporateId(String.valueOf(objDo.getParentid())));
-				providedInterfaceList.add(transInt);
+				// Continue, if the object does not belong to the package of the component 
+				if (objDo.getPackageid() != Integer.valueOf(component.getEaPackageId())) continue;
+				// Get only the provided interfaces of this package
+				if (objDo.getObjecttype().equalsIgnoreCase(REQUIRED))
+				{
+					baseSystem = new Arc42SystemDoImpl();
+					baseSystem.setSystemName(component.getSystemComponentName());
+					baseSystem.addSystemComponent(component.getComponent());
+					TransferArc42SystemInterface transInt = new TransferArc42SystemInterface(new Arc42SystemInterfaceImpl());
+					transInt.setEaId(String.valueOf(objDo.getObjectid()));
+					transInt.setEaPackageId(String.valueOf(objDo.getPackageid()));
+					transInt.setEaParentId(String.valueOf(objDo.getParentid()));
+					transInt.setSystemInterfaceName(objDo.getName());
+					transInt.setInterfaceType(InterfaceType.REQUIRED);
+					transInt.setDefinedInSystem(baseSystem);
+					transInt.setCorporateId(component.getCorporateId());
+	
+					requiredInterfaceList.add(transInt);
+				}
 			}
 		}
-		return providedInterfaceList;
+
+			return requiredInterfaceList;
 	}
 	
 	public List<TransferArc42SystemInterface> collectProvidedInterfaces()
@@ -211,8 +229,8 @@ public class TransferManager
 				{
 					baseSystem = new Arc42SystemDoImpl();
 					baseSystem.setSystemName(component.getSystemComponentName());
-					TransferArc42SystemInterface transInt = new TransferArc42SystemInterface(new Arc42SystemInterfaceImpl());
-					
+					baseSystem.addSystemComponent(component.getComponent());
+					TransferArc42SystemInterface transInt = new TransferArc42SystemInterface(new Arc42SystemInterfaceImpl());				
 					transInt.setEaId(String.valueOf(objDo.getObjectid()));
 					transInt.setEaPackageId(String.valueOf(objDo.getPackageid()));
 					transInt.setEaParentId(String.valueOf(objDo.getParentid()));
@@ -229,13 +247,44 @@ public class TransferManager
 		return providedInterfaceList;
 	}
 	
-	public List<TransferArc42SystemInterface> collectRequiredInterfaces()
+	public HashMap<TransferArc42SystemInterface, List<TransferArc42InterfaceConnection>> collectConnections()
 	{
 		for (TransferArc42SystemInterface provided : providedInterfaceList)
 		{
 			
+			for (TconnectorDo conDo : resultTconnectorDoList)
+			{
+				if (! conDo.getConnectortype().equalsIgnoreCase(ConnectionType.DEPENDENCY.name())) continue;
+				if (conDo.getEndobjectid() == Integer.valueOf(provided.getEaId()))
+				{
+					if (tempConnection == null)
+					{
+						tempConnection = new ArrayList<TransferArc42InterfaceConnection>();
+					}
+					TransferArc42InterfaceConnection transCon = 
+							new TransferArc42InterfaceConnection(new Arc42InterfaceConnectionImpl());
+					transCon.setEaEndId(String.valueOf(conDo.getEndobjectid()));
+					transCon.setEaStartId(String.valueOf(conDo.getStartobjectid()));
+					transCon.setEaId(String.valueOf(conDo.getConnectorid()));
+					transCon.setServer(provided.getDefinedInSystem().getSystemComponentList().get(0));
+					transCon.setConnectorType(ConnectionType.DEPENDENCY);
+					transCon.setDirection(DirectionType.valueOf(conDo.getDirection()));
+					transCon.setInterfaceConnectionName(conDo.getName());
+					transCon.setInterfaceDefinition(provided.getInterface());
+					tempConnection.add(transCon);
+				}
+			}
+			if (tempConnection == null)
+			{
+				continue;
+			}
+			else
+			{
+				interfaceMap.put(provided, tempConnection);
+				tempConnection = null;
+			}
 		}
-		return null;
+		return interfaceMap;
 	}
 	
 	public List<TpackageDo> getResultTpackageDoList() 
