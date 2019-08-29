@@ -17,4 +17,8 @@ public interface Arc42SystemDo
 	public void setSystemComponentList(List<Arc42SystemComponent> systemComponentList);
 	public List<Arc42SystemInterface> getSystemInterfaceList();
 	public void setSystemInterfaceList(List<Arc42SystemInterface> systemInterfaceList);
+	public void addSystemComponent(Arc42SystemComponent component);
+	public void removeSystemComponent(Arc42SystemComponent component);
+	public void addSystemInterface(Arc42SystemInterface sysInterface);
+	public void removeSystemInterface(Arc42SystemInterface sysInterface);
 }
