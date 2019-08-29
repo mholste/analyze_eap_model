@@ -5,6 +5,8 @@ import com.ag01.ebs42.model.utils.DirectionType;
 
 public interface Arc42InterfaceConnection 
 {
+	public long getuId();
+	public void setuId(long uId);
 	public String getInterfaceConnectionName();
 	public void setInterfaceConnectionName(String interfaceConnectionName);
 	public Arc42SystemComponent getClient();
