@@ -1,6 +1,7 @@
 package com.ag01.ebs42.model.arc42.domobj;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
@@ -88,6 +89,38 @@ public class Arc42SystemDoImpl implements Serializable, Arc42SystemDo {
 	public void setSystemComponentList(List<Arc42SystemComponent> systemComponentList) 
 	{
 		this.systemComponentList = systemComponentList;
+	}
+	
+	@Override
+	public void addSystemComponent(Arc42SystemComponent component) 
+	{
+		if (this.systemComponentList == null)
+		{
+			this.systemComponentList = new ArrayList<Arc42SystemComponent>();
+		}
+		this.systemComponentList.add(component);
+	}
+	
+	@Override
+	public void removeSystemComponent(Arc42SystemComponent component) 
+	{
+		this.systemComponentList.remove(component);
+	}
+	
+	@Override
+	public void addSystemInterface(Arc42SystemInterface sysInterface) 
+	{
+		if (this.systemInterfaceList == null)
+		{
+			this.systemInterfaceList = new ArrayList<Arc42SystemInterface>();
+		}
+		this.systemInterfaceList.add(sysInterface);		
+	}
+	
+	@Override
+	public void removeSystemInterface(Arc42SystemInterface sysInterface) 
+	{
+		this.systemInterfaceList.remove(sysInterface);
 	}
 
 	@Override
