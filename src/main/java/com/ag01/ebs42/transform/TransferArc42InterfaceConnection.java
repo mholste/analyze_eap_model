@@ -27,9 +27,9 @@ public class TransferArc42InterfaceConnection extends Arc42InterfaceConnectionWr
 	}
 
 	@Override
-	public void setInterface(String interfaceConnectionName) 
+	public void setInterfaceConnectionName(String interfaceConnectionName) 
 	{
-		super.setInterface(interfaceConnectionName);
+		super.setInterfaceConnectionName(interfaceConnectionName);
 	}
 
 	@Override

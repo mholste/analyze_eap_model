@@ -20,9 +20,9 @@ protected Arc42InterfaceConnection wrappedSystemConnection;
 	}
 
 	@Override
-	public void setInterface(String interfaceConnectionName) 
+	public void setInterfaceConnectionName(String interfaceConnectionName) 
 	{
-		wrappedSystemConnection.setInterface(interfaceConnectionName);	
+		wrappedSystemConnection.setInterfaceConnectionName(interfaceConnectionName);	
 	}
 
 	@Override
