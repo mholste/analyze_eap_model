@@ -37,6 +37,7 @@ public class ApplicationMainMHO
     
     private static List<TransferArc42SystemComponent> componentList = null;
 	private static List<TransferArc42SystemInterface> providedInterfaceList = null;
+	private static List<TransferArc42SystemInterface> requiredInterfaceList = null;
 	
 	public static void main(String[] args) 
 	{
@@ -48,12 +49,14 @@ public class ApplicationMainMHO
 		transferManager.setResultTobjectpropertiesDoList(resultTobjectpropertiesDoList);
 		transferManager.setResultTconnectorDoList(resultconnectorDoList);
 		componentList = transferManager.collectSystems();
-		//providedInterfaceList = transferManager.collectInterfaces();
-		providedInterfaceList = transferManager.collectProvidedInterfaces();
+		providedInterfaceList = transferManager.collectRequiredInterfaces();
+		requiredInterfaceList = transferManager.collectRequiredInterfaces();
+		
 		
 		ExcelExporter exporter = ExcelExporter.getInstance();
 		exporter.exportSystems(componentList);
-		exporter.exportInterfaces(providedInterfaceList);
+		exporter.exportInterfaces(providedInterfaceList, "Provided Interfaces");
+		exporter.exportInterfaces(requiredInterfaceList, "RequiredInterfaces");
 		
 		try
 		{
