@@ -1,7 +1,7 @@
 package com.ag01.ebs42.model.arc42.api;
 
-import com.ag01.ebs42.model.arc42.ConnectionType;
-import com.ag01.ebs42.model.arc42.DirectionType;
+import com.ag01.ebs42.model.utils.ConnectionType;
+import com.ag01.ebs42.model.utils.DirectionType;
 
 public interface Arc42InterfaceConnection 
 {
