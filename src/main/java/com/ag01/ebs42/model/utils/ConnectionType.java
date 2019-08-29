@@ -1,4 +1,4 @@
-package com.ag01.ebs42.model.arc42;
+package com.ag01.ebs42.model.utils;
 
 public enum ConnectionType 
 {
