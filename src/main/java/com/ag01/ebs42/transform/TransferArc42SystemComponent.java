@@ -5,7 +5,6 @@ import java.util.List;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemComponent;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
 import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
-import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterfaceImpl;
 import com.ag01.ebs42.transform.wrapper.Arc42SystemComponentWrapper;
 
 public class TransferArc42SystemComponent extends Arc42SystemComponentWrapper
@@ -18,6 +17,10 @@ public class TransferArc42SystemComponent extends Arc42SystemComponentWrapper
 		super(wrappedSystemComponent);
 	}
 	
+	public Arc42SystemComponent getComponent()
+	{
+		return super.wrappedSystemComponent;
+	}
 	public String getCorporateId()
 	{
 		return this.corporateId;
