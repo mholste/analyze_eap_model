@@ -3,18 +3,16 @@ package com.ag01.ebs42.model.arc42.api;
 import com.ag01.ebs42.model.arc42.ConnectionType;
 import com.ag01.ebs42.model.arc42.DirectionType;
 
-public interface Arc42SystemConnection 
+public interface Arc42InterfaceConnection 
 {
-	public String getInterface();
-	public void setInterface(String interfaceName);
-	public String getProvidedSystem();
-	public void setProvidedSystem(String providedSystem);
-	public String getRequiredSystem();
-	public void setRequiredSystem(String requiredSystem);
-	public String getConnectionName();
-	public void setConnectionName(String connectionName);
-	public ConnectionType getConnectorType();
-	public void setConnectorType(ConnectionType type);
-	public DirectionType getDirection();
-	public void setDirection(DirectionType direction);
+	public String getInterfaceConnectionName();
+	public void setInterface(String interfaceConnectionName);
+	public Arc42SystemComponent getClient();
+	public void setClient(Arc42SystemComponent client);
+	public Arc42SystemComponent getServer();
+	public void setServer(Arc42SystemComponent server);
+	public String getPackageName();
+	public void setPackageName(String packageName);
+	public Arc42SystemInterface getInterfaceDefinition();
+	public void setInterfaceDefinition(Arc42SystemInterface interfaceDef);
 }
