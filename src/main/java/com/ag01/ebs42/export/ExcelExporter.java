@@ -86,11 +86,11 @@ public class ExcelExporter
 		}
 	}
 	
-	public void exportInterfaces(List<TransferArc42SystemInterface> interfaceList)
+	public void exportInterfaces(List<TransferArc42SystemInterface> interfaceList, String title)
 	{
-		XSSFSheet sheet = workbook.createSheet("Interfaces");		
+		XSSFSheet sheet = workbook.createSheet(title);		
 		ArrayList<String> headers = new ArrayList<String>(Arrays.asList("Name", 
-				"Art", "System ID"));
+				"Art", "Corp ID", "Definierendes System", "Object Id", "Package Id", "Parent Id"));
 		this.createHeaders(headers, sheet);
 		this.font.setBold(false);
 		this.style.setFont(font);
@@ -107,8 +107,14 @@ public class ExcelExporter
 			kindCell.setCellValue((iface.getInterfaceType()).name());
 			Cell idCell = row.createCell(2);
 			idCell.setCellValue(iface.getCorporateId());
-			Cell eaCell = row.createCell(3);
-			eaCell.setCellValue(iface.getEaId());
+			Cell sysCell = row.createCell(3);
+			sysCell.setCellValue(iface.getDefinedInSystem().getSystemName());			
+			Cell objCell = row.createCell(4);
+			objCell.setCellValue(iface.getEaId());
+			Cell packCell = row.createCell(5);
+			packCell.setCellValue(iface.getEaPackageId());
+			Cell parCell = row.createCell(6);
+			parCell.setCellValue(iface.getEaParentId());
 		}
 	}
 	
