@@ -2,13 +2,13 @@ package com.ag01.ebs42.transform.wrapper;
 
 import com.ag01.ebs42.model.arc42.ConnectionType;
 import com.ag01.ebs42.model.arc42.DirectionType;
-import com.ag01.ebs42.model.arc42.api.Arc42SystemConnection;
+import com.ag01.ebs42.model.arc42.api.Arc42InterfaceConnection;
 
-public abstract class Arc42SystemConnectionWrapper implements Arc42SystemConnection 
+public abstract class Arc42SystemConnectionWrapper implements Arc42InterfaceConnection 
 {
-protected Arc42SystemConnection wrappedSystemConnection;
+protected Arc42InterfaceConnection wrappedSystemConnection;
 	
-	public Arc42SystemConnectionWrapper(Arc42SystemConnection wrappedSystemConnection)
+	public Arc42SystemConnectionWrapper(Arc42InterfaceConnection wrappedSystemConnection)
 	{
 		this.wrappedSystemConnection = wrappedSystemConnection;
 	}

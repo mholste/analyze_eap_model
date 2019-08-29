@@ -2,7 +2,7 @@ package com.ag01.ebs42.transform;
 
 import com.ag01.ebs42.model.arc42.ConnectionType;
 import com.ag01.ebs42.model.arc42.DirectionType;
-import com.ag01.ebs42.model.arc42.api.Arc42SystemConnection;
+import com.ag01.ebs42.model.arc42.api.Arc42InterfaceConnection;
 import com.ag01.ebs42.transform.wrapper.Arc42SystemConnectionWrapper;
 
 public class TransferArc42SystemConnection extends Arc42SystemConnectionWrapper
@@ -11,7 +11,7 @@ public class TransferArc42SystemConnection extends Arc42SystemConnectionWrapper
 	private String eaStartId;
 	private String eaEndId;
 	
-	public TransferArc42SystemConnection(Arc42SystemConnection wrappedSystemConnection)
+	public TransferArc42SystemConnection(Arc42InterfaceConnection wrappedSystemConnection)
 	{
 		super(wrappedSystemConnection);
 	}
