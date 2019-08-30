@@ -50,6 +50,8 @@ public class TransferManager
 	private HashMap<TransferArc42SystemInterface, List<TransferArc42InterfaceConnection>> interfaceMap = null;
 	private List<TransferArc42InterfaceConnection> tempConnection = null;
 	
+	private List<TransferArc42SystemInterface> allRequiredInterfaceList = null;
+	
 	// DAOs for relevant tables
 	private List<TpackageDo> resultTpackageDoList = null;
     private List<TobjectDo> resultTobjectList = null;
@@ -63,6 +65,7 @@ public class TransferManager
 		componentList = new ArrayList<TransferArc42SystemComponent>();
 		providedInterfaceList = new ArrayList<TransferArc42SystemInterface>();
 		requiredInterfaceList = new ArrayList<TransferArc42SystemInterface>();
+		allRequiredInterfaceList = new ArrayList<TransferArc42SystemInterface>();
 		interfaceMap = new HashMap<>();
 	}
 	
@@ -213,6 +216,26 @@ public class TransferManager
 			return requiredInterfaceList;
 	}
 	
+	public List<TransferArc42SystemInterface> collectAllRequiredInterfaces()
+	{
+		Arc42SystemDo baseSystem = new Arc42SystemDoImpl();
+		baseSystem.setSystemName("Dummy");
+		for (TobjectDo objDo : resultTobjectList)
+		{
+			if (!objDo.getObjecttype().equalsIgnoreCase(REQUIRED)) continue;
+			TransferArc42SystemInterface transInt = new TransferArc42SystemInterface(new Arc42SystemInterfaceImpl());
+			transInt.setEaId(String.valueOf(objDo.getObjectid()));
+			transInt.setEaPackageId(String.valueOf(objDo.getPackageid()));
+			transInt.setEaParentId(String.valueOf(objDo.getParentid()));
+			transInt.setSystemInterfaceName(objDo.getName());
+			transInt.setInterfaceType(InterfaceType.REQUIRED);
+			transInt.setDefinedInSystem(baseSystem);
+			transInt.setCorporateId("123");
+			allRequiredInterfaceList.add(transInt);
+		}
+		return allRequiredInterfaceList;
+	}
+	
 	public List<TransferArc42SystemInterface> collectProvidedInterfaces()
 	{
 		Arc42SystemDo baseSystem = null;
@@ -268,7 +291,7 @@ public class TransferManager
 					transCon.setEaId(String.valueOf(conDo.getConnectorid()));
 					transCon.setServer(provided.getDefinedInSystem().getSystemComponentList().get(0));
 					transCon.setConnectorType(ConnectionType.DEPENDENCY);
-					transCon.setDirection(DirectionType.valueOf(conDo.getDirection()));
+					//transCon.setDirection(DirectionType.valueOf(conDo.getDirection()));
 					transCon.setInterfaceConnectionName(conDo.getName());
 					transCon.setInterfaceDefinition(provided.getInterface());
 					tempConnection.add(transCon);
