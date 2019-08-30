@@ -1,18 +1,19 @@
 package com.ag01.ebs42.transform.wrapper;
 
-import com.ag01.ebs42.meta_model.api.Arc42SystemInterface;
-import com.ag01.ebs42.meta_model.api.InterfaceType;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemDo;
+import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
 
 /**
- * Wrapper class around Arc42SystemInterface to keep EA-specific functionalities 
+ * Wrapper class around Arc42SystemInterfaceImpl to keep EA-specific functionalities 
  * out of the meta model.
  * 
  * @author Michael Holste
  *
  */
+
 public abstract class Arc42SystemInterfaceWrapper implements Arc42SystemInterface
 {
-	// Instance of the wrapped class
+	private int tmp;
 	protected Arc42SystemInterface wrappedSystemInterface;
 	
 	public Arc42SystemInterfaceWrapper(Arc42SystemInterface wrappedSystemInterface)
@@ -21,52 +22,50 @@ public abstract class Arc42SystemInterfaceWrapper implements Arc42SystemInterfac
 	}
 
 	@Override
-	public String getInterfaceName() 
+	public long getuId() 
 	{
-		return wrappedSystemInterface.getInterfaceName();
+		return wrappedSystemInterface.getuId();
 	}
 
 	@Override
-	public void setInterfaceName(String interfaceName) 
+	public void setuId(long uId) 
 	{
-		wrappedSystemInterface.setInterfaceName(interfaceName);
+		wrappedSystemInterface.setuId(uId);
 	}
 
 	@Override
-	public InterfaceType getInterfaceType() 
+	public String getSystemInterfaceName() 
 	{
-		return wrappedSystemInterface.getInterfaceType();
+		return wrappedSystemInterface.getSystemInterfaceName();
 	}
 
 	@Override
-	public void setInterfaceType(InterfaceType type) 
+	public void setSystemInterfaceName(String systemInterfaceName) 
 	{
-		wrappedSystemInterface.setInterfaceType(type);
+		wrappedSystemInterface.setSystemInterfaceName(systemInterfaceName);
 	}
 
 	@Override
-	public String getSystemName() 
+	public String getPackageName() 
 	{
-		return wrappedSystemInterface.getSystemName();
+		return wrappedSystemInterface.getPackageName();
 	}
 
 	@Override
-	public void setSystemName(String systemName) 
+	public void setPackageName(String packageName) 
 	{
-		wrappedSystemInterface.setSystemName(systemName);
+		wrappedSystemInterface.setPackageName(packageName);
 	}
 
 	@Override
-	public String getTechnology() 
+	public Arc42SystemDo getDefinedInSystem() 
 	{
-		return wrappedSystemInterface.getTechnology();
+		return wrappedSystemInterface.getDefinedInSystem();
 	}
 
 	@Override
-	public void setTechnology(String technology) 
+	public void setDefinedInSystem(Arc42SystemDo definedInSystem) 
 	{
-		wrappedSystemInterface.setTechnology(technology);
-	}
-	
-	
+		wrappedSystemInterface.setDefinedInSystem(definedInSystem);
+	}	
 }
