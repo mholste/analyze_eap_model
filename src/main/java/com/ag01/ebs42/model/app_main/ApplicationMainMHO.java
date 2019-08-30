@@ -1,6 +1,7 @@
 package com.ag01.ebs42.model.app_main;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +21,7 @@ import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
 import com.ag01.ebs42.export.ExcelExporter;
 import com.ag01.ebs42.model.app_config.ApplicationConfigMHO;
 import com.ag01.ebs42.model.app_config.ApplicationMainConfiguration;
+import com.ag01.ebs42.transform.TransferArc42InterfaceConnection;
 import com.ag01.ebs42.transform.TransferArc42SystemComponent;
 import com.ag01.ebs42.transform.TransferArc42SystemInterface;
 import com.ag01.ebs42.transform.TransferManager;
@@ -39,6 +41,10 @@ public class ApplicationMainMHO
 	private static List<TransferArc42SystemInterface> providedInterfaceList = null;
 	private static List<TransferArc42SystemInterface> requiredInterfaceList = null;
 	
+	//temp
+	private static List<TransferArc42SystemInterface> allRequiredInterfaceList = null;
+	private static HashMap<TransferArc42SystemInterface, List<TransferArc42InterfaceConnection>> interfaceMap = null;
+	
 	public static void main(String[] args) 
 	{
 		ctx = new AnnotationConfigApplicationContext(ApplicationConfigMHO.class);
@@ -49,15 +55,17 @@ public class ApplicationMainMHO
 		transferManager.setResultTobjectpropertiesDoList(resultTobjectpropertiesDoList);
 		transferManager.setResultTconnectorDoList(resultconnectorDoList);
 		componentList = transferManager.collectSystems();
-		providedInterfaceList = transferManager.collectRequiredInterfaces();
+		providedInterfaceList = transferManager.collectProvidedInterfaces();
 		requiredInterfaceList = transferManager.collectRequiredInterfaces();
-		
+		allRequiredInterfaceList = transferManager.collectAllRequiredInterfaces();
+		interfaceMap = transferManager.collectConnections();
 		
 		ExcelExporter exporter = ExcelExporter.getInstance();
 		exporter.exportSystems(componentList);
 		exporter.exportInterfaces(providedInterfaceList, "Provided Interfaces");
-		exporter.exportInterfaces(requiredInterfaceList, "RequiredInterfaces");
-		
+		exporter.exportInterfaces(requiredInterfaceList, "Required Interfaces");
+		exporter.exportInterfaces(allRequiredInterfaceList, "All Interfaces");
+		exporter.exportConnections(interfaceMap);
 		try
 		{
 			exporter.generateReport();
