@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -120,13 +123,14 @@ public class ExcelExporter
 		}
 	}
 	
-	public void exportConnections(HashMap<TransferArc42SystemInterface, List<TransferArc42InterfaceConnection>> interfaceMap)
+	public void exportConnections(HashMap<TransferArc42SystemInterface, List<TransferArc42InterfaceConnection>> interfaceMap, 
+			List<TransferArc42SystemInterface> interfaceList)
 	{
 		int rownum = 0;
 		XSSFSheet sheet = workbook.createSheet("Connections");
 		for (TransferArc42SystemInterface tInterface : interfaceMap.keySet())
 		{
-			ArrayList<String> headersInterface = new ArrayList<String>(Arrays.asList("Name", 
+			ArrayList<String> headersInterface = new ArrayList<String>(Arrays.asList("Interface Name", 
 					"Art", "Corp ID", "Definierendes System", "Object Id", "Package Id", "Parent Id"));
 			this.createSubHeaders(headersInterface, sheet, rownum, 0);
 			this.font.setBold(false);
@@ -152,7 +156,8 @@ public class ExcelExporter
 			
 			List<TransferArc42InterfaceConnection> iConList = interfaceMap.get(tInterface);
 			ArrayList<String> headersConnection = new ArrayList<String>(Arrays.asList(
-					"Name", "Interface", "Server", "End Id", "Start Id", "Connector Id"));
+					"Verbindungsname", "Interface", "Server", "End Id", "Start Id", "Connector Id"));
+			rownum++;
 			this.createSubHeaders(headersConnection, sheet, rownum, 2);	
 			this.font.setBold(false);
 			this.style.setFont(font);
@@ -172,12 +177,48 @@ public class ExcelExporter
 				Cell startCell= row1.createCell(6);
 				startCell.setCellValue(iCon.getEaStartId());
 				Cell conCell= row1.createCell(7);
-				conCell.setCellValue(iCon.getEaStartId());
+				conCell.setCellValue(iCon.getEaId());
+				
+				TransferArc42SystemInterface reqInterface = null;
+				for (TransferArc42SystemInterface iface : interfaceList)
+				{
+					
+					if (iface.getEaId() == iCon.getEaStartId())
+					{
+						reqInterface = iface;
+					}
+				}
+				if (reqInterface != null)
+				{
+					
+					ArrayList<String> requiredInterface = new ArrayList<String>(Arrays.asList("Interface Name", 
+							"Art", "Corp ID", "Definierendes System", "Object Id", "Package Id", "Parent Id"));
+					this.createSubHeaders(requiredInterface, sheet, rownum, 0);
+					this.font.setBold(false);
+					this.style.setFont(font);						
+					this.style.setFillBackgroundColor(new XSSFColor(rgb, new DefaultIndexedColorMap()));
+					rownum++;
+					Row rowReq = sheet.createRow(rownum++);
+					Cell name1Cell = rowReq.createCell(3);
+					name1Cell.setCellValue(reqInterface.getSystemInterfaceName());
+					Cell kind1Cell = rowReq.createCell(4);
+					kind1Cell.setCellValue((reqInterface.getInterfaceType()).name());
+					Cell id1Cell = rowReq.createCell(5);
+					id1Cell.setCellValue(reqInterface.getCorporateId());
+					Cell sys1Cell = rowReq.createCell(6);
+					sys1Cell.setCellValue(reqInterface.getDefinedInSystem().getSystemName());			
+					Cell obj1Cell = rowReq.createCell(7);
+					obj1Cell.setCellValue(reqInterface.getEaId());
+					Cell pack1Cell = rowReq.createCell(8);
+					pack1Cell.setCellValue(reqInterface.getEaPackageId());
+					Cell par1Cell = rowReq.createCell(9);
+					par1Cell.setCellValue(reqInterface.getEaParentId());
+					break;
+				}
+				
 			}
+			rownum++;
 		}
-		
-		
-		
 	}
 	
 	/**
