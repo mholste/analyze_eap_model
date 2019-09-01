@@ -65,7 +65,7 @@ public class ApplicationMainMHO
 		exporter.exportInterfaces(providedInterfaceList, "Provided Interfaces");
 		exporter.exportInterfaces(requiredInterfaceList, "Required Interfaces");
 		exporter.exportInterfaces(allRequiredInterfaceList, "All Interfaces");
-		exporter.exportConnections(interfaceMap);
+		exporter.exportConnections(interfaceMap, allRequiredInterfaceList);
 		try
 		{
 			exporter.generateReport();
