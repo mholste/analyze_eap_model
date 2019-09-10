@@ -100,7 +100,7 @@ public class ExcelExporter implements TransferValues
 			Cell cell1 = row.createCell(0);
 			cell1.setCellValue(values.get(SYSTEMNAME));
 			Cell cell2 = row.createCell(1);
-			cell1.setCellValue(values.get(PROV_CORP_ID));
+			cell2.setCellValue(values.get(PROV_CORP_ID));
 			Cell cell3 = row.createCell(2);
 			cell3.setCellValue(values.get(INTERFACE_NAME));
 			Cell cell4 = row.createCell(3);

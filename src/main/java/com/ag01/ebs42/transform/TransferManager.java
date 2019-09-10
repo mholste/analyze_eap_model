@@ -180,16 +180,14 @@ public class TransferManager implements TransferValues
 				{
 					TransferArc42SystemInterface requiredInterface = null;
 					//if (value == null)
-					value.put(SYSTEMNAME, iface.getDefinedInSystem().getSystemName());
-					value.put(PROV_CORP_ID, iface.getCorporateId());
-					value.put(INTERFACE_NAME, iface.getSystemInterfaceName());
-					value.put(INTERFACE_TYP, iface.getInterfaceType().name());
 
-					value.put(CONNECTION, con.getInterfaceConnectionName());
 					for (TransferArc42SystemInterface req : requiredInterfaceList)
 					{
-
-
+						value.put(SYSTEMNAME, iface.getDefinedInSystem().getSystemName());
+						value.put(PROV_CORP_ID, iface.getCorporateId());
+						value.put(INTERFACE_NAME, iface.getSystemInterfaceName());
+						value.put(INTERFACE_TYP, iface.getInterfaceType().name());
+						value.put(CONNECTION, con.getInterfaceConnectionName());
 						if (con.getEaStartId().equalsIgnoreCase(req.getEaId()))
 						{
 							requiredInterface = req;
