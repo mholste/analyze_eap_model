@@ -1,6 +1,7 @@
 package com.ag01.ebs42.model.app_main;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class ApplicationMainMHO
     private static List<TransferArc42SystemComponent> componentList = null;
 	private static List<TransferArc42SystemInterface> providedInterfaceList = null;
 	private static List<TransferArc42SystemInterface> requiredInterfaceList = null;
+	private static ArrayList<HashMap> allConnections = null;
 	
 	//temp
 	private static List<TransferArc42SystemInterface> allRequiredInterfaceList = null;
@@ -59,13 +61,18 @@ public class ApplicationMainMHO
 		requiredInterfaceList = transferManager.collectRequiredInterfaces();
 		allRequiredInterfaceList = transferManager.collectAllRequiredInterfaces();
 		interfaceMap = transferManager.collectConnections();
+		allConnections = transferManager.collectAllConnections();
 		
 		ExcelExporter exporter = ExcelExporter.getInstance();
 		exporter.exportSystems(componentList);
 		exporter.exportInterfaces(providedInterfaceList, "Provided Interfaces");
 		exporter.exportInterfaces(requiredInterfaceList, "Required Interfaces");
 		exporter.exportInterfaces(allRequiredInterfaceList, "All Interfaces");
-		exporter.exportConnections(interfaceMap, allRequiredInterfaceList);
+		exporter.exportConnections(interfaceMap, requiredInterfaceList);
+		exporter.exportConnections2(interfaceMap, requiredInterfaceList);
+		exporter.exportGeneral(interfaceMap, providedInterfaceList, requiredInterfaceList);
+		exporter.exportAllConnections(allConnections);
+
 		try
 		{
 			exporter.generateReport();

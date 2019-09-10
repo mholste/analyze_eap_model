@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,23 +18,10 @@ import com.ag01.ebs42.model.arc42.domobj.Arc42SystemComponentImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemInterfaceImpl;
 import com.ag01.ebs42.model.utils.ConnectionType;
-import com.ag01.ebs42.model.utils.DirectionType;
 import com.ag01.ebs42.model.utils.InterfaceType;
 
-public class TransferManager 
+public class TransferManager implements TransferValues
 {
-	// Final values from EA model
-	private static final int MODEL_ID = 2; 
-	private static final String ARC_NAME = "20_ARC42";
-	private static final String SYSTEM_Name = "50_systems";
-	private static final String ELEMENT_NAME = "80_elements";
-	private static final String COMPONENT = "Component";
-	private static final String ICTO = "ICTO";
-	private static final String APP = "APP";
-	private static final String SPL = "SPL";
-	private static final String REQUIRED = "RequiredInterface";
-	private static final String PROVIDED = "ProvidedInterface";
-	
 	// Names for keys in HashMap
 	private static final String NAME = "Name";
 	private static final String PACKAGE_ID = "Package_ID";
@@ -48,8 +36,9 @@ public class TransferManager
 	private List<TransferArc42SystemInterface> requiredInterfaceList = null;	
 	// Map of all interfaces and corresponding interfaces
 	private HashMap<TransferArc42SystemInterface, List<TransferArc42InterfaceConnection>> interfaceMap = null;
+	// List for interfaces in the overall map
 	private List<TransferArc42InterfaceConnection> tempConnection = null;
-	
+	// List for all required Interfaces
 	private List<TransferArc42SystemInterface> allRequiredInterfaceList = null;
 	
 	// DAOs for relevant tables
@@ -67,6 +56,7 @@ public class TransferManager
 		requiredInterfaceList = new ArrayList<TransferArc42SystemInterface>();
 		allRequiredInterfaceList = new ArrayList<TransferArc42SystemInterface>();
 		interfaceMap = new HashMap<>();
+		LOGGER.info("TransferManager and instance variable set up successfully");
 	}
 	
 	/**
@@ -114,68 +104,6 @@ public class TransferManager
 		}
 		return componentList;		
 	}	
-	
-	/**
-	 * Maps a given id of an t_object to a corporate ID
-	 * 
-	 * @param id	the id of t_object to map
-	 * @return		the corporate Id or "internal" if a corporate Id is not found 
-	 */
-	private String mapCorporateId(String id)
-	{
-		for (TobjectpropertiesDo prop : resultTobjectpropertiesDoList)
-		{
-			if (id.equalsIgnoreCase(String.valueOf(prop.getObjectid())) &&
-					(prop.getProperty().equalsIgnoreCase(APP) || 
-					prop.getProperty().equalsIgnoreCase(ICTO) || 
-					prop.getProperty().equalsIgnoreCase(SPL)))
-			{
-				return (prop.getProperty() + " " + prop.getValue());
-			}						
-		}
-		return "Internal";
-	}
-	
-	/**
-	 * Gets the id of a package in EA with a given name and ID
-	 * 
-	 * @param parent the id of the parent folder 
-	 * @param name   the name of the folder
-	 * @return       the id of the package as int
-	 */
-	public int extractPackageID(int parent, String name)
-	{
-		int retId = 0;
-		for (TpackageDo tmpDo : resultTpackageDoList)
-		{
-			if (tmpDo.getParentid() == parent && tmpDo.getName().equalsIgnoreCase(name))
-			{
-				retId = tmpDo.getPackageid();
-				break;
-			}
-		}
-		return retId;
-	}
-	
-	/**
-	 * Gets all folders beyond a given Package ID in the original EA model
-	 * 
-	 * @param parent id of the parent folder
-	 */
-	public void getSystemfolders(int parent)
-	{
-		this.systemFolderList = new ArrayList<HashMap<String, String>>();
-		for (TpackageDo tmpDo : resultTpackageDoList)
-		{
-			if (tmpDo.getParentid() == parent)
-			{
-				HashMap<String, String> system = new HashMap<String, String>(); 
-				system.put(NAME, tmpDo.getName());
-				system.put(PACKAGE_ID, String.valueOf(tmpDo.getPackageid()));
-				systemFolderList.add(system);
-			}
-		}
-	}
 	
 	/**
 	 * Collects all required interfaces that are defined in the model and adds a 
@@ -235,7 +163,75 @@ public class TransferManager
 		}
 		return allRequiredInterfaceList;
 	}
-	
+
+	public ArrayList<HashMap> collectAllConnections()
+	{
+		HashMap<String, String> value = null;
+		ArrayList<HashMap> allConnections = new ArrayList<HashMap>();
+
+
+		for (TransferArc42SystemInterface iface : providedInterfaceList)
+		{
+			List<TransferArc42InterfaceConnection> conList = interfaceMap.get(iface);
+			value = new HashMap<String, String>();
+			if (conList != null)
+			{
+				for (TransferArc42InterfaceConnection con : conList)
+				{
+					TransferArc42SystemInterface requiredInterface = null;
+					//if (value == null)
+					value.put(SYSTEMNAME, iface.getDefinedInSystem().getSystemName());
+					value.put(PROV_CORP_ID, iface.getCorporateId());
+					value.put(INTERFACE_NAME, iface.getSystemInterfaceName());
+					value.put(INTERFACE_TYP, iface.getInterfaceType().name());
+
+					value.put(CONNECTION, con.getInterfaceConnectionName());
+					for (TransferArc42SystemInterface req : requiredInterfaceList)
+					{
+
+
+						if (con.getEaStartId().equalsIgnoreCase(req.getEaId()))
+						{
+							requiredInterface = req;
+							//break;
+						}
+						if (requiredInterface != null)
+						{
+							value.put(REQ_INTERFACE, requiredInterface.getSystemInterfaceName());
+							value.put(INTERFACE_TYP2, requiredInterface.getInterfaceType().name());
+							value.put(REQ_SYSTEMNAME, requiredInterface.getDefinedInSystem().getSystemName());
+							value.put(REQ_CORP_ID, requiredInterface.getCorporateId());
+						}
+						else
+						{
+							value.put(REQ_INTERFACE, NA);
+							value.put(INTERFACE_TYP2, EMPTY);
+							value.put(REQ_SYSTEMNAME, NA);
+							value.put(REQ_CORP_ID, EMPTY);
+						}
+					}
+				}
+			}
+			else
+			{
+				value.put(SYSTEMNAME, iface.getDefinedInSystem().getSystemName());
+				value.put(PROV_CORP_ID, iface.getCorporateId());
+				value.put(INTERFACE_NAME, iface.getSystemInterfaceName());
+				value.put(INTERFACE_TYP, iface.getInterfaceType().name());
+				value.put(REQ_INTERFACE, NA);
+				value.put(INTERFACE_TYP2, EMPTY);
+				value.put(REQ_SYSTEMNAME, EMPTY);
+				value.put(REQ_CORP_ID, EMPTY);
+				value.put(REQ_INTERFACE, NA);
+				value.put(INTERFACE_TYP2, EMPTY);
+				value.put(REQ_SYSTEMNAME, NA);
+				value.put(REQ_CORP_ID, EMPTY);
+			}
+			allConnections.add(value);
+		}
+		return allConnections;
+	}
+
 	public List<TransferArc42SystemInterface> collectProvidedInterfaces()
 	{
 		Arc42SystemDo baseSystem = null;
@@ -309,43 +305,143 @@ public class TransferManager
 		}
 		return interfaceMap;
 	}
-	
-	public List<TpackageDo> getResultTpackageDoList() 
+
+	/**
+	 * Maps a given id of an t_object to a corporate ID
+	 *
+	 * @param id	the id of t_object to map
+	 * @return		the corporate Id or "internal" if a corporate Id is not found
+	 */
+	private String mapCorporateId(String id)
+	{
+		for (TobjectpropertiesDo prop : resultTobjectpropertiesDoList)
+		{
+			if (id.equalsIgnoreCase(String.valueOf(prop.getObjectid())) &&
+					(prop.getProperty().equalsIgnoreCase(APP) ||
+							prop.getProperty().equalsIgnoreCase(ICTO) ||
+							prop.getProperty().equalsIgnoreCase(SPL)))
+			{
+				return (prop.getProperty() + " " + prop.getValue());
+			}
+		}
+		return "Internal";
+	}
+
+	/**
+	 * Gets the id of a package in EA with a given name and ID
+	 *
+	 * @param parent the id of the parent folder
+	 * @param name   the name of the folder
+	 * @return       the id of the package as int
+	 */
+	private int extractPackageID(int parent, String name)
+	{
+		int retId = 0;
+		for (TpackageDo tmpDo : resultTpackageDoList)
+		{
+			if (tmpDo.getParentid() == parent && tmpDo.getName().equalsIgnoreCase(name))
+			{
+				retId = tmpDo.getPackageid();
+				break;
+			}
+		}
+		return retId;
+	}
+
+	/**
+	 * Gets all folders beyond a given Package ID in the original EA model
+	 *
+	 * @param parent id of the parent folder
+	 */
+	private void getSystemfolders(int parent)
+	{
+		this.systemFolderList = new ArrayList<HashMap<String, String>>();
+		for (TpackageDo tmpDo : resultTpackageDoList)
+		{
+			if (tmpDo.getParentid() == parent)
+			{
+				HashMap<String, String> system = new HashMap<String, String>();
+				system.put(NAME, tmpDo.getName());
+				system.put(PACKAGE_ID, String.valueOf(tmpDo.getPackageid()));
+				systemFolderList.add(system);
+			}
+		}
+	}
+
+	/**
+	 * Helper method for getting an empty transfer object for a system interface
+	 * if it is not set. The empty object is filled with dummy values.
+	 * @return TransferArc42SystemInterface an empty interface
+	 */
+	private static TransferArc42SystemInterface createDummyTranferInterface()
+	{
+		TransferArc42SystemInterface dummy = new TransferArc42SystemInterface(createDummyInterface());
+		dummy.setSystemInterfaceName("DummyInterface");
+		dummy.setCorporateId("123");
+		dummy.setInterfaceType(InterfaceType.PROVIDED);
+		return dummy;
+	}
+
+	/**
+	 * Helper method for getting an empty system interface if it is not set.
+	 * The empty object is filled with dummy values.
+	 */
+	private static Arc42SystemInterface createDummyInterface()
+	{
+		Arc42SystemInterface dummy = new Arc42SystemInterfaceImpl();
+		dummy.setSystemInterfaceName("DummyInterface");
+		dummy.setDefinedInSystem(createDummySystem());
+		return dummy;
+	}
+
+	/**
+	 * Helper method for getting an empty system object if it is not set.
+	 * The empty object is filled with dummy values.
+	 * @return Arc42SystemDo an empty system
+	 */
+	private static Arc42SystemDo createDummySystem()
+	{
+		Arc42SystemDo system = new Arc42SystemDoImpl();
+		system.setSystemName("DummySystem");
+		return system;
+	}
+
+	private List<TpackageDo> getResultTpackageDoList()
 	{
 		return resultTpackageDoList;
 	}
 
-	public void setResultTpackageDoList(List<TpackageDo> resultTpackageDoList) 
+	public void setResultTpackageDoList(List<TpackageDo> resultTpackageDoList)
 	{
 		this.resultTpackageDoList = resultTpackageDoList;
 	}
 
-	public List<TobjectDo> getResultTobjectList() 
+	private List<TobjectDo> getResultTobjectList()
 	{
 		return resultTobjectList;
 	}
 
-	public void setResultTobjectList(List<TobjectDo> resultTobjectList) 
+	public void setResultTobjectList(List<TobjectDo> resultTobjectList)
 	{
 		this.resultTobjectList = resultTobjectList;
 	}
 
-	public List<TobjectpropertiesDo> getResultTobjectpropertiesDoList() 
+	private List<TobjectpropertiesDo> getResultTobjectpropertiesDoList()
 	{
 		return resultTobjectpropertiesDoList;
 	}
 
-	public void setResultTobjectpropertiesDoList(List<TobjectpropertiesDo> resultTobjectpropertiesDoList) 
+	public void setResultTobjectpropertiesDoList(List<TobjectpropertiesDo> resultTobjectpropertiesDoList)
 	{
 		this.resultTobjectpropertiesDoList = resultTobjectpropertiesDoList;
 	}
 
-	public List<TconnectorDo> getResultTconnectorDoList() 
+	private List<TconnectorDo> getResultTconnectorDoList()
 	{
 		return resultTconnectorDoList;
 	}
 
-	public void setResultTconnectorDoList(List<TconnectorDo> resultTconnectorDoList) 
+	public void setResultTconnectorDoList(List<TconnectorDo> resultTconnectorDoList)
 	{
 		this.resultTconnectorDoList = resultTconnectorDoList;
 	}
