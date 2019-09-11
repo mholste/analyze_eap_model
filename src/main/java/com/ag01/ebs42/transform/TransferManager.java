@@ -3,6 +3,7 @@ package com.ag01.ebs42.transform;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.ag01.ebs42.model.arc42.api.Arc42SystemInterface;
 import org.apache.logging.log4j.LogManager;
@@ -169,49 +170,56 @@ public class TransferManager implements TransferValues
 		HashMap<String, String> value = null;
 		ArrayList<HashMap> allConnections = new ArrayList<HashMap>();
 
-
 		for (TransferArc42SystemInterface iface : providedInterfaceList)
 		{
 			List<TransferArc42InterfaceConnection> conList = interfaceMap.get(iface);
-			value = new HashMap<String, String>();
 			if (conList != null)
 			{
 				for (TransferArc42InterfaceConnection con : conList)
 				{
 					TransferArc42SystemInterface requiredInterface = null;
-					//if (value == null)
-
-					for (TransferArc42SystemInterface req : requiredInterfaceList)
+					List<TransferArc42SystemInterface> reqIntsForCon = requiredInterfaceList.stream().
+							filter(p -> p.getEaId().equals(con.getEaStartId())).collect(Collectors.toList());
+					if (reqIntsForCon.size() > 0)
 					{
+						for (TransferArc42SystemInterface req : reqIntsForCon)
+						{
+							value = new HashMap<String, String>();
+							value.put(SYSTEMNAME, iface.getDefinedInSystem().getSystemName());
+							value.put(PROV_CORP_ID, iface.getCorporateId());
+							value.put(INTERFACE_NAME, iface.getSystemInterfaceName());
+							value.put(INTERFACE_TYP, iface.getInterfaceType().name());
+							value.put(CONNECTION, con.getInterfaceConnectionName());
+
+							value.put(REQ_INTERFACE, req.getSystemInterfaceName());
+							value.put(INTERFACE_TYP2, req.getInterfaceType().name());
+							value.put(REQ_SYSTEMNAME, req.getDefinedInSystem().getSystemName());
+							value.put(REQ_CORP_ID, req.getCorporateId());
+
+							allConnections.add(value);
+						}
+					}
+					else
+					{
+						value = new HashMap<String, String>();
 						value.put(SYSTEMNAME, iface.getDefinedInSystem().getSystemName());
 						value.put(PROV_CORP_ID, iface.getCorporateId());
 						value.put(INTERFACE_NAME, iface.getSystemInterfaceName());
 						value.put(INTERFACE_TYP, iface.getInterfaceType().name());
 						value.put(CONNECTION, con.getInterfaceConnectionName());
-						if (con.getEaStartId().equalsIgnoreCase(req.getEaId()))
-						{
-							requiredInterface = req;
-							//break;
-						}
-						if (requiredInterface != null)
-						{
-							value.put(REQ_INTERFACE, requiredInterface.getSystemInterfaceName());
-							value.put(INTERFACE_TYP2, requiredInterface.getInterfaceType().name());
-							value.put(REQ_SYSTEMNAME, requiredInterface.getDefinedInSystem().getSystemName());
-							value.put(REQ_CORP_ID, requiredInterface.getCorporateId());
-						}
-						else
-						{
-							value.put(REQ_INTERFACE, NA);
-							value.put(INTERFACE_TYP2, EMPTY);
-							value.put(REQ_SYSTEMNAME, NA);
-							value.put(REQ_CORP_ID, EMPTY);
-						}
+
+						value.put(REQ_INTERFACE, NA);
+						value.put(INTERFACE_TYP2, EMPTY);
+						value.put(REQ_SYSTEMNAME, NA);
+						value.put(REQ_CORP_ID, EMPTY);
+
+						allConnections.add(value);
 					}
 				}
 			}
 			else
 			{
+				value = new HashMap<String, String>();
 				value.put(SYSTEMNAME, iface.getDefinedInSystem().getSystemName());
 				value.put(PROV_CORP_ID, iface.getCorporateId());
 				value.put(INTERFACE_NAME, iface.getSystemInterfaceName());
@@ -224,9 +232,11 @@ public class TransferManager implements TransferValues
 				value.put(INTERFACE_TYP2, EMPTY);
 				value.put(REQ_SYSTEMNAME, NA);
 				value.put(REQ_CORP_ID, EMPTY);
+
+				allConnections.add(value);
 			}
-			allConnections.add(value);
 		}
+
 		return allConnections;
 	}
 

@@ -66,11 +66,11 @@ public class ApplicationMainMHO
 		ExcelExporter exporter = ExcelExporter.getInstance();
 		exporter.exportSystems(componentList);
 		exporter.exportInterfaces(providedInterfaceList, "Provided Interfaces");
-		exporter.exportInterfaces(requiredInterfaceList, "Required Interfaces");
-		exporter.exportInterfaces(allRequiredInterfaceList, "All Interfaces");
-		exporter.exportConnections(interfaceMap, requiredInterfaceList);
-		exporter.exportConnections2(interfaceMap, requiredInterfaceList);
-		exporter.exportGeneral(interfaceMap, providedInterfaceList, requiredInterfaceList);
+		//exporter.exportInterfaces(requiredInterfaceList, "Required Interfaces");
+		//exporter.exportInterfaces(allRequiredInterfaceList, "All Interfaces");
+		//exporter.exportConnections(interfaceMap, requiredInterfaceList);
+		//exporter.exportConnections2(interfaceMap, requiredInterfaceList);
+		//exporter.exportGeneral(interfaceMap, providedInterfaceList, requiredInterfaceList);
 		exporter.exportAllConnections(allConnections);
 
 		try
