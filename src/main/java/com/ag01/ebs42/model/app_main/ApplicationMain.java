@@ -11,11 +11,9 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import com.ag01.ebs42.alternative.FillEbsModel;
 import com.ag01.ebs42.analyze.dbaccess.dao.api.*;
 import com.ag01.ebs42.analyze.dbaccess.domobj.*;
 import com.ag01.ebs42.model.app_config.ApplicationMainConfiguration;
-import com.ag01.ebs42.transform.TransferManager;
 
 public class ApplicationMain {
 

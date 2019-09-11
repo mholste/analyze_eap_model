@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a8424c6-c849-47be-83a5-b3deebae543d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/ApplicationMainMHO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/ApplicationMainMHO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/transform/TransferManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/transform/TransferManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/alternative/FillEbsModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/ApplicationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/ApplicationMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/SystemApplicationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/SystemApplicationMain.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,6 +154,7 @@
       <workItem from="1567408188232" duration="22960000" />
       <workItem from="1568013071272" duration="36034000" />
       <workItem from="1568129343484" duration="13014000" />
+      <workItem from="1568207042374" duration="310000" />
     </task>
     <task id="LOCAL-00001" summary="project update">
       <created>1568119056223</created>
@@ -169,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568127449112</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="project update after successful export">
+      <created>1568207137195</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1568207137195</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +198,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project update" />
-    <option name="LAST_COMMIT_MESSAGE" value="project update" />
+    <MESSAGE value="project update after successful export" />
+    <option name="LAST_COMMIT_MESSAGE" value="project update after successful export" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
