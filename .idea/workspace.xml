@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a8424c6-c849-47be-83a5-b3deebae543d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/alternative/FillEbsModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/ApplicationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/ApplicationMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/SystemApplicationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/SystemApplicationMain.java" afterDir="false" />
+    <list default="true" id="7a8424c6-c849-47be-83a5-b3deebae543d" name="Default Changelist" comment="add new package">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +18,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="mholste &lt;michael.holste@web.de&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1QGsHyr2ekArnmvPfeiT7zkkX6E" />
@@ -154,7 +157,7 @@
       <workItem from="1567408188232" duration="22960000" />
       <workItem from="1568013071272" duration="36034000" />
       <workItem from="1568129343484" duration="13014000" />
-      <workItem from="1568207042374" duration="310000" />
+      <workItem from="1568207042374" duration="3036000" />
     </task>
     <task id="LOCAL-00001" summary="project update">
       <created>1568119056223</created>
@@ -177,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568207137195</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="after deletion of alternative">
+      <created>1568207415174</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1568207415174</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,7 +209,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project update" />
     <MESSAGE value="project update after successful export" />
-    <option name="LAST_COMMIT_MESSAGE" value="project update after successful export" />
+    <MESSAGE value="after deletion of alternative" />
+    <option name="LAST_COMMIT_MESSAGE" value="after deletion of alternative" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
