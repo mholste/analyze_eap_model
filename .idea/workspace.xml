@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a8424c6-c849-47be-83a5-b3deebae543d" name="Default Changelist" comment="add new package">
+    <list default="true" id="7a8424c6-c849-47be-83a5-b3deebae543d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -10,40 +10,18 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="mholste &lt;michael.holste@web.de&gt;" />
-      </list>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1QGsHyr2ekArnmvPfeiT7zkkX6E" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1506" />
+    <option name="y" value="27" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveMembersDialog.RECENTS_KEY">
-      <recent name="com.ag01.ebs42.transform.TransferValues" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.ag01.ebs42.transform" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -57,7 +35,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ApplicationMainMHO">
+  <component name="RunManager">
     <configuration name="ApplicationMainMHO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ag01.ebs42.model.app_main.ApplicationMainMHO" />
       <module name="analyze_eap_model" />
@@ -71,80 +49,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Analyze_Java" type="Java Scratch">
-      <option name="MAIN_CLASS_NAME" value="com.ag01.ebs42.model.app_main.ApplicationMainMHO" />
-      <module name="analyze_eap_model" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Analyze_Maven" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="exec:java" />
-                <option value="-Dexec.mainClass=com.ag01.ebs42.model.app_main.ApplicationMainMHO" />
-                <option value="-Dexec.cleanupDaemonThreads=false" />
-              </list>
-            </option>
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="exec:java" />
-                <option value="-Dexec.mainClass=com.ag01.ebs42.model.app_main.ApplicationMainMHO" />
-                <option value="-Dexec.cleanupDaemonThreads=false" />
-              </list>
-            </option>
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Application.ApplicationMainMHO" />
-      <item itemvalue="Java Scratch.Analyze_Java" />
-      <item itemvalue="Maven.Analyze_Maven" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ApplicationMainMHO" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -154,40 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1559718501688</updated>
       <workItem from="1559718518173" duration="244000" />
-      <workItem from="1567408188232" duration="22960000" />
-      <workItem from="1568013071272" duration="36034000" />
-      <workItem from="1568129343484" duration="13014000" />
-      <workItem from="1568207042374" duration="3036000" />
     </task>
-    <task id="LOCAL-00001" summary="project update">
-      <created>1568119056223</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1568119056223</updated>
-    </task>
-    <task id="LOCAL-00002" summary="project update">
-      <created>1568127449112</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1568127449112</updated>
-    </task>
-    <task id="LOCAL-00003" summary="project update after successful export">
-      <created>1568207137195</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1568207137195</updated>
-    </task>
-    <task id="LOCAL-00004" summary="after deletion of alternative">
-      <created>1568207415174</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1568207415174</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,30 +74,10 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="project update" />
-    <MESSAGE value="project update after successful export" />
-    <MESSAGE value="after deletion of alternative" />
-    <option name="LAST_COMMIT_MESSAGE" value="after deletion of alternative" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <condition expression="iface.getSystemInterfaceName().equalsIgnoreCase(&quot;PackageNotification&quot;)" language="JAVA" />
-          <url>file://$PROJECT_DIR$/src/main/java/com/ag01/ebs42/export/ExcelExporter.java</url>
-          <line>351</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
