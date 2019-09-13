@@ -1,4 +1,4 @@
-package com.ag01.ebs42.model.app_main;
+package com.ag01.ebs42.application;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.ag01.ebs42.analyze.dbaccess.dao.api.TconnectorDao;
 import com.ag01.ebs42.analyze.dbaccess.dao.api.TobjectDao;
@@ -21,7 +20,6 @@ import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectpropertiesDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
 import com.ag01.ebs42.export.ExcelExporter;
 import com.ag01.ebs42.model.app_config.ApplicationConfigMHO;
-import com.ag01.ebs42.model.app_config.ApplicationMainConfiguration;
 import com.ag01.ebs42.transform.TransferArc42InterfaceConnection;
 import com.ag01.ebs42.transform.TransferArc42SystemComponent;
 import com.ag01.ebs42.transform.TransferArc42SystemInterface;
