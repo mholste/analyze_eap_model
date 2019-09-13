@@ -1,4 +1,4 @@
-package com.ag01.ebs42.model.app_main;
+package com.ag01.ebs42.model.old;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
-import com.ag01.ebs42.model.app_config.ApplicationMainConfiguration;
 import com.ag01.ebs42.model.arc42.domobj.Arc42SystemDoImpl;
 import com.ag01.ebs42.model.arc42.domobj.Ebs42ModelRootDo;
 import com.ag01.ebs42.model.eap_to_ebs42.api.ConvertEapToEbs42;

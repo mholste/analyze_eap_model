@@ -1,4 +1,4 @@
-package com.ag01.ebs42.model.app_main;
+package com.ag01.ebs42.model.old;
 
 import java.util.List;
 
@@ -13,7 +13,6 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.ag01.ebs42.analyze.dbaccess.dao.api.*;
 import com.ag01.ebs42.analyze.dbaccess.domobj.*;
-import com.ag01.ebs42.model.app_config.ApplicationMainConfiguration;
 
 public class ApplicationMain {
 
