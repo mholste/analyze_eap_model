@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7a8424c6-c849-47be-83a5-b3deebae543d" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/application/ApplicationMainMHO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/application/ApplicationMainMHO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_config/ApplicationConfigMHO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/application/ApplicationConfigMHO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_config/ApplicationMainConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/old/ApplicationMainConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/ApplicationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/old/ApplicationMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/SystemApplicationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/old/SystemApplicationMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/app_main/tmpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ag01/ebs42/model/old/tmpTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,6 +68,9 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="7a8424c6-c849-47be-83a5-b3deebae543d" name="Default Changelist" comment="" />
@@ -109,7 +105,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
