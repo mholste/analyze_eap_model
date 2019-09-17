@@ -19,7 +19,6 @@ import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TobjectpropertiesDo;
 import com.ag01.ebs42.analyze.dbaccess.domobj.TpackageDo;
 import com.ag01.ebs42.export.ExcelExporter;
-import com.ag01.ebs42.model.app_config.ApplicationConfigMHO;
 import com.ag01.ebs42.transform.TransferArc42InterfaceConnection;
 import com.ag01.ebs42.transform.TransferArc42SystemComponent;
 import com.ag01.ebs42.transform.TransferArc42SystemInterface;
